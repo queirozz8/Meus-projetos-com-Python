@@ -1,0 +1,198 @@
+----------------------------------- ENGLISH VERSION -----------------------------------
+In these notes, '[]' is equal to '()', but sometimes there are already many parentheses in that sentence, so it's easier to use [] instead.
+
+PYTHON PRIMITIVE TYPES
+
+str (String) Words or set of characters
+
+Int (Integer) Integer numbers
+
+Float (Floating point) Floating point numbers. With decimal point
+
+Bool (Logical) True or false
+
+FORMATTING FLOAT NUMBERS
+
+'{}': It is the placeholder in the string where the formatted value will be inserted.
+':' : Indicates that the formatting will follow some additional instructions.
+'{.2f}': Specifies the precision of the formatting for floating point numbers. In this case, "2" indicates that you want two decimal places after the decimal point, and "f" indicates that it is a floating point number (float).
+The expression "{:.2f}" is formatting the value of the variable 'raiz' with two decimal places after the decimal point.
+
+ORDER OF ARITHMETIC OPERATIONS
+
+(Parentheses)
+** (Exponentiation)
+*, /, //, % (Multiplication, division, floor division [when a result would be in floating point numbers and you want to show only the result without the comma, like 5/2 = 2.5, you would ask to show only '2' instead of '2.5'], remainder of the division)
++, - (Addition, subtraction)
+HOW TO CALCULATE SQUARE ROOT
+
+You import the math library, or just the square root functionality from the math library, like this:
+from math import sqrt
+n = float(input('Enter a number: '))
+raiz = sqrt[or any other functionality I want from a library] (n)
+print ('The square root of this number is: {:.2f}'.format(raiz)
+
+OR
+
+import math
+num = int(input('Enter a number: '))
+raiz = math.sqrt(num)
+print ('The square root of {} is equal to {:.2f}'.format(num, raiz))
+
+Or you take your number and raise it to the power of 0.5, that is. Ex: n = float(input('Enter a number: ')) print('The square root of this number is {:.2f}'.format (n **(1/2))
+HOW TO KNOW IF A NUMBER IS EVEN OR ODD
+
+EVEN) You take your number and divide it by 2, if the remainder of the division is 0 it means that this number is EVEN. Ex: if 4%2 = 0 then this number is EVEN
+ODD) You take your number and divide it by 2, if the remainder of the division is 1 it means that this number is ODD. Ex: if 3%2 = 1 then this number is ODD
+
+HOW TO CALCULATE DISCOUNT
+
+Formula: Initial price - Initial price * (discount percentage / 100)
+
+HOW TO CALCULATE ADDITIONAL PERCENTAGE ON SOME VALUE
+
+Ex: I bought a product for $100, but as it was imported there is a 17% tax on that value. What will be the final value adding this tax on the value?
+
+Formula: Final Value = Initial Value + (Initial Value×Percentage)
+
+Final Value = 100 + (100 × 0.17)
+
+Final Value = 100 + 17
+
+Final Value = 117
+
+HOW TO CALCULATE CELSIUS TO FAHRENHEIT
+
+Formula: F = 9 * C (quantity of Celsius) / 5 + 32
+
+HOW TO CALCULATE FAHRENHEIT TO CELSIUS
+
+Formula: C = (F - 32) / 1.8
+
+WHAT EACH EQUAL SYMBOL MEANS
+
+= (receives). That is, ex: test = (receives) input ('Enter a value: ')
+
+== (is equal to). That is, ex: 3*5 == (is equal to) 15
+
+IMPORTING LIBRARIES
+
+To import a library of whatever, write: import [library name], this way you import all the functionalities that library has.
+If you want to import one or more functionalities from a library, but not all of them, write: from [library name] import [functionality you want to import, if it's more than 1 you put the comma and space and type the functionality]
+
+EMOJI LIBRARY
+Emoji website: https://www.webfx.com/tools/emoji-cheat-sheet/
+
+import emoji
+print(emoji.emojize('[here you write ascii characters, letters, those things] [emoji you want, it can be the image itself, or it can be its code]'))
+
+
+
+
+----------------------------------- VERSÃO EM PTBR ----------------------------------- 
+
+Nessas anotações, '[]' é igual a '()', mas as vezes já tem muitos parênteses naquela frase então é mais fácil usar [] mesmo
+
+TIPOS PRIMITIVOS PYTHON
+
+1) str (String) Palavras ou conjunto de caracteres
+
+2) Int (Inteiro) Números inteiros
+
+3) Float (Flutuantes/Real) Números flutuantes/Reais. Com ponto
+
+4) Bool (Lógico) Verdadeiro ou falso
+
+
+FORMATANDO NÚMEROS FLOAT
+
+'{}': É o marcador de espaço reservado na string onde o valor formatado será inserido.
+':' : Indica que a formatação seguirá algumas instruções adicionais.
+'{.2f}': Especifica a precisão da formatação para números de ponto flutuante. Neste caso, o "2" indica que você quer duas casas decimais após o ponto decimal, e o "f" indica que é um número de ponto flutuante (float).
+a expressão "{:.2f}" está formatando o valor da variável 'raiz' com duas casas decimais após o ponto decimal.
+
+
+ORDEM DE PRECEDÊNCIA DE CONTAS ARITMÉTICAS
+
+1) (Parênteses)
+2) ** (Potenciação)
+3) *, /, //, % (Multiplicação, divisão, divisão exata [quando algum resultado seria em números flutuantes e você quer que mostre só o resultado sem a vírgula, tipo 5/2= 2.5, você pediria pra mostrar só '2' ao invés de '2.5'], resto da divisão)
+4) +, - (Adição, subtração)
+
+
+COMO CALCULAR RAÍZ QUADRADA
+
+1) Você importa a biblioteca math, ou só a funcionalidade de raiz quadrada da biblioteca math, desse jeito:
+
+from math import sqrt
+n = float(input('Digite um número: ')) 
+raiz = sqrt[ou qualquer outra funcionalidade que eu quiser de uma biblioteca] (n)
+print ('A raiz quadrada desse número é: {:.2f}'.format(raiz)
+
+OU
+
+import math
+num = int(input('Digite um número: '))
+raiz = math.sqrt(num)
+print ('A raiz de {} é igual a {:.2f}'.format(num, raiz))
+
+
+2) Ou você pega o seu número e faz a exponenciação dele por 0.5, ou seja. Ex:
+n = float(input('Digite um número: '))
+print('A raiz quadrada desse número é {:.2f}'.format (n **(1/2)
+
+
+
+COMO SABER SE UM NÚMERO É PAR OU ÍMPAR
+
+PAR) Você pega o seu número e faz a divisão dele por 2, se o resto da divisão for 0 quer dizer que esse número é PAR. Ex: se 4%2 = 0 então esse número é PAR
+ÍMPAR) Você pega o seu número e faz a divisão dele por 2, se o resto da divisão for 1 quer dizer que esse número é ÍMPAR. Ex: se 3%2 = 1 então esse número é ÍMPAR
+
+
+COMO CALCULAR DESCONTAGEM
+
+Fórmula: Preço inicial - preço inicial * (porcentagem de desconto / 100)
+
+
+COMO CALCULAR PORCENTAGEM ADICIONAL SOBRE ALGUM VALOR
+
+Ex: Eu comprei um produto de 100R$, mas como ele foi importado tem um imposto de 17% sobre aquele valor. Qual vai ser o valor final adicionando esse imposto sobre o valor?
+
+Fórmula: Valor Final = Valor Inicial+(Valor Inicial×Porcentagem)
+
+Valor Final = 100 + (100 × 0,17)
+
+Valor Final = 100 + 17
+
+Valor Final = 117
+
+
+COMO CALCULAR CELSIUS PARA FAHRENHEIT
+
+Fórmula: F = 9 * C (qtde Ceusius) / 5 + 32
+
+
+COMO CALCULAR FAHRENHEIT PARA CELSIUS
+
+Fórmula: C = (F - 32) / 1,8
+
+
+O QUE SIGNIFICA CADA SÍMBOLO DE IGUAL
+
+1) = (recebe). Ou seja, ex: teste = (recebe) input ('Digite um valor: ')
+
+2) == (é igual à). Ou seja, ex: 3*5 == (é igual à) 15
+
+
+IMPORTANDO BIBLIOTECAS
+
+Pra importar uma biblioteca do que for, escreva: import [nome da bilioteca], desse jeito você importa todos as funcionalidades que aquela biblioteca tem.
+Se você quer importar uma ou mais funcionalidades de uma biblioteca, mas não todas, escreva: from [nome da biblioteca] import [funcionalidade que você quer importar, se for mais de 1 você coloca a vírgula e espaço e digita a 
+funcionalidade]
+
+
+BIBLIOTECA EMOJI
+Site dos emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
+
+import emoji
+print(emoji.emojize('[aqui você escreve caracteres ascii, letras, essas coisas] [emoji que você quiser, pode ser a imagem mesmo, ou pode ser o código dele]'))
