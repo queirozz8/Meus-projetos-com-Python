@@ -83,6 +83,30 @@ IMPORTING LIBRARIES
 To import a library of whatever, write: import [library name], this way you import all the functionalities that library has.
 If you want to import one or more functionalities from a library, but not all of them, write: from [library name] import [functionality you want to import, if it's more than 1 you put the comma and space and type the functionality]
 
+
+PYGAME LIBRARY (MUSIC)
+
+
+Site to download YouTube videos and convert them to mp3: https://y2meta.app/pt15
+Site to download TikTok videos and convert them to mp3: https://ssstik.io/en
+
+# importing the pygame library, which is aimed at games but you can use it to play music too
+import pygame
+
+# Starting...
+pygame.init()
+
+# Importing the song
+
+pygame.mixer.music.load([your song name in 'quotes'].mp3)
+
+# Starting the song
+pygame.mixer.music.play()
+
+# Entering how long this song will be played (in milliseconds, which is 50 seconds of music)
+pygame.time.wait (50000)
+
+
 EMOJI LIBRARY
 Emoji website: https://www.webfx.com/tools/emoji-cheat-sheet/
 
@@ -192,6 +216,29 @@ IMPORTANDO BIBLIOTECAS
 Pra importar uma biblioteca do que for, escreva: import [nome da bilioteca], desse jeito você importa todos as funcionalidades que aquela biblioteca tem.
 Se você quer importar uma ou mais funcionalidades de uma biblioteca, mas não todas, escreva: from [nome da biblioteca] import [funcionalidade que você quer importar, se for mais de 1 você coloca a vírgula e espaço e digita a 
 funcionalidade]
+
+
+BIBLIOTECA PYGAME (MÚSICA)
+
+
+Site para baixar vídeos do YouTube e converter eles para mp3: https://y2meta.app/pt15
+Site para baixar vídeos do TikTok e converter eles para mp3: https://ssstik.io/en
+
+# importando a biblioteca pygame, que é voltada para jogos mas você consegue usar ela para tocar músicas também
+import pygame
+
+# Iniciando...
+pygame.init()
+
+# Importando a música
+
+pygame.mixer.music.load([nome da sua música em 'aspas'].mp3)
+
+# Iniciando a música
+pygame.mixer.music.play()
+
+# Colocando por quanto tempo essa música vai ser tocada (em milisegundos, que são 50 segundos de música) 
+pygame.time.wait (50000)
 
 
 BIBLIOTECA EMOJI
