@@ -78,7 +78,8 @@ WHAT EACH EQUAL SYMBOL MEANS
 
 == (is equal to). That is, ex: 3*5 == (is equal to) 15
 
-IMPORTING LIBRARIES
+IMPORTING FRAMEWORKS/LIBRARIES
+(framework is the same as library)
 
 To import a library of whatever, write: import [library name], this way you import all the functionalities that library has.
 If you want to import one or more functionalities from a library, but not all of them, write: from [library name] import [functionality you want to import, if it's more than 1 you put the comma and space and type the functionality]
@@ -211,7 +212,8 @@ O QUE SIGNIFICA CADA SÍMBOLO DE IGUAL
 2) == (é igual à). Ou seja, ex: 3*5 == (é igual à) 15
 
 
-IMPORTANDO BIBLIOTECAS
+IMPORTANDO FRAMEWORKS/BIBLIOTECAS
+Um Framework é a mesma coisa que uma biblioteca.IMPORTING FRAMEWORKS/LIBRARIES
 
 Pra importar uma biblioteca do que for, escreva: import [nome da bilioteca], desse jeito você importa todos as funcionalidades que aquela biblioteca tem.
 Se você quer importar uma ou mais funcionalidades de uma biblioteca, mas não todas, escreva: from [nome da biblioteca] import [funcionalidade que você quer importar, se for mais de 1 você coloca a vírgula e espaço e digita a 
