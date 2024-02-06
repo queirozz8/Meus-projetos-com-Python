@@ -21,6 +21,51 @@ FORMATTING FLOAT NUMBERS
 '{.2f}': Specifies the precision of the formatting for floating point numbers. In this case, "2" indicates that you want two decimal places after the decimal point, and "f" indicates that it is a floating point number (float).
 The expression "{:.2f}" is formatting the value of the variable 'raiz' with two decimal places after the decimal point.
 
+
+
+SEPARATING STRINGS WITH .split()
+1) You create your variable, with whatever name you want, ex:
+full_name = str(input('What is your full name?'))
+
+2) You create another variable, this variable will store each name as a different str, starting from 0 and going to infinity.
+
+Note: The empty parentheses in .split mean that each string will be separated by the space between them, for example:
+Henrique Jorge de Queiroz.
+Str 0: Henrique
+Str 1: Jorge
+Str 2: from
+Str 3: Queiroz
+Soooo...
+parts_of_name = full_name.split()
+
+3) You create or another variable, this will be the first name (it is the name you want to display, if it were any other name, you would change the name of the variable and the number of the split list it is in).
+first_name = parts_of_name[0]
+
+4) Make the program speak the user's first name, the '.Title' is used to make the name appear in capital letters
+print('Hello, {}'.format (first_name.Title))
+
+Entry: henrique jorge de queiroz
+Output: Hello, Henrique
+
+
+5) You can also say what will determine each string spacing, like:
+parts_of_name = full_name.split('o')
+In this case, the letter (o) will be the string separator, if I said Henrique Jorge de Queiroz, it would look like this:
+
+Output: ['henrique j', 'rge ​​de queir', 'z']
+
+
+
+WRITING PRINT WITH MULTIPLE LINES
+
+1) If you want to write a large text, but want to skip lines while this text is displayed, but you don't want to have to write each print every line, do this:
+
+print('''Something, something,
+something, something, something, something''')
+
+exit:
+Something, something,
+something, something, something, something
 ORDER OF ARITHMETIC OPERATIONS
 
 (Parentheses)
@@ -116,6 +161,14 @@ print(emoji.emojize('[here you write ascii characters, letters, those things] [e
 
 
 
+WRITING COMMENTS:
+
+1) You can use the character '#' followed by whatever you want to write. The computer will ignore everything written on that line
+
+2) You can also use the normal quote characters: '''random comment for example''' to write your comments, however, this way you can write multi-line comments, the computer will ignore everything until the end of the comment ('' ')
+
+
+
 
 ----------------------------------- VERSÃO EM PTBR ----------------------------------- 
 
@@ -138,6 +191,52 @@ FORMATANDO NÚMEROS FLOAT
 ':' : Indica que a formatação seguirá algumas instruções adicionais.
 '{.2f}': Especifica a precisão da formatação para números de ponto flutuante. Neste caso, o "2" indica que você quer duas casas decimais após o ponto decimal, e o "f" indica que é um número de ponto flutuante (float).
 a expressão "{:.2f}" está formatando o valor da variável 'raiz' com duas casas decimais após o ponto decimal.
+
+
+SEPARANDO STRINGS COM .split()
+1) Você cria sua variável, com o nome que você quiser, ex:
+nome_completo = str(input('Qual é o seu nome completo?'))
+
+2) Você cria uma outra variável, essa variável vai armazenar cada nome como uma str diferente, começando do 0 e indo até o infinito.
+
+obs: Os parênteses vazios do .split signficam que cada string vai ser separada pelo espaço entre elas, por exemplo: 
+Henrique Jorge de Queiroz. 
+Str 0: Henrique 
+Str 1: Jorge 
+Str 2: de 
+Str 3: Queiroz
+Entããão...
+partes_do_nome = nome_completo.split()
+
+3) Você cira ou outra variável, essa vai ser do primeiro nome (é o nome que você quer exibir, se fosse algum outro nome, você mudaria o nome da variável e o número da lista split que ela está).
+primeiro_nome = partes_do_nome[0]
+
+4) Faça o programa falar o primeiro nome do usuário, o '.Title' serve para o nome sair em letras maiúsculas
+print('Olá, {}'.format (primeiro_nome.Title))
+
+Entrada: henrique jorge de queiroz
+Saída: Olá, Henrique
+
+
+5) Você também pode dizer o que vai determinar cada espaçamento de strings, tipo:
+partes_do_nome = nome_completo.split('o')
+nesse caso, a letra (o) vai ser o separador das strings, se eu falasse Henrique Jorge de Queiroz, ficaria assim:
+
+Saída: ['henrique j', 'rge de queir', 'z']
+
+
+
+ESCREVENDO PRINT COM VÁRIAS LINHAS
+
+1) Se você quer escrever um texto grande, mas quer pular linhas enquanto esse texto é exibido, mas não quer ter que ficar escrevendo cada print toda linha, faça isso:
+
+print('''Alguma coisa, alguma coisa,
+alguma coisa, alguma coisa, alguma coisa, alguma coisa''')
+
+saída: 
+Alguma coisa, alguma coisa,
+alguma coisa, alguma coisa, alguma coisa, alguma coisa
+
 
 
 ORDEM DE PRECEDÊNCIA DE CONTAS ARITMÉTICAS
@@ -211,6 +310,15 @@ O QUE SIGNIFICA CADA SÍMBOLO DE IGUAL
 
 2) == (é igual à). Ou seja, ex: 3*5 == (é igual à) 15
 
+3) >= (maior ou igual à). Ou seja, ex: 
+If teste >= 3
+  teste = ('Alguma coisa')
+
+4) <= (menor ou igual à). Ou seja, ex:
+If teste <= 3
+  teste = ('Alguma coisa 2')
+
+
 
 IMPORTANDO FRAMEWORKS/BIBLIOTECAS
 Um Framework é a mesma coisa que uma biblioteca.IMPORTING FRAMEWORKS/LIBRARIES
@@ -248,3 +356,10 @@ Site dos emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 
 import emoji
 print(emoji.emojize('[aqui você escreve caracteres ascii, letras, essas coisas] [emoji que você quiser, pode ser a imagem mesmo, ou pode ser o código dele]'))
+
+
+ESCREVENDO COMENTÁRIOS:
+
+1) Você pode usar o caractere '#' seguido do que você quiser escrever. O computador vai ignorar tudo escrito naquela linha
+
+2) Você também pode usar os caracteres '''comentário aleatório exemplo''' para escrever seus comentários, porém, dessa forma você pode escrever comentários de várias linhas, o computador vai ignorar tudo até o final do comentário (''')
