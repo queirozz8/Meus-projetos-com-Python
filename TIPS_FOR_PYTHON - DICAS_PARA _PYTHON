@@ -4,6 +4,8 @@ BR: Esse bloco de notas foi criado por Henrique Jorge de Queiroz. Por favor dê 
 ----------------------------------- ENGLISH VERSION -----------------------------------
 In these notes, '[]' is equal to '()', but sometimes there are already many parentheses in that sentence, so it's easier to use [] instead.
 
+
+
 PYTHON PRIMITIVE TYPES
 
 str (String) Words or set of characters
@@ -13,6 +15,8 @@ Int (Integer) Integer numbers
 Float (Floating point) Floating point numbers. With decimal point
 
 Bool (Logical) True or false
+
+
 
 FORMATTING FLOAT NUMBERS
 
@@ -33,7 +37,7 @@ Note: The empty parentheses in .split mean that each string will be separated by
 Henrique Jorge de Queiroz.
 Str 0: Henrique
 Str 1: Jorge
-Str 2: from
+Str 2: de
 Str 3: Queiroz
 Soooo...
 parts_of_name = full_name.split()
@@ -66,12 +70,90 @@ something, something, something, something''')
 exit:
 Something, something,
 something, something, something, something
+
+
+
+SEARCHING FOR SOMETHING IN A STRING
+
+1) Let's use this example: I want the user to type their name, I will say if their first/last name has the name 'Silva'. To do this, let's do the following:
+
+Asks for the user's name:
+name = str(input('What is your name? '))
+
+Added the bool variable (true or false) to determine whether there is the word Silva or not. And putting the full name in lowercase letters to make the selection, he must look if somewhere in the name there is the name 'silva', not 'Silva'. He
+also uses the 'in' command to check if it has Silva IN name
+temsilva = bool('silva' in nome.lower())
+
+Says if your name has the name Silva or not in your full name
+print('Does your name/surname have Silva? {}'.format(hassilva))
+
+
+
+USING FIND, RFIND, STRIP, RTRIP, LSTRIP AND COUNT FUNCTIONALITIES
+Always remember to use parentheses after writing the feature name
+
+1- .Count()
+Count is used to count characters within strings, the ex I used was this:
+
+I want to find how many letters "E" there are in the word Henrique Jorge de Queiroz, to do this, we use count
+
+name = str(input('What's your name? ')).strip .lower
+print('How many letters does E have in your name? {}'.format(name.count('e')))
+
+Running the program...
+
+What is your name? Henry Jorge de Queiroz
+How many letters does your name have? 5
+
+
+2- .Find()
+Find is used to find something within a string, the example I used to show this was this:
+
+I want to know in which position the first E is in my name, to do this, we use find
+The +1 is used because in Python the first element of a list is 0, not 1. But we humans use 1, so to avoid confusion I "change" it to the human default
+
+print('In which position is the first letter E? {}'.format(nome.find('e')+1))
+
+
+3- .RFind()
+RFind is used to find something within a string, but from right to left, not from left to right. The ex I used was this:
+
+I want to know in which position the last E is in my name, for this, we use RFind
+
+print('In what position is the last letter E? {}'.format(nome.rfind('e')+1))
+
+
+4- .Strip()
+
+Strip is used to remove additional spaces that users can place when typing something in your program. The ex I used was this:
+
+I want to delete the additional spaces that the user can place when typing something in my program, for this, we use strip
+
+name = str(input('What's your name? ')).strip()
+
+This erases additional spaces from the user's response
+
+
+5- .LStrip()
+
+LStrip is the same thing as strip, but instead of deleting all the spaces in the user's response, it will only delete the first ones, the ones on the left
+
+
+6- .RStrip()
+
+RStrip is the same thing as strip, but instead of deleting all the spaces in the user's response, it will only delete the last ones, the ones on the right
+
+
+
 ORDER OF ARITHMETIC OPERATIONS
 
 (Parentheses)
 ** (Exponentiation)
 *, /, //, % (Multiplication, division, floor division [when a result would be in floating point numbers and you want to show only the result without the comma, like 5/2 = 2.5, you would ask to show only '2' instead of '2.5'], remainder of the division)
 +, - (Addition, subtraction)
+
+
+
 HOW TO CALCULATE SQUARE ROOT
 
 You import the math library, or just the square root functionality from the math library, like this:
@@ -88,10 +170,46 @@ raiz = math.sqrt(num)
 print ('The square root of {} is equal to {:.2f}'.format(num, raiz))
 
 Or you take your number and raise it to the power of 0.5, that is. Ex: n = float(input('Enter a number: ')) print('The square root of this number is {:.2f}'.format (n **(1/2))
+
+
+
+HOW TO GET THE UNIT, TEN, HUNDRED, THOUSAND, ETC MATHEMATICALLY
+
+1) Let's take the example of a program I created, it asks for a number from 0 to 9999, when the user says the number, it says the unit, ten, hundred and thousand unit of the number, and shows '0' when the number does not have any category
+
+Asks for user number
+num = int(input('Enter your number from 0 to 9999: '))
+
+Calculate each category. The formula is:
+
+If it is a unit, take that number and divide it by 1 (unit), then you modulate (%) the result by 10
+
+u = num // 1 % 10
+If it's a ten, take that number and divide it integer by 10 (ten), then you modulate (%) the result by 10
+
+t = num // 10 % 10
+If it's a hundred, take that number and divide it integer by 100 (hundred), then you modulate (%) the result by 10
+
+c = num // 100 % 10
+If it is a unit of thousands, take that number and divide it integer by 1000 (unit of thousands), then you modulate (%) the result by 10
+
+ut = num // 1000 % 10
+
+and so on...
+
+Write each formula result on the screen
+print('Unit: {}'.format(u))
+print('Ten: {}'.format(t))
+print('Hundred: {}'.format(c))
+print('Unit of thousands: {}'.format(ut))
+
+
 HOW TO KNOW IF A NUMBER IS EVEN OR ODD
 
 EVEN) You take your number and divide it by 2, if the remainder of the division is 0 it means that this number is EVEN. Ex: if 4%2 = 0 then this number is EVEN
 ODD) You take your number and divide it by 2, if the remainder of the division is 1 it means that this number is ODD. Ex: if 3%2 = 1 then this number is ODD
+
+
 
 HOW TO CALCULATE DISCOUNT
 
@@ -109,9 +227,13 @@ Final Value = 100 + 17
 
 Final Value = 117
 
+
+
 HOW TO CALCULATE CELSIUS TO FAHRENHEIT
 
 Formula: F = 9 * C (quantity of Celsius) / 5 + 32
+
+
 
 HOW TO CALCULATE FAHRENHEIT TO CELSIUS
 
@@ -123,11 +245,14 @@ WHAT EACH EQUAL SYMBOL MEANS
 
 == (is equal to). That is, ex: 3*5 == (is equal to) 15
 
+
+
 IMPORTING FRAMEWORKS/LIBRARIES
 (framework is the same as library)
 
 To import a library of whatever, write: import [library name], this way you import all the functionalities that library has.
 If you want to import one or more functionalities from a library, but not all of them, write: from [library name] import [functionality you want to import, if it's more than 1 you put the comma and space and type the functionality]
+
 
 
 PYGAME LIBRARY (MUSIC)
@@ -151,6 +276,7 @@ pygame.mixer.music.play()
 
 # Entering how long this song will be played (in milliseconds, which is 50 seconds of music)
 pygame.time.wait (50000)
+
 
 
 EMOJI LIBRARY
@@ -239,6 +365,92 @@ alguma coisa, alguma coisa, alguma coisa, alguma coisa
 
 
 
+PROCURANDO ALGO EM UMA STRING
+
+1) Vamos usar este exemplo: Eu quero que o usuário digite o nome dele, eu falarei se o nome/sobrenome dele possui o nome 'Silva'. Pra isso, vamos fazer o seguinte:
+
+Pergunta o nome do usuário:
+nome = str(input('Qual é o seu nome? '))
+
+Adiciona a variável bool (verdadeiro ou falso) de se tem a palavra Silva ou não. E coloca o nome completo em letras minúsculas pra realizar a verificação, ele deve procurar se em algum lugar do nome possui o nome 'silva', não 'Silva'. Ele 
+também usa o comando 'in' (Tradução para ptbr: em) pra verificar se possui Silva EM nome
+temsilva = bool('silva' in nome.lower())
+
+Fala se seu nome possui o nome Silva ou não no seu nome completo
+print('Seu nome/sobrenome possui Silva? {}'.format(temsilva))
+
+
+
+USANDO AS FUNCIONALIDADES FIND, RFIND, STRIP, RTRIP, LSTRIP E COUNT
+Lembre-se sempre de usar os parênteses depois de escrever o nome da funcionalidade
+
+1- .Count()
+Count é usado para contar caracteres dentro de strings, o ex que eu usei foi esse:
+
+Quero achar quantas letras "E" tem na palavra Henrique Jorge de Queiroz, pra isso, utilizamos o count
+
+nome = str(input('Qual é o seu nome? ')).strip .lower
+print('Quantas letras E possui o seu nome? {}'.format(nome.count('e')))
+
+Executando o programa...
+
+Qual é o seu nome? Henrique Jorge de Queiroz
+Quantas letras E possui o seu nome? 5
+
+
+2- .Find()
+Find é utilizado para achar alguma coisa dentro de uma string, o ex que eu usei pra mostrar isso foi esse:
+
+Quero saber em qual posição o primeiro E fica no meu nome, pra isso, utilizamos o find
+O +1 é utlizado porque em python o primeiro elemento de uma lista é 0, não 1. Mas nós humanos usamos 1, então pra não ficar confuso eu "altero" para o padrão dos humanos
+
+print('Em qual posição a primeira letra E fica? {}'.format(nome.find('e')+1)) 
+
+
+3- .RFind()
+RFind e utilizado para achar alguma coisa dentro de uma string, porém da direita para a esquerda, e não da esquerda para a direita. O ex que eu usei foi esse:
+
+Quero saber em qual posição o último E fica no meu nome, pra isso, utilizamos o RFind
+
+print('Em qual posição a última letra E fica? {}'.format(nome.rfind('e')+1))
+
+
+4- .Strip()
+
+Strip é utilizado para remover os espaços adicionais que os usuários podem colocar quando forem digitar alguma coisa no seu programa. O ex que eu usei foi esse:
+
+Quero apagar os espaços adicionais que o usuário pode colocar quando ele for digitar algo no meu programa, pra isso, utilizamos o strip
+
+nome = str(input('Qual é o seu nome? ')).strip()
+
+Isso apaga os espaços adicionais da resposta do usuário
+
+
+5- .LStrip()
+
+LStrip é a mesma coisa do strip, só que ao invés de apagar todos os espaços da resposta do usuário, ele vai apagar só os primeiros, os da esquerda
+
+
+6- .RStrip()
+
+RStrip é a mesma coisa do strip, só que ao invés de apagar todos os espaços da resposta do usuário, ele vai apagar só os últimos, os da direita
+
+
+
+COMO SABER SE UMA STRING COMEÇA COM ALGUMA PALAVRA ESPECÍFICA
+
+1) O exemplo que eu usei foi de um programa que eu criei. O usuário fala um nome de uma cidade e o programa fala se essa cidade começa com a palavra 'Santo'.
+
+2) 
+
+Pergunta o nome da cidade e apaga algum espaço extra que acabe tendo na string
+cidade = str(input('Digite o nome de uma cidade: ')).strip()
+
+Fala na tela se a cidade começa com a palavra santo, pra isso ele coloca o nome inteiro da cidade tudo em maiúsculo e procura pela palavra SANTO, isso evita bugs.
+print(cidade[:5].upper() == 'SANTO')
+
+
+
 ORDEM DE PRECEDÊNCIA DE CONTAS ARITMÉTICAS
 
 1) (Parênteses)
@@ -267,6 +479,38 @@ print ('A raiz de {} é igual a {:.2f}'.format(num, raiz))
 2) Ou você pega o seu número e faz a exponenciação dele por 0.5, ou seja. Ex:
 n = float(input('Digite um número: '))
 print('A raiz quadrada desse número é {:.2f}'.format (n **(1/2)
+
+
+
+COMO PEGAR A UNIDADE, DEZENA, CENTENA, MILHAR, ETC DE FORMA MATEMÁTICA
+
+1) Vamos pegar o exemplo de um programa que eu criei, ele pede um número de 0 ate 9999, quando o usuário diz o número, ele diz a unidade, dezena, centena e unidade de milhar do número, e mostra '0' quando o número não possui alguma categoria
+
+Pergunta o número do usuário
+num = int(input('Digite seu número de 0 até 9999: '))
+
+Faz a conta pra cada categoria. A fórmula é: 
+
+Se é unidade, pega esse número e faz a divisão inteira dele por 1 (unidade), depois você faz o módulo (%) do resultado por 10
+
+u = num // 1 % 10
+Se é dezena, pega esse número e faz a divisão inteira dele por 10 (dezena), depois você faz o módulo (%) do resultado por 10
+
+d = num // 10 % 10
+Se é centena, pega esse número e faz a divisão inteira dele por 100 (centena), depois você faz o módulo (%) do resultado por 10
+
+c = num // 100 % 10
+Se é unidade de milhar, pega esse número e faz a divisão inteira dele por 1000 (unidade de milhar), depois você faz o módulo (%) do resultado por 10
+
+m = num // 1000 % 10
+
+e assim por diante...
+
+Escreve na tela cada resultado da fórmula
+print('Unidade: {}'.format(u))
+print('Dezena: {}'.format(d))
+print('Centena: {}'.format(c))
+print('Unidade de milhar: {}'.format(m))
 
 
 
@@ -356,6 +600,7 @@ Site dos emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 
 import emoji
 print(emoji.emojize('[aqui você escreve caracteres ascii, letras, essas coisas] [emoji que você quiser, pode ser a imagem mesmo, ou pode ser o código dele]'))
+
 
 
 ESCREVENDO COMENTÁRIOS:
