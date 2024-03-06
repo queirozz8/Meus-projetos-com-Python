@@ -89,6 +89,12 @@ print('Does your name/surname have Silva? {}'.format(hassilva))
 
 
 
+USING FSTRING
+
+f-string is like a .format but different, to use it you put the letter f before opening the quotation marks in your string, when you put a variable in the print, open the curly braces and put the name of the variable. Okay, that's the f-string
+
+
+
 USING FIND, RFIND, STRIP, RTRIP, LSTRIP AND COUNT FUNCTIONALITIES
 Always remember to use parentheses after writing the feature name
 
@@ -254,6 +260,34 @@ To import a library of whatever, write: import [library name], this way you impo
 If you want to import one or more functionalities from a library, but not all of them, write: from [library name] import [functionality you want to import, if it's more than 1 you put the comma and space and type the functionality]
 
 
+PYAUTOGUI FRAMEWORK (AUTOMATIONS)
+
+pyautogui.click(x=742, y=345) -> click somewhere on the screen | (CLICKS=2) means the number of clicks he will make on the screen | (BUTTON='right') presses a specific mouse button, middle, right, left, etc.)
+pyautogui.write('something') -> write text
+pyautogui.press('enter') -> press 1 keyboard key
+pyautogui.hotkey('ctrl', 'c') -> press special keyboard keys at the same time
+pyautogui.PAUSE = 0.5 -> whenever you run a new pyautogui command there will be a pause of x seconds
+pyautogui.position() -> mouse position on screen
+pyautogui.scroll() -> Scroll mouse scroll
+
+
+PANDAS FRAMEWORK (DATA)
+
+pandas.read_csv(produtos.csv) -> reads a file, it can be csv, html, excel, word, sql, json, pdf, anything
+for row in mesa.index: -> .index is row, for each row in my table. If it were .columns it would be for column, etc. For is loop structure. 'Line' is the name of the loop counter
+code = table.loc -> loc is to locate something in a table
+table.loc[line, 'code'] -> Line is the loop counter, it is each line. Code is the column for each product, it needs to be written in the exact same way as it was written in the table
+table = table.drop(columns='CustomerID') -> .drop is for throwing away, like
+table = table.dropna() -> Removes empty values ​​from the table
+display(table['cancelled'].value_counts(normalize=True)) -> Takes the values ​​from the 'cancelled' column, takes who canceled and who didn't cancel and calculates their percentage using 'normalize=True'
+
+
+PLOTLY FRAMEWORK
+
+
+graph = px.histogram(table, x='age', color='cancelou') -> px is the abbreviation for ploty.express, histogram is the type of graph, as if it were a bar graph. Plotly already knows the y axis, but you need to say the x axis, the x axis is the age of each customer, and the color there is for
+compare those who did not cancel with those who did
+
 
 PYGAME LIBRARY (MUSIC)
 
@@ -277,6 +311,10 @@ pygame.mixer.music.play()
 # Entering how long this song will be played (in milliseconds, which is 50 seconds of music)
 pygame.time.wait (50000)
 
+
+TIME FRAMEWORK
+
+time.sleep(3) -> pauses only at the time you say to pause in your code
 
 
 EMOJI LIBRARY
@@ -378,6 +416,12 @@ temsilva = bool('silva' in nome.lower())
 
 Fala se seu nome possui o nome Silva ou não no seu nome completo
 print('Seu nome/sobrenome possui Silva? {}'.format(temsilva))
+
+
+
+USANDO FSTRING
+
+f-string é tipo um .format so que diferente, pra usar ele você coloca a letra f antes de abrir as aspas da sua string, quando for colocar alguma variável no print, abre as chaves e coloca o nome da variável. Pronto, esse é o f-string
 
 
 
@@ -572,6 +616,36 @@ Se você quer importar uma ou mais funcionalidades de uma biblioteca, mas não t
 funcionalidade]
 
 
+BIBLIOTECA PYAUTOGUI (AUTOMAÇÕES)
+
+pyautogui.click(x=742, y=345) -> clicar em algum lugar da tela | (CLICKS=2) significa o tanto de clicks que ele vai dar na tela | (BUTTON='right') aperta um botão específico do mouse, meio, direito, esquerdo, etc)
+pyautogui.write('alguma coisa') -> escrever um texto
+pyautogui.press('enter') -> pressionar 1 tecla do teclado
+pyautogui.hotkey('ctrl', 'c') -> pressionar teclas especiais do teclado ao mesmo tempo
+pyautogui.PAUSE = 0.5 -> sempre que você rodar um novo comando do pyautogui vai ter a pausa de x segundos
+pyautogui.position() -> posição do mouse na tela
+pyautogui.scroll() -> Rolar o scroll do mouse
+
+
+BIBLIOTECA PANDAS (DADOS)
+
+pandas.read_csv(produtos.csv) -> lê um arquivo, pode ser csv, html, excel, word, sql, json, pdf, tudo
+for linha in tabela.index: -> .index é de linha, para cada linha da minha tabela. Se fosse .columns seria para coluna, etc. For é estrutura de loop. 'Linha' é o nome do contador do loop
+codigo = tabela.loc -> loc é pra localizar alguma coisa de uma tabela
+tabela.loc[linha, 'codigo'] -> Linha é o contador do loop, é cada linha mesmo. Codigo é a coluna de cada produto, ela precisa ser escrita da exata mesma forma que foi escrito na tabela
+tabela = tabela.drop(columns='CustomerID') -> .drop é para jogar fora, tipo 
+tabela = tabela.dropna() -> Tira os valores vazios da tabela
+display(tabela['cancelou'].value_counts(normalize=True)) -> Pega os valores da coluna 'cancelou', pega quem cancelou e quem não cancelou e faz a porcentagem deles por meio do 'normalize=True'
+
+
+BIBLIOTECA PLOTLY
+
+
+grafico = px.histogram(tabela, x='idade', color='cancelou') -> px é a abreviação à ploty.express, histogram é o tipo do gráfico, como se fosse um de barra. O eixo y o plotly já sabe, mas você precisa falar o eixo x, o eixo x é a idade de cada cliente, e o color ali é pra
+comparar os que não cancelaram com os que cancelaram
+
+
+
 BIBLIOTECA PYGAME (MÚSICA)
 
 
@@ -601,6 +675,10 @@ Site dos emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 import emoji
 print(emoji.emojize('[aqui você escreve caracteres ascii, letras, essas coisas] [emoji que você quiser, pode ser a imagem mesmo, ou pode ser o código dele]'))
 
+
+BIBLIOTECA TIME
+
+time.sleep(3) -> faz uma pausa só naquela hora que você falar para pausar no seu código
 
 
 ESCREVENDO COMENTÁRIOS:
