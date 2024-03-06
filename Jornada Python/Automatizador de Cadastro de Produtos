@@ -8,7 +8,7 @@ import pandas
 # BR: Definindo a pausa de cada comando do pyautogui
 pyautogui.PAUSE = 0.5
 
-# Pass 1: Entying on the company's website
+# Step 1: Entying on the company's website
 # Passo 1: Entrar no sistema da empresa
     # https://dlp.hashtagtreinamentos.com/python/intensivao/login
 
@@ -27,7 +27,7 @@ pyautogui.write(link)
 pyautogui.press('enter')
 time.sleep(1.5)
 
-# Pass 2: Login
+# Step 2: Login
 # Passo 2: Fazer login
 # Select the email's place
 # Selecionar o campo de email
@@ -43,12 +43,12 @@ pyautogui.press('tab')
 pyautogui.press('enter')
 time.sleep(1.5)
 
-# Pass 3: Import the database
+# Step 3: Import the database
 # Passo 3: Importar a base de dados
 tabela = pandas.read_csv('produtos.csv')
 print(tabela)
 
-# Pass 4: Register one product
+# Step 4: Register one product
 # Passo 4: Cadastrar um produto
 # For every line in my schedule
 # Para cada linha da minha tabela
