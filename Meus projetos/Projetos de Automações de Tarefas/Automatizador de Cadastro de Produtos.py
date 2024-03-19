@@ -15,9 +15,9 @@ pyautogui.PAUSE = 0.5
 # Open the navigator
 # abrir o navegador
 pyautogui.press('win')
-# My navigator it's Brave, if your's be diferent, you should switch for 'Chrome' or something 
-# Meu navegador é o Brave, se for outro, aconselho mudar para "Chrome", ou algo do tipo
-pyautogui.write('Brave')
+# My navigator it's Opera, if your's be diferent, you should switch for 'Chrome' or something 
+# Meu navegador é o Opera, se for outro, aconselho mudar para "Chrome", ou algo do tipo
+pyautogui.write('Opera')
 pyautogui.press('enter')
 
 # Entry in the site
