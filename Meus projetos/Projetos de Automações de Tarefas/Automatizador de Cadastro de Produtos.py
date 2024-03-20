@@ -6,7 +6,7 @@ import pandas
 
 # EN: Defining the pause of every command in pyautogui
 # BR: Definindo a pausa de cada comando do pyautogui
-pyautogui.PAUSE = 0.5
+pyautogui.PAUSE = 0.4
 
 # Step 1: Entying on the company's website
 # Passo 1: Entrar no sistema da empresa
