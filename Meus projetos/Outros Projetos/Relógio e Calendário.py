@@ -22,6 +22,7 @@ def mostrar_data_hora():
     
     # Display the calendar.
     # Exibir o calendário.
+    print("                           ", *{mes[agora.month - 1].upper()})
     print("{:^50}".format("   Dom     Seg       Ter      Qua     Qui      Sex      Sáb"))
     dia_atual = agora.day
     primeiro_dia_semana = (agora.replace(day=1)).weekday()  # Dia da semana do primeiro dia do mês
