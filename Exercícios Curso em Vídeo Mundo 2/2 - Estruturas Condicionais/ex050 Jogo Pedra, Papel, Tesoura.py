@@ -19,7 +19,7 @@ sleep(0.5)
 print("PO!!!")
 
 print(f"O COMPUTADOR escolheu {itens[escolha_Computador]}")
-print(f"O JOGADOR escolheu {itens[escolha_Usuario]}")
+print(f"O JOGADOR escolheu {itens[escolha_Usuario]} \n")
 
 if escolha_Computador == 0: # Computador jogou PEDRA
     if escolha_Usuario == 0:
