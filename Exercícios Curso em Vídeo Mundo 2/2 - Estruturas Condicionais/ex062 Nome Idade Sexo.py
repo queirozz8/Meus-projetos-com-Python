@@ -26,6 +26,8 @@ for pessoa in range(1, 5):
         # O homem vai ser atualizado, ele passa a ser o homem mais velho, ele vai receber a idade e o nome que foram digitados na vez dele:
         nome_velho = nome
         maior_idade_homem = idade
+    # If gender is not male or female (User typed wrong):
+    # Se o sexo não for homem nem mulher (Usuário digitou errado):
     if sexo not in ["m", "f"]:
         print("Opção inválida, por favor, tente novamente com M (Masculino) ou F (Feminino).")
         continue
