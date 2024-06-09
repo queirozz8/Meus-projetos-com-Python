@@ -8,7 +8,7 @@ for pessoa in range(1, 5):
     print(f"----- {pessoa}° PESSOA -----")
     nome = str(input("Nome: ")).strip()
     idade = int(input("Idade: "))
-    sexo = str(input("Sexo (M/F): ")).strip()
+    sexo = str(input("Sexo (M/F): ")).strip().lower()
     # soma_idade saves and sum the age of every peaple
     # soma_idade vai guardar e ir somando a idade de todas as pessoas:
     soma_idade += idade
@@ -16,16 +16,19 @@ for pessoa in range(1, 5):
     # in the start, the variable receive the information:
     # Se a pessoa for a primeira da lista e for um homem, quem é o homem mais velho e o único nome do mais velho é ele, pois não tem outro na variável, então independente dos valores, no início, a variável 
     # recebe as informações:
-    if pessoa == 1 and sexo in "Mm":
+    if pessoa == 1 and sexo == "m":
         maior_idade_homem = idade
         nome_velho = nome
     # If the current man is more old than the previous man:
     # Se o homem atual for mais velho que o homem de antes:
-    if sexo in "Mm" and idade > maior_idade_homem:
+    if sexo == "m" and idade > maior_idade_homem:
         # The man is updated, he now is the oldest man, and he receives the "idade" (age) and the name that the user's gave in his turn:
         # O homem vai ser atualizado, ele passa a ser o homem mais velho, ele vai receber a idade e o nome que foram digitados na vez dele:
         nome_velho = nome
         maior_idade_homem = idade
+    if sexo not in ["m", "f"]:
+        print("Opção inválida, por favor, tente novamente com M (Masculino) ou F (Feminino).")
+        continue
     # If a woman is less than 20 years old, the conter of women that have elss than 20 years old add 1 (tot_mulher_20)
     # Se uma mulher ter menos de 20 anos, o contador de mulheres que possuem menos de 20 anos acrescenta 1 (tot_mulher_20)
     if sexo in "Ff" and idade < 20:
