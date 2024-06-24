@@ -1,0 +1,838 @@
+# **TIPOS PRIMITIVOS DO PYTHON**
+1) **str (String)** Palavras ou conjunto de caracteres
+2) **Int (Inteiro)** Números inteiros
+3) **Float (Flutuantes/Real/Decimais)** Números flutuantes/Reais/Decimais. Com ponto
+4) **Bool (Lógico)** True ou False (Verdadeiro ou Falso)
+
+
+
+# **MANIPULANDO STRINGS:**
+
+# CONCATENANDO STRINGS
+Para concatenar 2 ou mais strings, usamos o sinal de `+` entre as strings:
+```
+primeiro_nome = "Henrique"
+sobrenome = "Jorge"
+print(f"{primeiro_nome} " + sobrenome)
+# Saída: Henrique Jorge
+```
+
+
+# SEPARANDO STRINGS COM `.split()`
+1) Você cria sua variável, com o nome que você quiser, ex:
+`nome_completo = str(input('Qual é o seu nome completo?'))`
+2) Você cria uma outra variável, essa variável vai armazenar cada nome como uma str diferente, começando do 0 e indo até o infinito.
+obs: Os parênteses vazios do .split signficam que cada string vai ser separada pelo espaço entre elas, por exemplo: 
+Henrique Jorge de Queiroz. 
+Str 0: Henrique 
+Str 1: Jorge 
+Str 2: de 
+Str 3: Queiroz
+Entããão...
+`partes_do_nome = nome_completo.split()`
+
+3) Você cria ou outra variável, essa vai ser do primeiro nome (é o nome que você quer exibir, se fosse algum outro nome, você mudaria o nome da variável e o número da lista split que ela está).
+`primeiro_nome = partes_do_nome[0]`
+
+4) Faça o programa falar o primeiro nome do usuário, o `.Title` serve para o nome sair em letras maiúsculas
+`print('Olá, {}'.format (primeiro_nome.Title))`
+
+Entrada: henrique jorge de queiroz
+Saída: `Olá, Henrique`
+
+
+5) Você também pode dizer o que vai determinar cada espaçamento de strings, tipo:
+`partes_do_nome = nome_completo.split('o')`
+nesse caso, a letra (o) vai ser o separador das strings, se eu falasse Henrique Jorge de Queiroz, ficaria assim:
+
+Saída: `['henrique j', 'rge de queir', 'z']`
+
+
+# ESCREVENDO PRINT COM VÁRIAS LINHAS
+
+1) Se você quer escrever um texto grande, mas quer pular linhas enquanto esse texto é exibido, mas não quer ter que ficar escrevendo cada print toda linha, faça isso:
+
+```
+print('''Alguma coisa, alguma coisa,
+alguma coisa, alguma coisa, alguma coisa, alguma coisa''')
+```
+saída: 
+```
+Alguma coisa, alguma coisa,
+alguma coisa, alguma coisa, alguma coisa, alguma coisa
+```
+
+# `"\N"`
+`'\n'` é uma sequência de escape que representa uma nova linha. Essas sequências de escape são códigos começando com uma barra invertida `\` que têm um significado especial na linguagem.
+No caso de '\n' especificamente, ela é interpretada como um caractere que insere uma nova linha, ou seja, move o cursor para a próxima linha. Isso é útil quando você deseja imprimir ou manipular strings em linhas separadas.
+
+
+
+# PROCURANDO ALGO EM UMA STRING
+
+1) Vamos usar este exemplo: Eu quero que o usuário digite o nome dele, eu falarei se o nome/sobrenome dele possui o nome 'Silva'. Pra isso, vamos fazer o seguinte:
+
+Pergunta o nome do usuário:
+`nome = str(input('Qual é o seu nome? '))`
+
+Adiciona a variável bool (verdadeiro ou falso) de se tem a palavra Silva ou não. E coloca o nome completo em letras minúsculas pra realizar a verificação, ele deve procurar se em algum lugar do nome possui o nome 'silva', não 'Silva'. Ele também usa o comando 'in' (Tradução para ptbr: em) pra verificar se possui Silva EM nome
+`temsilva = bool('silva' in nome.lower())`
+
+Fala se seu nome possui o nome Silva ou não no seu nome completo
+`print(f"Seu nome/sobrenome possui Silva? {temsilva}")`
+Se o nome for "Henrique Jorge de Queiroz":
+Saída: `False`
+Se o nome for alguma coisa que tenha "Silva":
+Saída: `True`
+
+
+# OPERADOR * EM LISTAS E TUPLAS
+O operador `*` desempacota os elementos de uma sequência (lista, tupla, etc.) removendo os colchetes [ ] ou parênteses ( ) que os envolvem.
+Quando você tem uma lista ou tupla e deseja exibir ou utilizar seus elementos individualmente, em vez de exibi-la como uma sequência única envolvida por colchetes ou parênteses, você pode usar o * para desempacotar essa sequência.
+```
+numeros = [1, 2, 3]
+print(numeros)  # Saída: [1, 2, 3]
+print(*numeros) # Saída: 1 2 3
+
+letras = ('a', 'b', 'c')
+print(letras)   # Saída: ('a', 'b', 'c')
+print(*letras)  # Saída: a b c
+```
+No primeiro exemplo, `print(numeros)` exibe a lista `[1, 2, 3]` com os colchetes. Já `print(*numeros)` desempacota a lista, exibindo seus elementos 1, 2 e 3 separadamente, sem os colchetes.
+
+No segundo exemplo, acontece o mesmo com a tupla `('a', 'b', 'c')`. `print(letras)` exibe a tupla com parênteses, enquanto `print(*letras)` exibe seus elementos `a`, `b` e `c` separadamente, sem os parênteses.
+
+Outro exemplo, desta vez com uma tupla:
+```
+pessoa = ('João', 25, 'Programador')
+print(pessoa)  # Saída: ('João', 25, 'Programador')
+
+print(*pessoa)  # Saída: João 25 Programador
+```
+Aqui, `pessoa` é uma tupla com três elementos. Usando `*pessoa`, desempacotamos a tupla, fazendo com que `print()` receba três argumentos separados: 'João', 25 e 'Programador'.
+
+Então, em resumo, o operador `*` desempacota uma sequência (lista, tupla, etc.) em argumentos separados para uma função. Isso é útil quando você deseja passar os elementos de uma sequência individualmente para uma função, em vez de passá-los como uma única sequência.
+O operador `*` "tira" os colchetes ou parênteses que envolvem a sequência, exibindo ou passando seus elementos de forma individual, o que geralmente é uma forma mais "polida" ou legível de trabalhar com esses elementos separadamente.
+
+
+
+# USANDO FSTRING
+f-string é tipo um .format só que diferente, pra usar ele você coloca a letra f antes de abrir as aspas da sua string, quando for colocar alguma variável no print, abre as chaves e coloca o nome da variável. Esse é o f-string.
+**Sintaxe:** `print(f"A soma total foi {soma})"`
+**Jeito antigo com o .format:** `print("A soma total foi {}".format(soma))`
+
+
+
+# COMO SABER SE UMA STRING COMEÇA COM ALGUMA PALAVRA ESPECÍFICA
+
+1) O exemplo que eu usei foi de um programa que eu criei. O usuário fala um nome de uma cidade e o programa fala se essa cidade começa com a palavra 'Santo'.
+2) Pergunta o nome da cidade e apaga algum espaço extra que acabe tendo na string
+`cidade = str(input('Digite o nome de uma cidade: ')).strip()`
+Fala na tela se a cidade começa com a palavra santo, pra isso ele coloca o nome inteiro da cidade tudo em maiúsculo e procura pela palavra SANTO, isso evita bugs.
+`print(cidade[:5].upper() == 'SANTO')`
+
+
+# FATIANDO STRINGS
+**Sintaxe: `[<número>:]`
+Exemplo de uso:
+```
+a = "Olá, Mundo!"
+print(a [2:])
+# Saída: á, Mundo!
+```
+Aqui, "2" é o índice da string, então em Olá, Mundo!, a letra que representa o índice 2 é o "á", então estamos pedindo para que o Python mostre na tela a variável "a" à partir do índice 2 (`[2]`) e termine no final da string (`:`)
+
+**Exemplo de uso mais avançado:**
+```
+escolha_usuario = input("Par ou Ímpar? (P/I): ").strip().lower()
+while not escolha_usuario or escolha_usuario[0] not in "pi":
+	print("Opção inválida, por favor, digite novamente")
+	escolha_usuário = input("Par ou Ímpar? (P/I): ")
+
+```
+Na linha 2, `escolha_usuario[0] not in "pi":`, `[0]` faz com que a verificação seja na primeira letra que o usuário digitar, independente se ele digitar "Par", ou "impar", vai funcionar do mesmo jeito pois a primeira letra da palavra que ele digitou é a que vai ser abordada, por causa do `[0]`.
+
+
+# FORMATANDO STRINGS
+**Sintaxe:** `print(f"{"STRING QUE QUER FORMATAR":<opção>}")`
+Após os `:`, existem diversas opções de formatação que podemos colocar em nossas strings:
+- `<`: Alinha à esquerda
+- `>`: Alinha à direita
+- `^`: Centraliza
+- `=`: Força a exibição do sinal de número (por exemplo, `-` para números negativos)
+- `+`: Força a exibição do sinal de número (por exemplo, `+` para números positivos)
+- (espaço): Força a exibição do sinal de número (por exemplo, `-` para números negativos) e adiciona um espaço para números positivos
+- `#`: Força a exibição do prefixo para números (por exemplo, `0b` para binário, `0o` para octal, etc.)
+- `,`: Adiciona separadores de milhar (por exemplo, `1,000,000` em vez de `1000000`)
+- `b`, `c`, `d`, `o`, `x`, `X`, `e`, `E`, `f`, `F`, `g`, `G`, `n`, `s`: Especificam o tipo de formatação para números (por exemplo, `b` para binário, `f` para ponto flutuante, etc.)
+```
+print(f"{'Hello':<10}")  # Alinha à esquerda com largura de 10 caracteres
+print(f"{'Hello':>10}")  # Alinha à direita com largura de 10 caracteres
+print(f"{'3.14159':.2f}")  # Formata como um número de ponto flutuante com 2 casas decimais
+```
+
+
+# `NOT <VARIÁVEL DE TIPO STR>`
+Quando fazemos a verificação em uma variável de tipo `str`, muitas vezes codamos algo tipo assim:
+```
+escolha_usuario = input("Par ou Ímpar? (P/I): ").strip().lower()
+while not escolha_usuario or escolha_usuario[0] not in "pi":
+	print("Opção inválida, por favor, digite novamente")
+	escolha_usuário = input("Par ou Ímpar? (P/I): ")
+```
+Na linha 2, `while not escolha_usuario` verifica se aquela variável está vazia, se esse fosse o caso, o usuário não teria digitado nada, só apertado `enter`, e se ele fizer isso, o software pede para ele digitar novamente, dessa vez, com uma opção válida, se ele não digitar, fica infinitamente nisso.
+
+# USANDO AS FUNCIONALIDADES `FIND`, `RFIND`, `STRIP`, `RTRIP`, `LSTRIP` E `COUNT`
+Lembre-se sempre de usar os parênteses depois de escrever o nome da funcionalidade
+
+1- `.Count()`
+Count é usado para contar caracteres dentro de strings, o ex que eu usei foi esse:
+
+Quero achar quantas letras "E" tem na palavra Henrique Jorge de Queiroz, pra isso, utilizamos o count
+
+`nome = str(input('Qual é o seu nome? ')).strip .lower`
+`print(f"Quantas letras 'E' possui o seu nome? {nome.count('e')}"`
+Executando o programa...
+```
+Qual é o seu nome? Henrique Jorge de Queiroz
+Quantas letras E possui o seu nome? 5
+```
+
+2- `.Find()`
+Find é utilizado para achar alguma coisa dentro de uma string, o ex que eu usei pra mostrar isso foi esse:
+
+Quero saber em qual posição o primeiro E fica no meu nome, pra isso, utilizamos o find
+O +1 é utlizado porque em Python, o primeiro elemento de uma lista é 0, não 1. Mas nós humanos usamos 1, então pra não ficar confuso eu "altero" para o padrão dos humanos
+`print('Em qual posição a primeira letra E fica? {}'.format(nome.find('e')+1))` 
+
+3- `.RFind()`
+RFind e utilizado para achar alguma coisa dentro de uma string, porém da direita para a esquerda, e não da esquerda para a direita. O ex que eu usei foi esse:
+Quero saber em qual posição o último E fica no meu nome, pra isso, utilizamos o RFind
+`print('Em qual posição a última letra E fica? {}'.format(nome.rfind('e')+1))`
+
+4- `.Strip()`
+
+Strip é utilizado para remover os espaços adicionais que os usuários podem colocar quando forem digitar alguma coisa no seu programa. O ex que eu usei foi esse:
+Quero apagar os espaços adicionais que o usuário pode colocar quando ele for digitar algo no meu programa, pra isso, utilizamos o strip
+`nome = str(input('Qual é o seu nome? ')).strip()`
+
+Isso apaga os espaços adicionais da resposta do usuário
+
+5- `.LStrip()`
+
+LStrip é a mesma coisa do strip, só que ao invés de apagar todos os espaços da resposta do usuário, ele vai apagar só os primeiros, os da esquerda
+
+6- `.RStrip()`
+
+RStrip é a mesma coisa do strip, só que ao invés de apagar todos os espaços da resposta do usuário, ele vai apagar só os últimos, os da direita
+
+
+
+# **ESTRUTURAS CONDICIONAIS:**
+# `if` (se)
+**Exemplo:**
+```
+n1 = 5
+n2 = 3
+if n1 > n2:
+	print("O primeiro número é maior que o segundo número")
+```
+# `elif` (se não, se)
+Exemplo:
+```
+n1 = 5
+n2 = 3
+if n1 > n2:
+	print("O primeiro número é maior que o segundo número")
+elif n1 < n2:
+	print("O segundo número é maior que o primeiro número")
+```
+# `else` (se não, se
+Exemplo:
+```
+n1 = 5
+n2 = n3
+if n1 > n2:
+	print("O primeiro número é maior que o segundo número")
+elif n1 < n2:
+	print("O segundo número é maior que o primeiro número")
+else:
+	print("Tanto o primeiro quanto o segundo número são iguais")
+```
+
+
+# **ESTRUTURAS DE REPETIÇÃO:**
+# `for loop` (Para)
+**Sintaxe:** 
+```
+for i in range(inicio, fim, passos):
+	faça alguma coisa
+```
+ou:
+```
+lista = [Henrique, Angélica, Alvin]
+for nomes in lista:
+	faça alguma coisa
+```
+Podemos usar o `for` não só com listas, mas com strings também, tuplas, etc.
+ou:
+```
+for i in range(3):
+	print("Teste")
+'''Saída:
+Teste
+Teste
+Teste'''
+```
+O `3` digitado no `range` significa o `stop` do `for loop`, então ele vai parar no número que foi colocado. Geralmente escrevemos assim quando queremos fazer um `for loop` que começa com 0, assim, você não precisa colocar o `start`, o Python já indentifica o `start` como 0. Vale lembrar que o `for loop` vai pular o último número do loop, o último número só significa que ele parou.
+
+
+**Papel de cada palavra-chave do Python no `for loop`:**
+Em um exemplo de `for i in range(1, 11):`, significa "para cada número dentro de 1 até 10":
+Em um exemplo de:
+```
+lista = [1, 2, 3, 4, 5]
+for valor in lista:
+```
+Significa: "para cada valor dentro da lista que eu criei:"
+
+**Outros exemplos:**
+Exemplo 1: 
+`for i in range(1, 11)`
+`for` = para
+`i` = cada coisa
+`in` = dentro de
+`range` = números de
+`(1, 11)` = 1 até 10, pois paramos no 11 e não o mostramos
+Então basicamente fica: "Para cada coisa (número) dentro de (números de 1 até 10) faça tal coisa"
+
+Exemplo 2:
+```
+notas_estudantes = ["A", "B", "F", "A-"]
+for notas in notas_estudantes:
+	print(notas)
+```
+`for` = para
+`notas` = cada coisa
+`in` = dentro de
+`notas_estudantes` = coisa que eu quero que ele conte, nesse caso, eu quero que ele conte a lista que eu criei, com todas as notas dos estudantes
+Então basicamente fica: "Para cada coisa (`notas`) dentro de `notas_estudantes`, mostre a nota atual que você está (que seria a `notas`)."
+
+
+O `range` é opcional, eu posso usar sem o `range`.
+Um exemplo sem o `range` seria:
+```
+notas_estudantes = ["F", "A+", "A-", "C"]
+for notas in notas_estudantes:
+	print(notas)
+'''Saída: 
+F
+A+
+A-
+C'''
+```
+Nesse exemplo, o Python não mostra 1, 2, 3 porque não tem range, no caso, `notas` significa "para cada nota dentro de todas as notas dos estudantes", então `notas` vai receber à cada loop, o próximo valor da lista. E o Python também não pula o último valor, ele mostra o último valor pois não tem o `range` dentro do `for`.
+
+Quando você está usando um o `for` junto com o `range`, o Python ignora o número que você disse para acabar, então por exemplo:
+```
+for i in range(1, 11):
+	print("Oi")
+# A saída vai ser 10 "oi"s, porque o Python ignora o último número.
+```
+Vale dizer também que o laço for pode ser dividido em passos, então por exemplo:
+```
+for i in range (0, 11, 2):
+	print(i)
+''' A saída vai ser:
+2
+4
+6
+8
+10, pois pedimos para o que o for pule de 2 em 2.'''
+```
+
+
+# `while loop` (Enquanto)
+Sintaxe:
+```
+exemplo = 1
+while exemplo <= 10:
+	print(exemplo)
+'''A saída vai ser:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10'''
+```
+# Como separar de x em x no `while loop`, como se fosse um `for`
+Se quiser fazer loops que pulem de tanto em tanto, igual um `for i in range(1, 10, 2)`, esse "2", para fazer em uma estrutura while, precisamos criar uma variável para indicar esse último número, pode ser "contador", ou algo do tipo; e dentro do while loop, incrementar o quanto você quer que ele pule, se for igual ao que eu escrevi no for, ficaria assim no while:
+```
+numero = int(input("Digite um número: "))
+contador = 2
+
+while contador <= numero:
+	print(contador)
+	contador += 2
+'''Se o número digitado pelo usuário for 10, a saída é essa:
+2
+4
+6
+8
+10'''
+```
+Como foi dito, eu criei uma variável que representa o contador, no `for` não precisamos disso, mas no `while`, sim.
+Dentro da estrutura, incrementei o quanto eu queria que pulasse, quis que fosse 2, então coloquei 2.
+Se eu quisesse que fosse de 0 de 2 em 2 até 10, ao invés de começar por 2, que foi o que eu fiz, eu poderia mudar o valor da variável `contador` para 0
+# Como fazer contagens regressivas no `while loop`, como se fosse um `for`
+Se quiser fazer loops que tenham contagens regressivas, a mesma ideia, você cria uma variável representando a terceira configuração que fazemos no for loop, podemos chamar ela de `contador` ou algo do tipo.
+```
+numero = 0
+contador = 10
+while contador >= numero:
+	print(contador)
+	contador -= 1
+'''Saída:
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0'''
+```
+Percebe-se que o contador vai receber o início de trás para frente da nossa contagem, isso é, do maior número para o menor, não igual antes, que a variável contador receberia o menor número e ia até o maior número (que era a variável numero).  
+Um exemplo de código que podemos usar para demonstrar a utilização dessa técnica é um Software que faz o cálculo de fatorial de um número, suponhamos que esse número seja 5, para fazermos 5!, segue o Software:
+```
+numero_atual = 5
+fatorial = 1
+while numero_atual >= 1:
+    if numero_atual > 1:
+        print(f"{numero_atual}", end=" x ")
+    else:
+        print(f"{numero_atual} = ", end="")
+    fatorial *= numero_atual
+    numero_atual -= 1
+print(fatorial)
+```
+Fatorial recebe 1, é o neutro.
+Enquanto o numero_atual (contador) for menor do que 1 (queremos parar no 1, se nós multiplicase-mos por 0, daria 0 no final).
+se o numero_atual for maior do que 0:
+mostra na tela o número atual com o final " x "
+se o numero_atual for menor ou igual à 0:
+mostra na tela o número atual com o final " = "
+fatorial vai receber todos os números atuais multiplicados
+e o numero_atual vai descendo conforme o while loop vai passando por essa linha de código, é crucial para conseguirmos escrever do maior para o menor número
+"print("1 = ", end="")" corrige o final quando todos os números foram escritos, no caso, a saída iria ser `5 x 4 x 3 x 2 x 120`, é aí que o "1 =" vem, ele corrige isso, então a saída fica `5 x 4 x 3 x 2 x 1 = 120`.
+
+
+# **LISTAS**
+listas são organizadas com `[]`, onde os itens são adicionados dentro dela por ordem de índice, que começa com 0 até o infinito.
+pra exibir uma lista, essa é a sintaxe em Python:
+`print(lista[2])`
+pra mudar o valor de itens de listas, essa é a sintaxe em Python:
+`lista[<indice_do_item_que_quer_modificar>] = <valor_novo>`
+# Principais funções das listas:
+
+`append()`: Adiciona um valor do final da lista, você só pode adicionar um valor por vez. Sintaxe: `lista.append(valor)`.
+
+`insert()`: Adiciona um valor em qualquer lugar especificado da lista, você só pode adicionar um valor por vez. Sintaxe: `lista.insert(posição, valor)`.
+
+`pop()`: Remove um valor. Se o índice do valor não for especificado, o `pop` automaticamente remove o último item da lista, você só pode remover um valor por vez. Sintaxe: `lista.pop([índice])`.
+
+**`remove(x)`**: Remove a primeira ocorrência do item `x`.
+```
+lista = [1, 2, 3, 4, 3]
+lista.remove(3)
+print(lista)  # Saída: [1, 2, 4, 3]
+```
+
+**`clear()`**: Remove todos os itens da lista.
+```
+lista = [1, 2, 3, 4]
+lista.clear()
+print(lista)  # Saída: []
+```
+
+`index(x[, start[, end]])`: Retorna o índice da primeira ocorrência do item `x` (opcionalmente dentro dos limites `start` e `end`).
+```
+lista = [1, 2, 3, 4, 3]
+print(lista.index(3))  # Saída: 2
+```
+
+`count(x)` Retorna o número de vezes que o item `x` aparece na lista.
+```
+lista = [1, 2, 3, 4, 3]
+print(lista.count(3))  # Saída: 2
+```
+
+`sort(key=None, reverse=False)`: Ordena os itens da lista no lugar (os argumentos `key` e `reverse` são opcionais).
+```
+lista = [3, 1, 4, 2]
+lista.sort()
+print(lista)  # Saída: [1, 2, 3, 4]
+```
+
+`reverse()`: Inverte os itens da lista no lugar.
+```
+lista = [1, 2, 3, 4]
+lista.reverse()
+print(lista)  # Saída: [4, 3, 2, 1]
+```
+
+**`copy()`**: Retorna uma cópia superficial da lista.
+```
+lista = [1, 2, 3, 4]
+nova_lista = lista.copy()
+print(nova_lista)  # Saída: [1, 2, 3, 4]
+```
+
+**`extend(iterable)`**: Estende a lista adicionando todos os itens do `iterable`.
+```
+lista = [1, 2, 3]
+lista.extend([4, 5])
+print(lista)  # Saída: [1, 2, 3, 4, 5]
+```
+
+# Funções úteis
+1. **`len(lista)`**: Retorna o número de itens na lista.
+```
+lista = [1, 2, 3, 4, 3]
+lista.remove(3)
+print(lista)  # Saída: [1, 2, 4, 3]
+```
+3. **`sorted(iterable, key=None, reverse=False)`**: Retorna uma nova lista ordenada a partir dos itens em `iterable`, sem modificar o original.
+4. **`min(lista)`**: Retorna o menor item da lista.
+5. **`max(lista)`**: Retorna o maior item da lista.
+6. **`sum(iterable, start=0)`**: Retorna a soma dos itens de `iterable` começando por `start`.
+
+2. **`enumerate(lista)`**: Retorna os valores da lista, só que com os números dos índices de todos os elementos da lista. Isso é útil quando você quer saber um índice específico de uma lista sem ter que ficar contando manualmente.
+
+
+# WALRUS OPERATOR
+**Sintaxe:** `:=`
+A principal vantagem do Walrus Operator é que ele permite escrever código mais conciso e legível, evitando a necessidade de linhas adicionais apenas para atribuição de valores.
+**Exemplo sem o Walrus Operator:**
+```
+# Calculando o comprimento de uma lista
+lista = [1, 2, 3, 4, 5]
+comprimento = len(lista)
+if comprimento > 3:
+    print("A lista é grande")
+else:
+    print("A lista é pequena")
+# Saída: A lista é grande
+```
+
+**Com o Walrus Operator:**
+```
+# Calculando o comprimento de uma lista
+lista = [1, 2, 3, 4, 5]
+if (comprimento := len(lista)) > 3:
+    print("A lista é grande")
+else:
+    print("A lista é pequena")
+```
+Neste exemplo, `comprimento := len(lista)` atribui o valor de `len(lista)` à variável `comprimento` e, em seguida, avalia o valor atribuído na expressão condicional.
+O Walrus Operator pode ser usado em uma ampla variedade de situações, como loops, compreensões de listas, expressões condicionais e mais. No entanto, é importante usá-lo com moderação e apenas quando ele realmente torna o código mais claro e legível, pois um uso excessivo pode dificultar a compreensão do código.
+
+
+# ANOTAÇÕES DE TIPO
+**Exemplo:** 
+```
+def soma(a: int, b: int) -> int:
+    return a + b
+```
+Neste exemplo, `a: int` e `b: int` são anotações de tipo para os parâmetros `a` e `b`, indicando que eles devem ser inteiros. A anotação `-> int` depois da definição da função indica que a função deve retornar um inteiro.
+No entanto, é importante notar que as anotações de tipo em Python são apenas para fins de documentação e não são verificadas em tempo de execução pelo interpretador Python.
+
+
+# FORMATANDO NÚMEROS FLOAT
+`{}` É o marcador de espaço reservado na string onde o valor formatado será inserido.
+`:` Indica que a formatação seguirá algumas instruções adicionais.
+`{.2f}` Especifica a precisão da formatação para números de ponto flutuante. Neste caso, o `2` indica que você quer duas casas decimais após o ponto decimal, e o `f` indica que é um número de ponto flutuante (float).
+a expressão `{:.2f}` está formatando o valor da variável 'raiz' com duas casas decimais após o ponto decimal. Em `.format` fica mais fácil, mas em `f-string` pode parecer mais difícil, aqui está um exemplo:
+```
+n1 = float(input("Digite um número: "))
+n2 = float(input("Digite outro número: "))
+print(f"A soma desses 2 números é {n1 + n2:.2f})
+
+'''se os números forem 5.111 + 5.111, o resultado seria 10.222, mas como estamos formatando, a saída é:
+10.22'''
+```
+
+
+# ORDEM DE PRECEDÊNCIA DE CONTAS ARITMÉTICAS
+1) (Parênteses)
+2) ** (Potenciação)
+3) `*`, /, //, % (Multiplicação, divisão, divisão exata (quando algum resultado seria em float e você quer que mostre só o resultado sem a vírgula, tipo 5/2= 2.5, você pediria pra mostrar só "2" ao invés de '2.5'), resto da divisão)
+4) +, - (Adição, subtração)
+5) ! (Fatorial)
+
+
+
+# **FÓRMULAS DE MATEMÁTICA**
+
+# COMO CALCULAR RAÍZ QUADRADA EM PYTHON
+1) Você importa a biblioteca math, ou só a funcionalidade de raiz quadrada da biblioteca math, desse jeito:
+
+```
+from math import sqrt
+n = float(input('Digite um número: ')) 
+raiz = sqrt[ou qualquer outra funcionalidade que eu quiser de uma biblioteca] (n)
+print ('A raiz quadrada desse número é: {:.2f}'.format(raiz)
+
+```
+OU
+```
+import math
+num = int(input('Digite um número: '))
+raiz = math.sqrt(num)
+print ('A raiz de {} é igual a {:.2f}'.format(num, raiz))
+```
+2) Ou você pega o seu número e faz a exponenciação dele por 0.5, ou seja. Ex:
+```
+n = float(input('Digite um número: '))
+print('A raiz quadrada desse número é {:.2f}'.format (n **(1/2)
+```
+
+
+
+
+# COMO PEGAR A UNIDADE, DEZENA, CENTENA, MILHAR, ETC DE FORMA MATEMÁTICA
+1) Vamos pegar o exemplo de um programa que eu criei, ele pede um número de 0 ate 9999, quando o usuário diz o número, ele diz a unidade, dezena, centena e unidade de milhar do número, e mostra '0' quando o número não possui alguma categoria
+Pergunta o número do usuário
+`num = int(input('Digite seu número de 0 até 9999: '))`
+Faz a conta pra cada categoria. A fórmula é: 
+Se é unidade, pega esse número e faz a divisão inteira dele por 1 (unidade), depois você faz o módulo (%) do resultado por 10
+`u = num // 1 % 10`
+Se é dezena, pega esse número e faz a divisão inteira dele por 10 (dezena), depois você faz o módulo (%) do resultado por 10
+`d = num // 10 % 10`
+Se é centena, pega esse número e faz a divisão inteira dele por 100 (centena), depois você faz o módulo (%) do resultado por 10
+`c = num // 100 % 10`
+Se é unidade de milhar, pega esse número e faz a divisão inteira dele por 1000 (unidade de milhar), depois você faz o módulo (%) do resultado por 10
+`m = num // 1000 % 10`
+e assim por diante...
+Escreve na tela cada resultado da fórmula
+```
+print('Unidade: {}'.format(u))
+print('Dezena: {}'.format(d))
+print('Centena: {}'.format(c))
+print('Unidade de milhar: {}'.format(m))
+```
+
+
+# COMO SABER SE UM NÚMERO É PAR OU ÍMPAR
+**PAR:** Você pega o seu número e faz a divisão dele por 2, se o resto da divisão for 0 quer dizer que esse número é PAR. Ex: se `<numero> % 2 = 0` então esse número é **PAR**
+**ÍMPAR:** Você pega o seu número e faz a divisão dele por 2, se o resto da divisão for 1 quer dizer que esse número é ÍMPAR. Ex: se `<numero> % 2 = 1` então esse número é **ÍMPAR**
+
+
+# COMO CALCULAR DESCONTAGEM
+**Fórmula: Preço final = Preço inicial * (1 - porcentagem de desconto / 100)
+Para calcular um preço com desconto, você subtrai a porcentagem de desconto do preço inicial:
+
+**Exemplo: 
+Preço inicial = 100
+Porcentagem de desconto = 10%
+Preço final = 100 * (1 - 10 / 100)
+Preço final = 100 * 0,90
+Preço final = 90
+
+**Exemplo mais detalhado:
+Preço inicial = 100
+Porcentagem de desconto = 10%
+Preço final = preço inicial * (1 - 10 / 100)
+O que o computador vai fazer:
+Dentro dos parênteses:
+10 / 100 = 0.1
+1 - 0.1 = 0.9
+Fora dos parênteses:
+preço inicial * 0.9 = 90
+preço final = 90
+
+
+# COMO CALCULAR PORCENTAGEM ADICIONAL SOBRE ALGUM VALOR
+**Fórmula: Valor Final = Valor Inicial * (1 + porcentagem de acréscimo / 100)
+Se você quer adicionar 20% ao preço inicial, a porcentagem é 0,20, então a fórmula fica:
+Preço Final = Preço Inicial * 1,20
+
+Exemplo: Eu comprei um produto de 100R$, mas como ele foi importado tem um imposto de 17% sobre aquele valor. Qual vai ser o valor final adicionando esse imposto sobre o valor?
+Valor Inicial = 100
+Porcentagem = 17% (ou 0,17 em decimal)
+Valor Final = 100 * (1 + 0,17)
+Valor Final = 100 * 1,17
+Valor Final = 117
+
+
+
+# COMO CALCULAR CELSIUS PARA FAHRENHEIT
+**Fórmula:** F = 9 * C (qtde Ceusius) / 5 + 32
+# COMO CALCULAR FAHRENHEIT PARA CELSIUS
+**Fórmula:** C = (F - 32) / 1,8
+
+
+
+
+# O QUE SIGNIFICA CADA SÍMBOLO DE IGUAL
+**Operadores de Comparação:**
+1) `==` (é igual à). Ou seja, ex: `3 * 5 == 15`
+2) `>=` (maior ou igual à)
+3) `<=` (menor ou igual à)
+4) `!=` (Diferente, não é)
+**Operadores de Atribuição:**
+1) `=` (recebe). Ou seja, ex: `teste = (recebe) input ("Digite um valor: ")`
+2) `variável +=` (Adicionar alguma coisa à variável)
+3) `variável -=` (Remover alguma coisa da variável)
+4) `variável *=` (Multiplicar a variável com alguma coisa)
+5) `variável **=` (Eleva a variável à potencia de alguma coisa)
+6) `variável /=` (Dividir alguma coisa com a variável)
+7) `variavel //=` (Divide a variável por alguma coisa e retorna a divisão exata dela)
+8) `variável %=`  (Atribui o resto da divisão de uma variável por alguma coisa)
+9) `!=` (Diferente, não é)
+**Outros:**
+1) `:=` (Walrus Operator)
+
+
+
+# **IMPORTANDO FRAMEWORKS/BIBLIOTECAS**
+
+Pra importar uma biblioteca do que for, escreva: `import [nome da bilioteca]`, desse jeito você importa todos as funcionalidades que aquela biblioteca tem.
+Se você quer importar uma ou mais funcionalidades de uma biblioteca, mas não todas, escreva: `from [nome da biblioteca] import [funcionalidade que você quer importar, se for mais de 1 você coloca a vírgula e espaço e digita a funcionalidade]`
+
+
+
+
+# BIBLIOTECA RANDOM (ALEATÓRIO)
+`choice`: Escolhe um elemento da lista de forma aleatória: 
+```
+import random
+options = ['pedra', 'papel', 'tesoura']
+print(random.choice(options))
+```
+```
+import random
+print(random.randint(1, 10))
+```
+`random`: Retorna um número ponto flutuante aleatório no intervalo `[0.0, 1.0)`.
+```
+import random
+print(random.random())
+```
+**`randrange`**: Retorna um elemento selecionado aleatoriamente a partir de um intervalo.
+```
+import random
+print(random.randrange(1, 10, 2))
+```
+**`shuffle`**: Embaralha uma sequência no lugar.
+```
+import random
+deck = ['A', 'K', 'Q', 'J', '10']
+random.shuffle(deck)
+print(deck)
+```
+`sample`: Escolhe x elementos de uma população (Lista, tupla, etc), exibe eles na tela sem os outros elementos que não foram selecionados. Os elementos nunca são repetidos
+```
+import random
+
+# Definindo uma lista de números
+numbers = [1, 2, 3, 4, 5]
+
+# Usando sample para escolher aleatoriamente 3 elementos da lista
+random_selection = random.sample(numbers, 3)
+
+print("Seleção aleatória:", random_selection)
+print("Lista original:", numbers)
+
+```
+`uniform`: Mostra um número float entre 2 números
+```
+import random
+
+# Gerando um número float aleatório entre 1.0 e 10.0
+random_number = random.uniform(1.0, 10.0)
+print(random_number)
+```
+
+
+
+
+# BIBLIOTECA PYAUTOGUI (AUTOMAÇÕES)
+
+`pyautogui.click(x=742, y=345)` -> clicar em algum lugar da tela | (CLICKS=2) significa o tanto de clicks que ele vai dar na tela | (BUTTON='right') aperta um botão específico do mouse, meio, direito, esquerdo, etc)
+`pyautogui.write('alguma coisa')` -> escrever um texto
+`pyautogui.press('enter')` -> pressionar 1 tecla do teclado
+`pyautogui.hotkey('ctrl', 'c')` -> pressionar teclas especiais do teclado ao mesmo tempo
+`pyautogui.PAUSE = 0.5` -> sempre que você rodar um novo comando do pyautogui vai ter a pausa de x segundos
+`pyautogui.position()` -> posição do mouse na tela
+`pyautogui.scroll()` -> Rolar o scroll do mouse
+
+
+
+
+# BIBLIOTECA PANDAS (DADOS)
+Usando um projeto como exemplo
+
+`pandas.read_csv(produtos.csv)` -> lê um arquivo, pode ser csv, html, excel, word, sql, json, pdf, tudo
+`for linha in tabela.index:` -> .index é de linha, para cada linha da minha tabela. Se fosse .columns seria para coluna, etc. For é estrutura de loop. 'Linha' é o nome do contador do loop
+`codigo = tabela.loc` -> loc é pra localizar alguma coisa de uma tabela
+`tabela.loc[linha, 'codigo']` -> Linha é o contador do loop, é cada linha mesmo. Codigo é a coluna de cada produto, ela precisa ser escrita da exata mesma forma que foi escrito na tabela
+`tabela = tabela.drop(columns='CustomerID')` -> .drop é para jogar fora, tipo 
+`tabela = tabela.dropna()` -> Tira os valores vazios da tabela
+`display(tabela['cancelou'].value_counts(normalize=True))` -> Pega os valores da coluna 'cancelou', pega quem cancelou e quem não cancelou e faz a porcentagem deles por meio do 'normalize=True'
+
+
+
+
+# BIBLIOTECA PLOTLY
+
+
+`grafico = px.histogram(tabela, x='idade', color='cancelou')` -> px é a abreviação à ploty.express, histogram é o tipo do gráfico, como se fosse um de barra. O eixo y o plotly já sabe, mas você precisa falar o eixo x, o eixo x é a idade de cada cliente, e o color ali é pra comparar os que não cancelaram com os que cancelaram
+
+
+
+# BIBLIOTECA PYGAME (PARA TOCAR MÚSICA)
+1) Site para baixar vídeos do YouTube e converter eles para mp3: https://y2meta.app/pt15
+2) Site para baixar vídeos do TikTok e converter eles para mp3: https://ssstik.io/en
+3) importando a biblioteca pygame, que é voltada para jogos mas você consegue usar ela para tocar músicas também
+```
+# Iniciando:
+import pygame
+pygame.init()
+# Importando a música:
+pygame.mixer.music.load("nome da sua musica".mp3)
+# Iniciando a música:
+pygame.mixer.music.play()
+# Colocando por quanto tempo essa música vai ser tocada (em milisegundos, que são 50 segundos de música):
+pygame.time.wait(50000)
+```
+
+
+
+
+# BIBLIOTECA EMOJI
+Site dos emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
+1) 
+`import emoji`
+
+`print(emoji.emojize("aqui você escreve caracteres ascii, letras, essas coisas. emoji que você quiser, pode ser a imagem mesmo, ou pode ser o código dele"))`
+
+
+
+# BIBLIOTECA TIME
+`time.sleep(3)` 
+Faz uma pausa só naquela hora que você falar para pausar no seu código
+
+
+
+# ESCREVENDO COMENTÁRIOS:
+1) Você pode usar o caractere `#` seguido do que você quiser escrever. O computador vai ignorar tudo escrito naquela linha
+2) Você também pode usar os caracteres '''comentário aleatório exemplo''' para escrever seus comentários, porém, dessa forma você pode escrever comentários de várias linhas, o computador vai ignorar tudo até o final do comentário `'''`
