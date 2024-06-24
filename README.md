@@ -5,6 +5,6 @@
 
 - "Jornada Python" foi uma semana intensiva da Hashtag Treinamentos que fiz, são exercícios dela
 
-- "TIPS_FOR_PYTHON---DICAS_PARA_PYTHON" foi um bloco de anotações que criei para me ajudar à estudar Python quando estava iniciando, hoje em dia ele está desatualizado em comparação com as coisas que adicionei nele atualmente. Mas deixei ele aí mesmo.
+- "TIPS_FOR_PYTHON---DICAS_PARA_PYTHON" foi um bloco de anotações que criei para me ajudar à estudar Python quando estava iniciando. Decidi deixar ele aí.
 
 **Espero que goste dos projetos! Tem muito mais por vir!**
