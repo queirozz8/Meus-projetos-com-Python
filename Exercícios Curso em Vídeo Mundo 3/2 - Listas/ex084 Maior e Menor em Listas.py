@@ -3,7 +3,7 @@ print(f'{'LISTAS':^30}')
 print('='*30)
 valores = []
 for cont in range(5):
-    valores.append(float(input(f'Digite um número para o valor {cont} da lista: ')))
+    valores.append(float(input(f'Digite um número para a posição {cont} da lista: ')))
 print('-='*30)
 print(f'Sua lista ficou assim: {valores}')
 
