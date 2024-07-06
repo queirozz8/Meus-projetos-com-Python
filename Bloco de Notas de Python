@@ -6,7 +6,622 @@
 
 
 
+# **ESTRUTURAS DE DADOS (VARIÁVEIS COMPOSTAS/COLEÇÕES)**
+
+# **TUPLAS**
+Tuplas são estruturas de dados que armazenam uma sequência de itens. Os itens podem ser de diferentes tipos e são acessados por índices, que começam em 0. Tuplas **NÃO SÃO MUTÁVEIS.**
+Tuplas são mais eficientes e rápidas, essa é sua vantagem em comparação com as Listas.
+Uma Tupla é categorizada pelo símbolo de Parênteses `()`. 
+As funções Built-In do Python funcionam em Tuplas também. Algumas funções das listas (Tipo as de Consulta) funcionam nas Tuplas também. 
+
+
+# **LISTAS**
+Listas são estruturas de dados que armazenam uma sequência de itens. Os itens podem ser de diferentes tipos e são acessados por índices, que começam em 0. Listas **SÃO MUTÁVEIS.**
+Listas são mutáveis e mais versáteis, com mais funções e opções de modificação. Essa é sua vantagem em comparação com as Tuplas.
+Uma Lista é categorizada pelo símbolo de Colchetes `[]`.
+### Criando e Acessando Listas
+Para criar uma lista: `lista = [1, 2, 3, 4, 5]` Para acessar um item na posição 2: 
+```
+print(lista[2]) # Saída: 3
+```
+### Modificando Itens de Listas
+Para modificar o valor no índice 2: 
+```
+lista[2] = 10` `print(lista) # Saída: [1, 2, 10, 4, 5]
+```
+
+#  **LISTAS ANINHADAS (SUB-LISTAS DENTRO DE OUTRAS LISTAS)**
+
+Quando criamos uma lista dentro de outra lista, nós estamos criando Listas Aninhadas.
+Como usar elas?
+```
+lista_maior = []
+lista_maior.append([1, 2, 3])
+print(lista_maior)
+# saída: [[1, 2, 3]]
+```
+Agora, `lista_maior` tem 2 colchetes, pois 1 par de colchetes é da lista maior, e o outro é da sub-lista que está dentro dela.
+Se fizessemos assim:
+```
+print('-'*80)
+print(f'{'ANALISADOR DE PESSOAS E PESOS':^80}')
+print(f'{'Digite o nome de uma pessoa, seu peso e eu farei as análises no final.':^80}')
+print('-'*80)
+# temp é uma lista temporária, ela existe para verificar os maiores e menores números que o usuário digitou. Depois de analisar, ela manda os dados para a lista principal (princ)
+# e apaga todos os dados que existem nela (clear):
+temp = []
+# princ é a lista principal, é a que vamos manipular:
+princ = []
+mai = men = 0
+
+while True:
+    temp.append(input('Nome: ').lstrip())
+    temp.append(float(input('Peso: ')))
+    # Se o valor que o usuário digitou foi o primeiro de todos:
+    if len(princ) == 0:
+        # mai e men é esse valor:
+        mai = men = temp[1]
+    else:
+        # Se o peso que o usuário digitou é maior do que o maior número anterior:
+        if temp[1] > mai:
+            # O maior número agora se torna o peso que o usuário colocou atualmente:
+            mai = temp[1]
+        # Se o peso que o usuário digitou é menor do que o menor número anterior:
+        if temp[1] < men:
+            # O menor número agora se torna o peso que o usuário colocou atualmente:
+            men = temp[1]
+    # Manda os dados (Nome da pessoa e o peso dela) para a lista principal (princ):
+    princ.append(temp[:])
+    # Apaga todos os dados da lista, para assim ela receber mais um nome e peso de outra pessoa e passar para a lista principal:
+    temp.clear()
+    resp = ''
+    # Enquanto resposta for uma string vazia ou o primeiro caractere dela não estiver dentro das opções disponíveis ('SsNn'):
+    while not resp or resp[0] not in 'SsNn':
+        resp = input('Deseja continuar? [S/N]: ').strip()
+    if resp[0] in 'Nn':
+        break
+
+print('-='*60)
+# TODAS AS PESSOAS E SEUS PESOS
+# len(princ) mostra quantos elementos aquela lista tem:
+print(f'Você digitou {len(princ)} pessoas:')
+for n, p in enumerate(princ):
+    # n começa com 0, então somamos +1 para exibir corretamente. p[0] são os nomes de todas as sub-listas que estão dentro da princ. p[1] são todos os pesos de todas as pessoas.
+    print(f'{n+1}° Pessoa: {p[0]} - Peso: {p[1]}.')
+
+# MAIORES PESOS
+print(f'O MAIOR peso digitado foi {mai}Kg. Peso de ', end='')
+maiores = []
+# Para cada pessoa dentro de princ:
+for p in princ:
+    # Se o peso for o maior peso:
+    if p[1] == mai:
+        # Adiciona o nome da pessoa dentro da lista maiores. No final, a lista maiores fica com todos os nomes das pessoas mais pesadas:
+        maiores.append(p[0])
+# Para cada nome das pessoas dentro da lista maiores:
+for i, nome in enumerate(maiores):
+    # Mostre o nome da pessoa (Não tem peso na lista maiores, só os nomes, a variável nome passa por todos os nomes dentro da lista maiores):
+    print(nome, end='')
+    # Se o índice de cada nome for menor do que o tamanho da lista maiores - 1 (- 1 pois queremos desconsiderar a última pessoa da lista, para mostrarmos um ponto final).
+    """Basicamente, vamos supor que maiores/menores é uma lista com 5 pessoas. len(maiores/menores) - 1 = 4. O enumerate vai funcionar assim:
+    0 < 4. Mostre ', '
+    1 < 4. Mostre ', '
+    2 < 4. Mostre ', '
+    3 < 4. Mostre ', '
+    4 = 4 (É o último número da lista). Mostre '.' """
+    if i < len(maiores) - 1:
+        print(', ', end='')
+    else:
+        print('.')
+
+# MENORES PESOS
+print(f'O MENOR peso digitado foi {men}Kg. Peso de ', end='')
+menores = []
+# Para cada pessoa dentro de princ:
+for p in princ:
+    # Se o peso for o maior peso:
+    if p[1] == men:
+        # Adiciona o nome da pessoa dentro da lista menores. No final, a lista menores fica com todos os nomes das pessoas mais leves:
+        menores.append(p[0])
+# Para cada nome das pessoas dentro da lista maiores:
+for i, nome in enumerate(menores):
+    # Mostre o nome da pessoa (Não tem peso na lista menores, só os nomes, a variável nome passa por todos os nomes dentro da lista maiores):
+    print(nome, end='')
+    # Se o índice de cada nome for menor do que o tamanho da lista menores - 1 (-1 pois queremos desconsiderar a última pessoa da lista, para mostrarmos um ponto final).
+    # A explicação dessa linha de código eu expliquei na parte das pessoas com maiores pesos:
+    if i < len(menores) - 1:
+        print(', ', end='')
+    else:
+        print('.')
+
+print('-'*80)
+print('FIM DO SOFTWARE!')
+```
+Esse é um exemplo de software que criei. Na parte onde o software mostra só os nomes das pessoas mais pesadas e mais leves, `nome` passa por cada nome da lista `maiores/menores`.
+
+Outros exemplos:
+```
+pessoas = [['Pedro', 25], ['Maria', 19], ['João', 32]]
+print(pessoas[0][0]) # Saída: Pedro
+print(pessoas[1][1]) # Saída: 19 (Idade de Maria)
+print(pessoas[2][0]) # Saída: João
+print(pessoas[0][1]) # Saída: 25 (Idade de Pedro)
+print(pessoas[1]) # Saída: ['Maria', 19]
+print(pessoas[2]) # Saída: ['João', 32]
+```
+as sub-listas vão ser representadas por: `lista_maior[elemento_da_lista_maior (que é o índice_da_sub-lista)][Elemento_da_sub-lista]`. Então, por exemplo: `print(pessoas[2][0])` Imprime João na tela. Pois fomos no elemento 2 da lista maior, que é a sub-lista do João, e pedimos para o Python mostrar o elemento 0 da sub-lista do João, que é o nome dele, então por isso, o resultado que mostra na tela é João.
+
+
+# PRINCIPAIS FUNÇÕES DAS LISTAS
+### Adição e Inserção
+- `append()`: Adiciona um valor ao final da lista. 
+```
+lista.append(6)print(lista) # Saída: [1, 2, 10, 4, 5, 6]
+```
+- `insert()`: Adiciona um valor em qualquer posição especificada da lista. O número que vem primeiro indica o índice, o que vem depois indica o elemento que será adicionado
+```
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+lista.insert(2, 3) 
+print(lista) # Saída: [1, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+### Remoção
+- `lista.pop(indice)`: Remove e retorna o elemento removido à uma variável. Nós indicamos o elemento que queremos remover pelo índice dele. Podemos remover somente 1 elemento por linha de código
+```
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+item = lista.pop() 
+print(item) # Saída: 10 
+print(lista) # Saída: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+- `del lista[indice]`: Remove o valor como se fosse o `pop()`, porém ele não retorna o valor removido. O tornando assim, menos flexível como o `pop()`
+```
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+del lista[2]
+print(lista)
+# Saída: [1, 2, 4, 5, 6, 7, 8, 9, 10]
+```
+- `remove(valor)`: Remove a primeira ocorrência do elemento. A diferença dele para os outros é que ele remove algo pelo elemento indicado, não pelo índice.
+```
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+lista.remove(3) 
+print(lista) # Saída: [1, 2, 4, 5, 6, 7, 8, 9, 10]
+```
+- `clear()`: Remove todos os itens da lista.
+```
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+lista.clear()
+print(lista) # Saída: []
+```
+### Consulta
+- `index(x[, start[, end]])`: Retorna o índice da primeira ocorrência do item 
+```
+lista = [1, 2, 10, 4, 5]
+print(lista.index(10)) # Saída: 2
+```
+Caso queira pegar alguma ocorrência que seja depois da primeira, nós cortamos os índices:
+```
+lista = [1, 2, 10, 4, 5, 10]
+print(lista.index(10, 5)) # Saída: 5
+```
+A saída seria 2, porém nós cortamos o range do `index`, assim, ele só pode buscar o elemento à partir do índice 3, o primeiro 10 estava no índice 2, então o Python busca o próximo elemento, que está no índice 5. Nós também podemos fazer isso para filtrar o final, desse jeito:
+```
+lista = [1, 2, 10, 4, 10, 10]
+print(lista.index(10, 3, 5)) # Saída: 4
+```
+A saída foi 4 pois filtramos os índices, o Python começa procurando do índice 3 (que corta o primeiro 10), e termina no índice 5 (O último é desconsiderado, ele não conta o último 10 pois o índice que representa o final é sempre desconsiderado), então o único 10 encontrado é na posição 4.
+- `count(x)`: Retorna o número de vezes que o item `x` aparece na lista. 
+```
+lista = [1, 2, 3, 4, 3] 
+print(lista.count(3)) # Saída: 1
+```
+### Ordenação e Reversão
+- `lista.sort()`: Ordena a lista em ordem crescente ou alfabética
+```
+lista = [8, 2, 5, 3, 6]
+print(lista.sort())
+# Saída: [2, 3, 5, 6, 8]
+```
+#### Curiosidades sobre o `sort()`
+1. Se você ordena uma lista de elementos de tipo `bool`, como `True` = 1 e `False` = 0, a lista ordenada de forma crescente retorna primeiro os elementos `False`, depois os `True`
+2. Você não consegue ordenar uma lista que tenha mais de 1 tipo, somente é possível ser feito isso se você ordena uma lista que tenha números `float` e `int` dentro dela, mas se for, por exemplo, uma lista com valores `bool`, `int` e `str` e tentar ordenar ela com o `sort()`, o Python retornará um erro (obviamente, pois um tipo não é maior do que o outro.)
+
+- `lista.sort(key=None, reverse=True)`: Ordena a lista em ordem decrescente ou alfabética (porém começando da letra "z" indo até "a")
+```
+lista = [3, 1, 4, 2]
+lista.sort()
+print(lista) # Saída: [1, 2, 3, 4]
+```
+- `reverse()`: Inverte os itens da lista no lugar. 
+```
+lista = [1, 2, 3, 4]
+lista.reverse()
+print(lista) # Saída: [4, 3, 2, 1]
+```
+- `sorted(lista)`: Não modifica a lista original, em vez disso, cria uma nova lista e ordena a lista antiga (desordenada) na lista nova
+### Cópia e Extensão
+- `copy()`: Retorna uma cópia da lista. 
+```
+lista = [1, 2, 3, 4]
+
+nova_lista = lista.copy()
+print(nova_lista) # Saída: [1, 2, 3, 4]
+```
+Isso também pode ser feito usando o `[:]`, assim:
+```
+a = [1, 2, 3, 4, 5]
+b = a[:]
+print(a)
+print(b)
+# b é uma cópia de a, como se fosse b = a.copy()
+```
+- `extend(iterable)`: Estende a lista adicionando todos os itens do `iterable`.
+```
+lista = [1, 2, 3]` 
+lista.extend([4, 5])
+print(lista) # Saída: [1, 2, 3, 4, 5]
+```
+
+
+# **DICIONÁRIOS**
+Os Dicionários são usados para armazenar dados em pares chave-valor, onde cada chave é única e está associada a um valor. Eles são úteis quando você precisa acessar dados rapidamente usando uma chave em vez de uma posição, como em listas. Um Dicionário é categorizado pelo símbolo de Chaves `{}`. Dicionários **SÃO MUTÁVEIS.**
+```
+meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+```
+Neste exemplo, `nome`, `idade` e `cidade` são as chaves, e `'João'`, `30` e `'São Paulo'` são os valores associados a cada chave.
+
+
+**Acessando Valores**
+
+```
+meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+nome = meu_dicionario['nome']
+print(nome)  # imprime 'João'
+```
+Para acessar um valor em um dicionário, você usa a chave correspondente entre colchetes (`[]`).
+
+
+**Adicionando Pares Chave-Valor**
+```
+meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+meu_dicionario['endereco'] = 'Rua ABC, 123'
+print(meu_dicionario)  # {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo', 'endereco': 'Rua ABC, 123'}
+```
+Você pode adicionar um par chave-valor a um dicionário usando a sintaxe de atribuição.
+
+
+**Atualizando Valores**
+```
+meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+meu_dicionario['idade'] = 31
+print(meu_dicionario)  # {'nome': 'João', 'idade': 31, 'cidade': 'São Paulo'}
+```
+Você pode atualizar um valor em um dicionário usando a sintaxe de atribuição.
+
+
+# PRINCIPAIS FUNÇÕES DOS DICIONÁRIOS
+
+1. **`keys()`**: Retorna um objeto de visualização que exibe uma lista de todas as chaves no dicionário.
+Sintaxe:
+```
+meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+chaves = meu_dicionario.keys()
+print(chaves)  # dict_keys(['nome', 'idade', 'cidade'])
+```
+2. **`values()`**: Retorna um objeto de visualização que exibe uma lista de todos os valores no dicionário.
+Sintaxe:
+```
+meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+valores = meu_dicionario.values()
+print(valores)  # dict_values(['João', 30, 'São Paulo'])
+```
+3. **`items()`**: Retorna um objeto de visualização que exibe uma lista de todos os pares chave-valor no dicionário.
+Sintaxe:
+```
+meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+itens = meu_dicionario.items()
+print(itens)  # dict_items([('nome', 'João'), ('idade', 30), ('cidade', 'São Paulo')])
+```
+4. **`get()`**: Retorna o valor para uma chave dada se ela existir no dicionário. Caso contrário, ele retorna um valor padrão.
+Sintaxe:
+```
+meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+nome = meu_dicionario.get('nome')
+print(nome
+```
+5. **`setdefault()`**: Define um valor para uma chave se ela ainda não existir no dicionário. Se a chave já existir, o valor não é alterado.
+Sintaxe:
+```
+meu_dicionario = {'nome': 'João', 'idade': 30}
+meu_dicionario.setdefault('cidade', 'São Paulo')
+print(meu_dicionario)  # {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+
+meu_dicionario.setdefault('nome', 'Maria')
+print(meu_dicionario)  # {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+```
+6. **`update()`**: Atualiza o dicionário com novos pares chave-valor. Se uma chave já existir, o valor é atualizado.
+Sintaxe:
+```
+meu_dicionario = {'nome': 'João', 'idade': 30}
+meu_dicionario.update({'cidade': 'São Paulo', 'pais': 'Brasil'})
+print(meu_dicionario)  # {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo', 'pais': 'Brasil'}
+
+meu_dicionario.update({'nome': 'Maria'})
+print(meu_dicionario)  # {'nome': 'Maria', 'idade': 30, 'cidade': 'São Paulo', 'pais': 'Brasil'}
+```
+Note que `update()` pode receber outro dicionário como parâmetro, ou uma lista de pares chave-valor separados por vírgulas.
+7. **`pop()`**: Remove um par chave-valor do dicionário e retorna o valor.
+Sintaxe: 
+```
+meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+meu_dicionario.pop('idade')
+print(meu_dicionario)  # {'nome': 'João', 'cidade': 'São Paulo'}
+```
+8. **`clear()`**: Remove todos os pares chave-valor do dicionário.
+Sintaxe:
+```
+meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
+nome = meu_dicionario.get('nome')
+print(nome
+```
+
+
+# ÍNDICES
+Índice é o nome do número que determina aonde um elemento de uma variável composta está.
+Os índices sempre começam com 0 até o infinito, então se quiser indicar o primeiro elemento de uma variável composta, esse elemento fica no índice 0.
+Quando você faz um `for loop`, por exemplo, o último índice que o programador passou é onde o Python vai parar, isso é, ele não vai fazer nada com o último índice que o programador digitou, ele vai usar o último índice para parar o que ele estava fazendo.
+Outro exemplo é com Tuplas:
+```
+tupla = ("Elemento_1", "Elemento_2", "Elemento_3")
+print(tupla[0:2])
+# Saída:
+['Elemento_1','Elemento_2']
+```
+Nesse exemplo, o Python não mostrou o Elemento_3 (Que é indicado pelo índice 2) pois o Python sempre PARA no último índice indicado pelo programador (Nesse caso, 2 foi o índice indicado, então o Python para nele).
+Outro exemplo, uma Tupla:
+```
+tupla = ("Elemento_1", "Elemento_2", "Elemento_3")
+print(tupla[1])
+# Saída: Elemento_2
+```
+Nesse exemplo, a saída é `Elemento_2` pois o índice que foi requisitado foi o 1.
+
+Caso queira indicar o último elemento de uma tupla, lista ou dicionário, mas sem precisar ficar contando quantos elementos aquela variável composta tem, nós digitamos números negativos.
+- Último elemento da variável composta: -1
+- Penúltimo elemento: -2
+- Antepenúltimo: -3
+- E assim por diante.
+
+
+# USANDO O `LEN`
+O `len` retorna o tamanho de uma variável composta, por exemplo:
+```
+lanche = ("Hambúrguer", "Pizza", "Suco", "Pudim")
+for comida in range(len(lanche)): # Ou range(0, len(lanche))
+	print(f"Vou comer {lanche[comida]} na posição {comida}")
+'''
+Saída:
+Vou comer Hambúrguer na posição 0
+Vou comer Pizza na posição 1
+Vou comer Suco na posição 2
+Vou comer Pudim na posição 3'''
+```
+É importante ver que na linha 3, se colocássemos só `print(f"Vou comer {comida} ..."`, não funcionaria como o esperado, ele mostraria "vou comer 0 na posição 0", quando queríamos que ele mostrasse "vou comer Hambúrguer na posição 0"; pois `comida` é só o índice de `lanche`, `lanche` é uma tupla, comida é só o índice que representa o elemento atual que o `for loop` está abordando naquele momento. Se quisermos que ele mostre o elemento que ele está no momento, devemos colocar `lanche[comida]`, dessa forma, estamos falando "quero que você mostre o `lanche`, mas na posição que o `comida` está agora"
+
+
+# FUNÇÕES BUILT-IN DO PYTHON PARA ESTRUTURAS DE DADOS (FUNÇÕES QUE VOCÊ USAR EM QUALQUER ESTRUTURA DE DADOS)
+
+**Funções de Manipulação de Listas**
+
+1. `len()`: Retorna o comprimento de uma lista.
+2. `sum()`: Retorna a soma de todos os elementos em uma lista.
+3. `max()`: Retorna o maior elemento em uma lista. Se 2 valores são iguais, ele retorna o valor que tem índice menor. Tipo 5.0 e 5, se 5.0 vier antes de 5, então `max()` retorna 5.0, se for ao contrário, `max()` retorna 5.
+4. `min()`: Retorna o menor elemento em uma lista. Se 2 valores são iguais, ele retorna o valor que tem índice menor. Tipo 5.0 e 5, se 5.0 vier antes de 5, então `min()` retorna 5.0, se for ao contrário, `min()` retorna 5.
+5. `map()`: Aplica uma função em todo elemento novo de uma lista que for adicionado.
+Sintaxe:
+```
+lista = [1, 2, 3, 4, 5]
+while True:
+	lista.append(int(input('Digite um número: '))
+	map(str, lista)
+	# Agora todos os valores da lista conforme eles vão sendo adicionados, vão todos virando strings.
+```
+Exemplo de uso do `map()`:
+```
+lista_num = []
+
+while True:
+    n = int(input('Digite um valor: '))
+    if n not in lista_num:
+        lista_num.append(n)
+    else:
+        print(f'Este valor já está na sua lista! Não vou adicionar pois {n} é um valor duplicado, já está na lista.')
+
+
+    print(f'Sua lista está assim: ', end='')
+
+    print(', '.join(map(str, lista_num)) + '.')
+    print()
+    r = ''
+    while not r or r[0] not in 'SsNn':
+        r = str(input('Quer continuar? [S/N]: ')).strip()
+    if r in 'Nn':
+        break
+```
+`map(str, lista_num)`: à cada elemento novo da lista `lista_num`, transforme ele em uma string usando a função `str()`.
+`', '.join(...)`: concatene cada elemento da lista de strings (menos o último, como você mencionou) com a string `', '`.
+`+ '.'`: quando terminar tudo isso, mostre um ponto final (`.`) no fim da string.
+
+6. `join()`: É um separador de strings (Só funciona em strings). No caso de cima (do `map()`), `join()` junta todos os valores da lista (Que viraram strings) e separa eles por ', '. A saída, caso eu colocasse, por exemplo:  1 2 3 4 5. Saída: 1, 2, 3, 4, 5. `join()` NÃO MOSTRA O SEPARADOR NO FINAL DA LISTA. Isso é, ele não mostrou a vírgula no final, como podemos ver. Então por isso que escrevi o `+ '.'`, para sair assim: 1, 2, 3, 4, 5. Caso eu queria administrar o número de novo, já que eu transformei eles em strings, eu poderia só transformar eles de volta em números inteiros, ou então fazer cópias das listas originais, para mostrar elas na tela, como queria. Tipo assim:
+```
+num = [1, 2, 3, 4, 5]
+num_str = [str(x) for x in num]
+# Saída: ['1', '2', '3', '4', '5']
+```
+Vale lembrar que o `join()` espera um iterável, isso é, uma tupla, lista, dicionário, conjunto, strings ou geradores, como o `map()` e `filter()`. Nesse caso, por exemplo:
+```
+num = [1, 2, 3, 4, 5]
+print(f'Número(s) oganizado(s) em ordem decrescente: {', '.join(map(str, num))}.')
+```
+1) `num` é uma lista de números inteiros: `[1, 2, 3, 4, 5]`.
+2) `map(str, num)` aplica a função `str` a cada elemento da lista `num`. Isso significa que cada número inteiro é convertido para uma string.
+3) O resultado de `map(str, num)` é um iterável de strings: `['1', '2', '3', '4', '5']`.
+4) O método `join` é chamado com a string `', '` como separador e o iterável de strings como argumento.
+5) `join` concatena as strings do iterável com a string `', '` como separador, produzindo a string final: `'1, 2, 3, 4, 5'`.
+6) A string final é impressa com a mensagem de saída.
+O código funciona porque `map` é uma função que aplica uma função (neste caso, `str`) a cada elemento de um iterável (neste caso, `num`). O resultado é um iterável de strings, que pode ser passado para a função `join`.
+
+Mas se digitarmos assim:
+```
+num = [1, 2, 3, 4, 5]
+print(f'Número(s) oganizado(s) em ordem decrescente: {', '.join(str(num))}.')
+```
+**O que acontece:**
+1) **Erro**: `join` espera um iterável de strings como argumento, mas recebe uma string única `'5'`. Isso causa um erro, pois `join` não sabe como concatenar uma string única com vírgulas.
+**Por que o código não funciona:**
+O problema é que `str(num)` converte o número inteiro para uma string única, em vez de produzir um iterável de strings. Como resultado, o método `join` não pode concatenar as strings com vírgulas, pois não há strings para concatenar.
+
+O segundo código não funciona porque `str(num)` tenta converter o objeto `num` inteiro para uma string, em vez de converter cada elemento do iterável `num` para uma string.
+A função `join` espera um iterável de strings como argumento, e não uma string única. Quando você passa `str(num)` para `join`, você está passando uma string única, que não é o que `join` espera.
+Por exemplo, se `num` é `[1, 2, 3, 4, 5]`, `map(str, num)` retorna um iterável que produz as strings `"1"`, `"2"`, `"3"`, `"4"` e `"5"`. Já `str(num)` retorna a string `"[1, 2, 3, 4, 5]"`.
+Portanto, o primeiro código funciona porque `map` converte cada elemento do iterável `num` para uma string, e `join` pode concatenar essas strings com vírgulas. Já o segundo código não funciona porque `str(num)` não produz um iterável de strings, e `join` não pode concatenar uma string única com vírgulas.
+
+7. `any()`: Retorna `True` se qualquer elemento em uma lista for verdadeiro.
+8. `all()`: Retorna `True` se todos os elementos em uma lista forem verdadeiros.
+9. `enumerate()`: Retorna um iterador que produz pares de valores, onde o primeiro elemento é o índice e o segundo elemento é o valor correspondente na lista.
+10. `zip()`: Retorna um iterador que produz pares de valores, onde cada par é composto por um elemento de cada lista.
+
+
+**Funções de Manipulação de Dicionários**
+
+1. `len()`: Retorna o comprimento de um dicionário.
+2. `sum()`: Retorna a soma de todos os valores em um dicionário.
+3. `max()`: Retorna o maior valor em um dicionário.
+4. `min()`: Retorna o menor valor em um dicionário.
+5. `any()`: Retorna `True` se qualquer valor em um dicionário for verdadeiro.
+6. `all()`: Retorna `True` se todos os valores em um dicionário forem verdadeiros.
+
+
+# USANDO O `ENUMERATE`
+O `enumerate` numera todos os elementos de uma variável composta, por exemplo:
+```
+lanche = ("Hambúrguer", "Pizza", "Suco", "Pudim")
+for pos, comida in enumerate(lanche):
+	print(f"Vou comer {comida} na posição {pos}")
+'''
+Saída:
+Vou comer Hambúrguer na posição 0
+Vou comer Pizza na posição 1
+Vou comer Suco na posição 2
+Vou comer Pudim na posição 3'''
+```
+`pos` é a variável que o `enumerate` retorna, `comida` é o contador do `for loop`, o `enumerate` vai numerar todos os elementos da tupla/lista/dicionário e retornar eles em algum lugar, nesse caso, a variável `pos`.
+
+
+# OPERADOR * EM LISTAS E TUPLAS
+O operador `*` desempacota os elementos de uma sequência (lista, tupla, etc.) removendo os colchetes `[]` ou parênteses `()` que os envolvem.
+Quando você tem uma lista ou tupla e deseja exibir ou utilizar seus elementos individualmente, em vez de exibi-la como uma sequência única envolvida por colchetes ou parênteses, você pode usar o * para desempacotar essa sequência. ESSE OPERADOR É INVÁLIDO EM F-STRINGS
+```
+numeros = [1, 2, 3]
+print(numeros)  # Saída: [1, 2, 3]
+print(*numeros) # Saída: 1 2 3
+
+letras = ('a', 'b', 'c')
+print(letras)   # Saída: ('a', 'b', 'c')
+print(*letras)  # Saída: a b c
+```
+No primeiro exemplo, `print(numeros)` exibe a lista `[1, 2, 3]` com os colchetes. Já `print(*numeros)` desempacota a lista, exibindo seus elementos 1, 2 e 3 separadamente, sem os colchetes.
+
+No segundo exemplo, acontece o mesmo com a tupla `('a', 'b', 'c')`. `print(letras)` exibe a tupla com parênteses, enquanto `print(*letras)` exibe seus elementos `a`, `b` e `c` separadamente, sem os parênteses.
+
+Outro exemplo, desta vez com uma tupla:
+```
+pessoa = ('João', 25, 'Programador')
+print(pessoa)  # Saída: ('João', 25, 'Programador')
+
+print(*pessoa)  # Saída: João 25 Programador
+```
+Aqui, `pessoa` é uma tupla com três elementos. Usando `*pessoa`, desempacotamos a tupla, fazendo com que `print()` receba três argumentos separados: 'João', 25 e 'Programador'.
+
+Então, em resumo, o operador `*` desempacota uma sequência (lista, tupla, etc.) em argumentos separados para uma função. Isso é útil quando você deseja passar os elementos de uma sequência individualmente para uma função, em vez de passá-los como uma única sequência.
+O operador `*` "tira" os colchetes ou parênteses que envolvem a sequência, exibindo ou passando seus elementos de forma individual, o que geralmente é uma forma mais "polida" ou legível de trabalhar com esses elementos separadamente.
+
+# TUPLAS
+```
+# Descompactando uma tupla
+tupla = (1, 2, 3, 4, 5)
+primeiro, *meio, ultimo = tupla
+print(primeiro)  # 1
+print(meio)  # [2, 3, 4]
+print(ultimo)  # 5
+```
+Nesse caso, `primeiro` vai receber o valor 1, que é o primeiro valor, `meio`, como tem um asterísco `*`, vai pegar todos os elementos do meio da estrutura de dados, criar o mesmo tipo de estrutura de dados (e colocar nessa variável) e adicionar os valores do meio da variável, e `ultimo` recebe o último elemento da estrutura de dados.
+# LISTAS
+```
+# Descompactando uma lista
+lista = [1, 2, 3, 4, 5]
+primeiro, *meio, ultimo = lista
+print(primeiro)  # 1
+print(meio)  # [2, 3, 4]
+print(ultimo)  # 5
+```
+Nesse caso, `primeiro` vai receber o valor 1, que é o primeiro valor, `meio`, como tem um asterísco `*`, vai pegar todos os elementos do meio da estrutura de dados, criar o mesmo tipo de estrutura de dados (e colocar nessa variável) e adicionar os valores do meio da variável, e `ultimo` recebe o último elemento da estrutura de dados.
+
+Observe que, **no caso de listas, o valor atribuído à variável `meio` é uma lista, enquanto que no caso de tuplas, o valor atribuído à variável `meio` é uma tupla. Isso acontece porque listas são mutáveis, enquanto tuplas são imutáveis.**
+A descompactação também pode ser usada com outras estruturas de dados, como strings e conjuntos, desde que elas sejam iteráveis.
+
+# ITERABILIDADE, O QUE É ISSO?
+```
+# Lista
+data_list = [1, 2, 3]
+a, b, c = data_list
+print(a, b, c)  # Output: 1 2 3
+
+# Tupla
+data_tuple = (4, 5, 6)
+x, y, z = data_tuple
+print(x, y, z)  # Output: 4 5 6
+
+```
+### Objetos Comuns Iteráveis
+Os objetos mais comuns que são iteráveis em Python incluem:
+- Listas (`list`)
+- Tuplas (`tuple`)
+- Dicionários (`dict`)
+- Conjuntos (`set`)
+- Strings (`str`)
+- Faixas (`range`)
+Cada um desses objetos pode ser iterado em um loop `for` e pode ser descompactado porque eles fornecem um iterador que permite percorrer seus elementos.
+
+## Exemplo de Descompactação com Função
+Você também pode usar a descompactação em funções:
+```
+def my_function(a, b, c):
+    print(a, b, c)
+
+# Lista
+args_list = [1, 2, 3]
+my_function(*args_list)  # Output: 1 2 3
+
+# Tupla
+args_tuple = (4, 5, 6)
+my_function(*args_tuple)  # Output: 4 5 6
+```
+Neste exemplo, o operador `*` é usado para descompactar a lista ou tupla ao passar os argumentos para a função.
+Em resumo, **ser iterável significa que um objeto pode ser percorrido elemento por elemento**, o que é fundamental para operações como descompactação.
+
+
 # **MANIPULANDO STRINGS:**
+
+# Funções de Manipulação de Strings
+1. `len()`: Retorna o comprimento de uma string.
+2. `ord()`: Retorna o código ASCII de um caractere.
+3. `chr()`: Retorna o caractere correspondente a um código ASCII.
+4. `str.join()`: Junta strings em uma única string.
+5. `str.split()`: Divide uma string em uma lista de substrings.
+6. `str.lower()`: Converte uma string para minúsculas.
+7. `str.upper()`: Converte uma string para maiúsculas.
+8. `str.strip()`: Remove espaços em branco do início e do fim de uma string.
+9. `str.replace()`: Substitui uma substring em uma string.
+
 
 # CONCATENANDO STRINGS
 Para concatenar 2 ou mais strings, usamos o sinal de `+` entre as strings:
@@ -86,40 +701,24 @@ Se o nome for alguma coisa que tenha "Silva":
 Saída: `True`
 
 
-# OPERADOR * EM LISTAS E TUPLAS
-O operador `*` desempacota os elementos de uma sequência (lista, tupla, etc.) removendo os colchetes [ ] ou parênteses ( ) que os envolvem.
-Quando você tem uma lista ou tupla e deseja exibir ou utilizar seus elementos individualmente, em vez de exibi-la como uma sequência única envolvida por colchetes ou parênteses, você pode usar o * para desempacotar essa sequência.
-```
-numeros = [1, 2, 3]
-print(numeros)  # Saída: [1, 2, 3]
-print(*numeros) # Saída: 1 2 3
-
-letras = ('a', 'b', 'c')
-print(letras)   # Saída: ('a', 'b', 'c')
-print(*letras)  # Saída: a b c
-```
-No primeiro exemplo, `print(numeros)` exibe a lista `[1, 2, 3]` com os colchetes. Já `print(*numeros)` desempacota a lista, exibindo seus elementos 1, 2 e 3 separadamente, sem os colchetes.
-
-No segundo exemplo, acontece o mesmo com a tupla `('a', 'b', 'c')`. `print(letras)` exibe a tupla com parênteses, enquanto `print(*letras)` exibe seus elementos `a`, `b` e `c` separadamente, sem os parênteses.
-
-Outro exemplo, desta vez com uma tupla:
-```
-pessoa = ('João', 25, 'Programador')
-print(pessoa)  # Saída: ('João', 25, 'Programador')
-
-print(*pessoa)  # Saída: João 25 Programador
-```
-Aqui, `pessoa` é uma tupla com três elementos. Usando `*pessoa`, desempacotamos a tupla, fazendo com que `print()` receba três argumentos separados: 'João', 25 e 'Programador'.
-
-Então, em resumo, o operador `*` desempacota uma sequência (lista, tupla, etc.) em argumentos separados para uma função. Isso é útil quando você deseja passar os elementos de uma sequência individualmente para uma função, em vez de passá-los como uma única sequência.
-O operador `*` "tira" os colchetes ou parênteses que envolvem a sequência, exibindo ou passando seus elementos de forma individual, o que geralmente é uma forma mais "polida" ou legível de trabalhar com esses elementos separadamente.
-
-
-
-# USANDO FSTRING
-f-string é tipo um .format só que diferente, pra usar ele você coloca a letra f antes de abrir as aspas da sua string, quando for colocar alguma variável no print, abre as chaves e coloca o nome da variável. Esse é o f-string.
+# USANDO `F-STRING`
+f-string é tipo um `.format` só que melhor, pra usar ele você coloca a letra f antes de abrir as aspas da sua `string`, quando for colocar alguma variável no `print`, abre as chaves e coloca o nome da variável. Esse é o `f-string.`
 **Sintaxe:** `print(f"A soma total foi {soma})"`
 **Jeito antigo com o .format:** `print("A soma total foi {}".format(soma))`
+
+
+
+
+# USANDO `RAW-STRING`
+`Raw-String` é um tipo de `string` que você cria caso queira escrever coisas que tenham `\`. O Python indentifica os `\` como caracteres de escape, caso queira desconsiderar isso do Python, criamos as `Raw-Strings`.
+Sintaxe:
+```
+caminho: str = r"\Users\Rick\Downloads\Pasta"
+print(caminho)
+# Saída: \Users\Rick\Downloads\Pasta
+```
+Caso queira utilizar as `raw-strings` com as `f-strings`, só colocar o `rf` ou `fr` na frente (Como você colocaria normalmente utilizando `f-strings` ou `raw-strings` avulsas.
+
 
 
 
@@ -153,23 +752,59 @@ while not escolha_usuario or escolha_usuario[0] not in "pi":
 Na linha 2, `escolha_usuario[0] not in "pi":`, `[0]` faz com que a verificação seja na primeira letra que o usuário digitar, independente se ele digitar "Par", ou "impar", vai funcionar do mesmo jeito pois a primeira letra da palavra que ele digitou é a que vai ser abordada, por causa do `[0]`.
 
 
-# FORMATANDO STRINGS
+# FORMATANDO STRINGS (COM F-STRING)
 **Sintaxe:** `print(f"{"STRING QUE QUER FORMATAR":<opção>}")`
 Após os `:`, existem diversas opções de formatação que podemos colocar em nossas strings:
 - `<`: Alinha à esquerda
 - `>`: Alinha à direita
-- `^`: Centraliza
-- `=`: Força a exibição do sinal de número (por exemplo, `-` para números negativos)
-- `+`: Força a exibição do sinal de número (por exemplo, `+` para números positivos)
+- `^`: Centraliza. Sintaxe: 
+```
+print("-"*30)
+print(f"{'LISTAGEM DE PREÇOS':^30}")
+print("-"*30)
+''' Saída: 
+------------------------------
+      LISTAGEM DE PREÇOS      
+------------------------------
+'''
+```
+Vale lembrar que todos esses sinais tem o `:` no início, mas vou adicionar para reforçar
+- `:=`: Força a exibição do sinal de número (por exemplo, `-` para números negativos)
+- `:+`: Força a exibição do sinal de número (por exemplo, `+` para números positivos)
 - (espaço): Força a exibição do sinal de número (por exemplo, `-` para números negativos) e adiciona um espaço para números positivos
-- `#`: Força a exibição do prefixo para números (por exemplo, `0b` para binário, `0o` para octal, etc.)
-- `,`: Adiciona separadores de milhar (por exemplo, `1,000,000` em vez de `1000000`)
+- `:#`: Força a exibição do prefixo para números (por exemplo, `0b` para binário, `0o` para octal, etc.)
+- `:,` ou `:_`: Adiciona separadores de milhar (por exemplo, `1,000,000` em vez de `1000000`. Ou `1_000_000` em vez de `1000000`. Existe a biblioteca `humanize` para isso também, ela retorna os números com `,`.
 - `b`, `c`, `d`, `o`, `x`, `X`, `e`, `E`, `f`, `F`, `g`, `G`, `n`, `s`: Especificam o tipo de formatação para números (por exemplo, `b` para binário, `f` para ponto flutuante, etc.)
 ```
 print(f"{'Hello':<10}")  # Alinha à esquerda com largura de 10 caracteres
 print(f"{'Hello':>10}")  # Alinha à direita com largura de 10 caracteres
 print(f"{'3.14159':.2f}")  # Formata como um número de ponto flutuante com 2 casas decimais
 ```
+- Caso queira mostrar um número em notação científica, digitamos `e`:
+```
+numero_grande = 1_620_000_000
+print(f'{numero_grande}:.2e')
+# Saída:
+1.62e+09
+```
+Você também pode escrever o seu número grande em notação científica, só que a variável precisa ser do tipo `float`:
+```
+numero_grande: float = 1.62e9
+print(f'{numero_grande}:.2e')
+# Saída:
+1.62e+09
+```
+
+
+# `=` EM F-STRINGS
+**Sintaxe:**
+```
+nome = 'Henrique'
+idade = 14
+print(f'{nome =}, {idade =}')  # Saída: nome = 'Henrique', idade = 14
+```
+A sintaxe `f'{idade =}'` é equivalente a `f'idade = {idade}'`. Ela imprimirá a string `'idade = 14'`.
+É importante notar que isso não vai fazer tudo que as `f-strings` fazem naturalmente, só use isso se for para simplificar algo que já é simples, tipo no exemplo mostrado (não precisa ser tão simples assim, né).
 
 
 # `NOT <VARIÁVEL DE TIPO STR>`
@@ -188,8 +823,7 @@ Lembre-se sempre de usar os parênteses depois de escrever o nome da funcionalid
 1- `.Count()`
 Count é usado para contar caracteres dentro de strings, o ex que eu usei foi esse:
 
-Quero achar quantas letras "E" tem na palavra Henrique Jorge de Queiroz, pra isso, utilizamos o count
-
+Quero achar quantas letras "E" tem na palavra Henrique Jorge de Queiroz, pra isso, utilizamos o `count()`
 `nome = str(input('Qual é o seu nome? ')).strip .lower`
 `print(f"Quantas letras 'E' possui o seu nome? {nome.count('e')}"`
 Executando o programa...
@@ -247,7 +881,7 @@ if n1 > n2:
 elif n1 < n2:
 	print("O segundo número é maior que o primeiro número")
 ```
-# `else` (se não, se
+# `else` (Caso contrário)
 Exemplo:
 ```
 n1 = 5
@@ -259,6 +893,100 @@ elif n1 < n2:
 else:
 	print("Tanto o primeiro quanto o segundo número são iguais")
 ```
+
+
+# `match/case`
+É uma forma diferente de se usar estruturas condicionais.
+**Sintaxe:**
+```
+match x:
+    case 1:
+        print("x é 1")
+    case 2:
+        print("x é 2")
+    case _:
+        print("x é outro valor")
+```
+`match` sempre está associado com uma variável. `case` é tipo um `if/elif`. `case _` é tipo um `else`.
+**Exemplo de uso:**
+```
+# Exemplo 1: Correspondência de valor
+x = 1
+match x:
+    case 1:
+        print("x é 1")
+    case 2:
+        print("x é 2")
+    case _:
+        print("x é outro valor")
+
+# Exemplo 2: Correspondência de padrão de lista
+my_list = [1, 2, 3]
+match my_list:
+    case [1, 2, 3]:
+        print("A lista é [1, 2, 3]")
+    case [4, 5, 6]:
+        print("A lista é [4, 5, 6]")
+    case _:
+        print("A lista é outra coisa")
+
+# Exemplo 3: Correspondência de padrão de dicionário
+my_dict = {"name": "John", "age": 30}
+match my_dict:
+    case {"name": "John", "age": 30}:
+        print("O dicionário é {'name': 'John', 'age': 30}")
+    case {"name": "Jane", "age": 25}:
+        print("O dicionário é {'name': 'Jane', 'age': 25}")
+    case _:
+        print("O dicionário é outro coisa")
+
+# Exemplo 4: Correspondência de padrão de classe
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+person = Person("John", 30)
+match person:
+    case Person("John", 30):
+        print("A pessoa é John com 30 anos")
+    case Person("Jane", 25):
+        print("A pessoa é Jane com 25 anos")
+    case _:
+        print("A pessoa é outra coisa")
+```
+**Quando usar `if`/`elif`/`else`**:
+- Quando você precisa de uma lógica de controle de fluxo mais complexa, com várias condições e ações diferentes.
+- Quando você precisa de uma condição que não é uma simples igualdade ou correspondência de padrão.
+- Quando você precisa de uma lógica de controle de fluxo que envolva variáveis ou expressões mais complexas.
+**Quando usar `match`/`case`**:
+- Quando você precisa de uma correspondência de padrão simples e eficiente, especialmente com estruturas de dados como listas, tuplas, dicionários, etc.
+- Quando você precisa de uma forma concisa e expressiva de lidar com diferentes casos para um determinado tipo de dados.
+- Quando você precisa de uma forma de garantir que todos os casos possíveis sejam cobertos para um determinado tipo de dados.
+Em resumo, `if`/`elif`/`else` é mais flexível e pode lidar com uma ampla variedade de situações, enquanto `match`/`case` é mais conciso e eficiente para lidar com correspondências de padrão simples e estruturas de dados.
+
+**Exemplos de quando usar cada um**:
+- Use `if`/`elif`/`else` quando você precisa de uma lógica de controle de fluxo mais complexa, como:
+```
+if x > 5:
+    print("x é maior que 5")
+elif x == 5:
+    print("x é igual a 5")
+else:
+    print("x é menor que 5")
+```
+
+- Use `match`/`case` quando você precisa de uma correspondência de padrão simples e eficiente, como:
+```
+match x:
+    case 1:
+        print("x é 1")
+    case 2:
+        print("x é 2")
+    case _:
+        print("x é outro valor")
+```
+Em resumo, ambos têm seus próprios casos de uso e devem ser escolhidos com base nas necessidades específicas do seu código.
 
 
 # **ESTRUTURAS DE REPETIÇÃO:**
@@ -434,88 +1162,30 @@ fatorial vai receber todos os números atuais multiplicados
 e o numero_atual vai descendo conforme o while loop vai passando por essa linha de código, é crucial para conseguirmos escrever do maior para o menor número
 "print("1 = ", end="")" corrige o final quando todos os números foram escritos, no caso, a saída iria ser `5 x 4 x 3 x 2 x 120`, é aí que o "1 =" vem, ele corrige isso, então a saída fica `5 x 4 x 3 x 2 x 1 = 120`.
 
+# FUNÇÕES GERAIS NO PYTHON
+1. `abs()`: Retorna o valor absoluto de um número.
+2. `round()`: Retorna o valor arredondado de um número.
+3. `pow()`: Retorna o resultado de uma potência.
+4. `divmod()`: Retorna o quociente e o resto de uma divisão.
+5. `bin()`: Converte um número para uma string binária.
+6. `oct()`: Converte um número para uma string octal.
+7. `hex()`: Converte um número para uma string hexadecimal.
+8. `id()`: Retorna o identificador único de um objeto.
+9. `type()`: Retorna o tipo de um objeto.
+10. 1. `print()`: Imprime um valor na saída padrão.
 
-# **LISTAS**
-listas são organizadas com `[]`, onde os itens são adicionados dentro dela por ordem de índice, que começa com 0 até o infinito.
-pra exibir uma lista, essa é a sintaxe em Python:
-`print(lista[2])`
-pra mudar o valor de itens de listas, essa é a sintaxe em Python:
-`lista[<indice_do_item_que_quer_modificar>] = <valor_novo>`
-# Principais funções das listas:
 
-`append()`: Adiciona um valor do final da lista, você só pode adicionar um valor por vez. Sintaxe: `lista.append(valor)`.
+# FUNÇÕES DE CONVERSÃO NO PYTHON
 
-`insert()`: Adiciona um valor em qualquer lugar especificado da lista, você só pode adicionar um valor por vez. Sintaxe: `lista.insert(posição, valor)`.
-
-`pop()`: Remove um valor. Se o índice do valor não for especificado, o `pop` automaticamente remove o último item da lista, você só pode remover um valor por vez. Sintaxe: `lista.pop([índice])`.
-
-**`remove(x)`**: Remove a primeira ocorrência do item `x`.
-```
-lista = [1, 2, 3, 4, 3]
-lista.remove(3)
-print(lista)  # Saída: [1, 2, 4, 3]
-```
-
-**`clear()`**: Remove todos os itens da lista.
-```
-lista = [1, 2, 3, 4]
-lista.clear()
-print(lista)  # Saída: []
-```
-
-`index(x[, start[, end]])`: Retorna o índice da primeira ocorrência do item `x` (opcionalmente dentro dos limites `start` e `end`).
-```
-lista = [1, 2, 3, 4, 3]
-print(lista.index(3))  # Saída: 2
-```
-
-`count(x)` Retorna o número de vezes que o item `x` aparece na lista.
-```
-lista = [1, 2, 3, 4, 3]
-print(lista.count(3))  # Saída: 2
-```
-
-`sort(key=None, reverse=False)`: Ordena os itens da lista no lugar (os argumentos `key` e `reverse` são opcionais).
-```
-lista = [3, 1, 4, 2]
-lista.sort()
-print(lista)  # Saída: [1, 2, 3, 4]
-```
-
-`reverse()`: Inverte os itens da lista no lugar.
-```
-lista = [1, 2, 3, 4]
-lista.reverse()
-print(lista)  # Saída: [4, 3, 2, 1]
-```
-
-**`copy()`**: Retorna uma cópia superficial da lista.
-```
-lista = [1, 2, 3, 4]
-nova_lista = lista.copy()
-print(nova_lista)  # Saída: [1, 2, 3, 4]
-```
-
-**`extend(iterable)`**: Estende a lista adicionando todos os itens do `iterable`.
-```
-lista = [1, 2, 3]
-lista.extend([4, 5])
-print(lista)  # Saída: [1, 2, 3, 4, 5]
-```
-
-# Funções úteis
-1. **`len(lista)`**: Retorna o número de itens na lista.
-```
-lista = [1, 2, 3, 4, 3]
-lista.remove(3)
-print(lista)  # Saída: [1, 2, 4, 3]
-```
-3. **`sorted(iterable, key=None, reverse=False)`**: Retorna uma nova lista ordenada a partir dos itens em `iterable`, sem modificar o original.
-4. **`min(lista)`**: Retorna o menor item da lista.
-5. **`max(lista)`**: Retorna o maior item da lista.
-6. **`sum(iterable, start=0)`**: Retorna a soma dos itens de `iterable` começando por `start`.
-
-2. **`enumerate(lista)`**: Retorna os valores da lista, só que com os números dos índices de todos os elementos da lista. Isso é útil quando você quer saber um índice específico de uma lista sem ter que ficar contando manualmente.
+1. `int()`: Converte um valor para um inteiro.
+2. `float()`: Converte um valor para um número de ponto flutuante.
+3. `complex()`: Converte um valor para um número complexo.
+4. `str()`: Converte um valor para uma string.
+5. `list()`: Converte um valor para uma lista.
+6. `tuple()`: Converte um valor para uma tupla.
+7. `dict()`: Converte um valor para um dicionário.
+8. `set()`: Converte um valor para um conjunto.
+9. `frozenset()`: Converte um valor para um conjunto imutável.
 
 
 # WALRUS OPERATOR
@@ -546,14 +1216,150 @@ Neste exemplo, `comprimento := len(lista)` atribui o valor de `len(lista)` à va
 O Walrus Operator pode ser usado em uma ampla variedade de situações, como loops, compreensões de listas, expressões condicionais e mais. No entanto, é importante usá-lo com moderação e apenas quando ele realmente torna o código mais claro e legível, pois um uso excessivo pode dificultar a compreensão do código.
 
 
-# ANOTAÇÕES DE TIPO
-**Exemplo:** 
+# ANOTAÇÕES DE TIPO (TYPE HINTS)
+
+# Variáveis simples:
+```
+nome: str = "Alice"
+idade: int = 30
+altura: float = 1.75
+is_estudante: bool = True
+```
+
+# Listas:
+```
+numeros: list[int] = [1, 2, 3, 4, 5]
+nomes: list[str] = ["Alice", "Bob", "Charlie"]
+```
+
+# Dicionários:
+```
+pessoa: dict[str, str] = {"nome": "Alice", "cidade": "São Paulo"}
+contagem: dict[str, int] = {"maçãs": 3, "bananas": 2}
+```
+
+# Tuplas:
+```
+coordenadas: tuple[float, float] = (10.5, 20.3) 
+info_pessoa: tuple[str, int, bool] = ("Alice", 30, True)
+```
+
+# Conjuntos:
+`frutas: set[str] = {"maçã", "banana", "laranja"}`
+
+# Funções:
+```
+def saudacao(nome: str) -> str:
+    return f"Olá, {nome}!"
+
+def soma(a: int, b: int) -> int:
+    return a + b
+```
+
+# Classes:
+```
+class Pessoa:
+    def __init__(self, nome: str, idade: int):
+        self.nome: str = nome
+        self.idade: int = idade
+
+    def apresentar(self) -> str:
+        return f"Meu nome é {self.nome} e tenho {self.idade} anos."
+```
+
+# Union types (quando uma variável pode ter mais de um tipo):
+```
+from typing import Union
+
+resultado: Union[int, str] = 42  # pode ser int ou str
+```
+
+# Optional (para variáveis que podem ser None):
+```
+from typing import Optional
+
+valor: Optional[int] = None  # pode ser int ou None
+```
+
+# Any (para tipos dinâmicos):
+```
+from typing import Any
+
+valor_dinamico: Any = "qualquer coisa"
+```
+
+# Callable (para funções):
+```
+from typing import Callable
+
+def executar_operacao(func: Callable[[int, int], int], a: int, b: int) -> int:
+    return func(a, b)
+```
+
+# TypedDict (para dicionários com chaves específicas):
+```
+from typing import TypedDict
+
+class PessoaDict(TypedDict):
+    nome: str
+    idade: int
+
+pessoa: PessoaDict = {"nome": "Alice", "idade": 30}
+```
+
+
+
+
+**Exemplos de uso:** 
+```
+variavel: tipo = valor
+```
+**Outro exemplo:** 
 ```
 def soma(a: int, b: int) -> int:
     return a + b
 ```
 Neste exemplo, `a: int` e `b: int` são anotações de tipo para os parâmetros `a` e `b`, indicando que eles devem ser inteiros. A anotação `-> int` depois da definição da função indica que a função deve retornar um inteiro.
 No entanto, é importante notar que as anotações de tipo em Python são apenas para fins de documentação e não são verificadas em tempo de execução pelo interpretador Python.
+**Outro exemplo:**
+```
+nome: str = "João"
+idade: int = 25
+preço: float = 19.99
+ativos: bool = True
+```
+## Anotações de Tipo em Funções
+
+Adicionar anotações de tipo a funções envolve especificar os tipos dos parâmetros e do valor de retorno. A sintaxe é:
+```
+def nome_da_função(parametro1: tipo1, parametro2: tipo2) -> tipo_de_retorno:
+    ...
+```
+**Exemplos de anotações de tipo em Funções:**
+```
+def soma(a: int, b: int) -> int:
+    return a + b
+
+def cumprimentar(nome: str) -> str:
+    return f"Olá, {nome}!"
+
+def calcular_area(raio: float) -> float:
+    return 3.14 * raio * raio
+```
+## Anotações de Tipo em Classes
+Você também pode usar anotações de tipo dentro de classes. Por exemplo:
+```
+from typing import List, Optional
+
+class Pessoa:
+    def __init__(self, nome: str, idade: int, amigos: Optional[List[str]] = None):
+        self.nome: str = nome
+        self.idade: int = idade
+        self.amigos: Optional[List[str]] = amigos if amigos is not None else []
+
+    def adicionar_amigo(self, amigo: str) -> None:
+        self.amigos.append(amigo)
+```
 
 
 # FORMATANDO NÚMEROS FLOAT
@@ -712,27 +1518,77 @@ Se você quer importar uma ou mais funcionalidades de uma biblioteca, mas não t
 
 
 # BIBLIOTECA RANDOM (ALEATÓRIO)
-`choice`: Escolhe um elemento da lista de forma aleatória: 
+`choice`: Escolhe UM elemento da lista de forma aleatória: 
 ```
 import random
 options = ['pedra', 'papel', 'tesoura']
-print(random.choice(options))
+print(choice(options))
+# A saída pode ser, por exemplo: pedra
 ```
+`choices`: Pode escolher MÚLTIPLOS elementos da lista de forma aleatória:
+```
+from random import choices
+options = ['pedra', 'papel', 'tesoura']
+print(choices(options, k = 2))
+# A saída pode ser, por exemplo: ['papel', 'tesoura'], ou ['pedra', 'tesoura']
+```
+O `k=valor` define quantos elementos da lista o `choices()` vai retornar. Se não houver esse `k=valor`, o `choices()` retorna 1 valor só, dentro de uma lista. Caso eu não quisesse ter que ficar contando todos os elementos da estrutura de dados, ou eu talvez modifique a estrutura de dados no futuro, eu posso colocar `k=len(people)`, é uma forma mais inteligente de se fazer isso.
+
+Existe o `weight=valor` também, que define a probabilidade do `choices()` escolher aquele elemento na estrutura de dados.
+```
+from random import choice, choices
+people = ['Bob', 'Tom', 'James', 'Sandra']
+print(f'choice() = {choice (people)}')
+weights = (15, 20, 35, 30)
+print(f'choices() = {choices(people, k=5, weights=weights)}')
+```
+Nesse exemplo, Bob tem a probabilidade de 15%, Tom tem 20%, James tem 35% e Sandra tem 30%.
+Eu poderia fazer desse jeito aqui, também:
+```
+from random import choice, choices
+people = ['Bob', 'Tom', 'James', 'Sandra']
+print(f'choice() = {choice (people)}')
+print(f'choices() = {choices(people, k=5, weights=[15, 20, 35, 30])}')
+```
+O resultado é o mesmo, só que no primeiro exemplo eu estou atribuindo essa lista de probabilidades em uma variável, aqui eu estou falando diretamente a lista para o `weight`.
+`weight` só pode receber números positivos, pode receber números `float`, e a soma de todos os números digitados tem que ser igual à 1 (ou à 100), pois estamos trabalhando com porcentagem, por CENTO (100/1)
+
+`randint()`: Escolhe um número aleatório entre 2 polos. Por exemplo:
 ```
 import random
 print(random.randint(1, 10))
+# A saída pode ser um número de 1 até 10
 ```
-`random`: Retorna um número ponto flutuante aleatório no intervalo `[0.0, 1.0)`.
+`random()`: Retorna um número ponto flutuante aleatório no intervalo `[0.0, 1.0]`.
 ```
 import random
 print(random.random())
+# A saída pode ser, por exemplo: 0.5930548549876546, 1.0, 0.1231231231238564, etc.
 ```
-**`randrange`**: Retorna um elemento selecionado aleatoriamente a partir de um intervalo.
+`randrange()`: Retorna um elemento selecionado aleatoriamente a partir de um intervalo. Se parece com o `for loop` com o `range()`
 ```
 import random
 print(random.randrange(1, 10, 2))
+# A saída pode ser, por exemplo: 3
 ```
-**`shuffle`**: Embaralha uma sequência no lugar.
+No `randrange()`, o último valor passado é desconsiderado, diferente do `randint()`, onde o último valor é incluído no intervalo de números que ele pode retornar. Além disso, podemos dizer de quanto em quanto nós queremos esse intervalo, se for algo como `print(random.randrange(0, 10, 2))`, o `randrange()` pode retornar um número que seja entre 0 e 9 (Pois o último valor é desconsiderado), só que no intervalo de 2 em 2, ou seja, ele pode retornar 0, 2, 4, 6, 8.
+Nós também podemos, igual faríamos num `for loop`, dizer só o último número do intervalo, por exemplo:
+```
+from random import randrange
+print(randrange(5))
+# A saída pode ser um número de 0 até 4
+```
+Nesse caso, o `randrange()` considera o 5 como o último valor do intervalo, então ele vai desconsiderar ele e contabilizar todos os números antecessores à ele, isso é, 0, 1, 2, 3 e por fim, 4.
+
+Você não pode dar 2 números iguais para o intervalo do `randrange()`. Por motivos óbvios.
+Você não pode colocar um número menor em seguida de um número maior, pois isso não faz sentido:
+```
+from random import randrange
+print(randrange(2, 5))
+# Tipo assim, vai retornar o erro empty range in randrange(2, 5)
+```
+
+`shuffle(): Embaralha uma sequência no lugar.
 ```
 import random
 deck = ['A', 'K', 'Q', 'J', '10']
@@ -753,7 +1609,7 @@ print("Seleção aleatória:", random_selection)
 print("Lista original:", numbers)
 
 ```
-`uniform`: Mostra um número float entre 2 números
+`uniform()`: Mostra um número float entre 2 números
 ```
 import random
 
@@ -761,8 +1617,28 @@ import random
 random_number = random.uniform(1.0, 10.0)
 print(random_number)
 ```
+`shuffle()`: Embaralha uma estrutura de dados:
+```
+from random import shuffle
+lista = ['Alvin', 'Luna', 'Rick']
+suffle(lista)
+print(lista)
+# A saída pode ser por exemplo: ['Luna', 'Rick', 'Alvin'], ['Rick', 'Luna', 'Alvin'], ['Luna', 'Alvin', 'Rick'], etc.
+```
 
 
+
+
+# BIBLIOTECA DATETIME
+Para exibir a data/hora atual, usamos o `%`:
+```
+from datetime import datetime
+now: datetime = datetime.now()
+print(f"{now:%d.%m.%y}")
+# Vamos supor que hoje seja 29/06/2024:
+# Saída:
+29.06.2024
+```
 
 
 # BIBLIOTECA PYAUTOGUI (AUTOMAÇÕES)
