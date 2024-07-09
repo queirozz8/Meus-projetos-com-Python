@@ -10,7 +10,7 @@ princ = []
 mai = men = 0
 
 while True:
-    temp.append(input('Nome: ').lstrip())
+    temp.append(input('Nome: ').lstrip().rstrip())
     temp.append(float(input('Peso: ')))
     # Se o valor que o usuário digitou foi o primeiro de todos:
     if len(princ) == 0:
