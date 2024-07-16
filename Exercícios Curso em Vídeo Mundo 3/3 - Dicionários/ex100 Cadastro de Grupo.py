@@ -38,7 +38,7 @@ print(', '.join(nomes_pessoas) + '.')
 
 # Calculamos a média, que é a soma de todos os números (Já feito anteriormente) dividido pelo número de algarismos (len(galera)):
 media /= len(galera)
-print(f'A MÉDIA DAS IDADES foi {media:.2f} anos.')
+print(f'A MÉDIA DAS IDADES é de {media:.2f} anos.')
 
 # Criei mulheres para adicionar todos os nomes das mulheres nela, fica melhor para filtrar:
 mulheres = []
