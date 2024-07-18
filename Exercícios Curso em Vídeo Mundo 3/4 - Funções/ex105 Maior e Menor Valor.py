@@ -7,22 +7,22 @@ def maior_menor(*num):
     
     print('-'*20)
     print(f'Analisando o(s) número(s)...', end=' ')
-    for i in range(len(num)):
+    for numero in num:
         # Usei o flush para o Python não fazer buffering do sleep, e sim, mostrar cada número com um certo intervalo de tempo:
-        print(num[i], end=', ', flush=True)
+        print(numero, end=', ', flush=True)
         sleep(0.3)
     print(f'foi(ram) informado(s) {len(num)} número(s) ao todo.')
 
-    for i in range(len(num)):
+    for numero in num:
         # Verificação do MAIOR número:
-        if num[i] > maior:
-            maior = num[i]
+        if numero > maior:
+            maior = numero
 
         # Verificação do MENOR número
-        if i == 0:
-            menor = num[i]
-        if num[i] < menor:
-            menor = num[i]
+        if numero == 0:
+            menor = numero
+        if numero < menor:
+            menor = numero
     print(f'O MAIOR número é {maior}.')
     print(f'O MENOR número é {menor}.')
 
