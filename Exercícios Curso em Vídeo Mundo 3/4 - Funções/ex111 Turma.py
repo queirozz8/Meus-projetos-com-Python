@@ -23,6 +23,8 @@ def notas(*n, sit=False):
         else:
             aluno['Situação'] = 'RUIM'
     
+    # Se sit for False, o dicionário aluno não vai ter o item de situação, e assim que retornamos o dicionário, não terá a situação do aluno, como o usuário pediu. O item 
+    # Situação só vai ser criado se sit for igual à True:
     return aluno
 
 # Programa Principal
