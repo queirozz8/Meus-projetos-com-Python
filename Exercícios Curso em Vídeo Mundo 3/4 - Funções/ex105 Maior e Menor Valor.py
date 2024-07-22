@@ -13,13 +13,13 @@ def maior_menor(*num):
         sleep(0.3)
     print(f'foi(ram) informado(s) {len(num)} número(s) ao todo.')
 
-    for numero in num:
+    for i, numero in enumerate(num):
         # Verificação do MAIOR número:
         if numero > maior:
             maior = numero
 
         # Verificação do MENOR número
-        if numero == 0:
+        if i == 0:
             menor = numero
         if numero < menor:
             menor = numero
