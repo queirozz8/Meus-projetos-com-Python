@@ -66,7 +66,7 @@ def resumo(preco=0, taxa_a=10, taxa_r=5):
     print('-'*40)
     print('RESUMO DO VALOR'.center(40))
     print('-'*40)
-    print(f'Preço analisado: \t{moeda(preco):,}.')
+    print(f'Preço analisado: \t{moeda(preco)}.')
     print(f'DOBRO do preço: \t{dobro(preco, True)}.')
     print(f'METADE do preço: \t{metade(preco, True)}.')
     print(f'{taxa_a}% de AUMENTO: \t{aumentar(preco, taxa_a, True)}.')
