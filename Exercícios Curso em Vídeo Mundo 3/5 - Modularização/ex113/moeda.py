@@ -1,15 +1,15 @@
-def aumentar(preco, taxa):
+def aumentar(preco=0, taxa=0):
     res = preco + (preco * taxa/100)
     return res
 
-def diminuir(preco, taxa):
+def diminuir(preco=0, taxa=0):
     res = preco - (preco * taxa/100)
     return res
     
-def dobro(preco):
+def dobro(preco=0):
     res = preco * 2
     return res
         
-def metade(preco):
+def metade(preco=0):
     res = preco / 2
     return res
