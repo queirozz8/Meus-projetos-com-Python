@@ -10,7 +10,7 @@ def dobro(preco=0):
     res = preco * 2
     return res
         
-def metade(preco):
+def metade(preco=0):
     res = preco / 2
     return res
 
