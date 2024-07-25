@@ -775,6 +775,7 @@ Em resumo, **ser iterável significa que um objeto pode ser percorrido elemento 
 7. `upper()`: Converte uma string para maiúsculas.
 8. `strip()`: Remove espaços em branco do início e do fim de uma string.
 9. `replace()`: Substitui uma substring em uma string. Exemplo: `return f'{moeda}{preco:<.2f}'.replace('.', ',')`, isso retorna um número, só que o que seria retornado com ponto final, agora é retornado com uma vírgula.
+10. `center(x)`: Centraliza uma string em x caracteres.
 
 
 # CONCATENANDO STRINGS
@@ -1613,7 +1614,7 @@ print(fatorial(5, True), end='.')
 7. `hex()`: Converte um número para uma string hexadecimal.
 8. `id()`: Retorna o identificador único de um objeto.
 9. `type()`: Retorna o tipo de um objeto.
-10. 1. `print()`: Imprime um valor na saída padrão.
+10. `print()`: Imprime um valor na saída padrão.
 
 
 # FUNÇÕES DE CONVERSÃO NO PYTHON
@@ -1629,8 +1630,284 @@ print(fatorial(5, True), end='.')
 9. `frozenset()`: Converte um valor para um conjunto imutável.
 
 
+# **MODULARIZAÇÃO E PACOTES**
+Modularização é o processo de dividir um programa em partes menores e independentes, chamadas módulos, que podem ser desenvolvidos, testados e mantidos separadamente. Isso facilita a organização e a reutilização do código.
+## Módulos 
+Um módulo em Python é simplesmente um arquivo contendo código Python. Para criar um módulo, basta criar um arquivo com extensão `.py`, quando criar um arquivo com a intenção de ser um módulo, você precisa criar funções dentro dele, para que ele possa ser importado e que essas funções possam ser utilizadas em outros arquivos.
+**Exemplo de módulo:**
+```
+def leia_dinheiro(msg):
+    valido = False
+    while not valido:
+        entrada = input(msg).strip().replace(',', '.')
+        if entrada.isalpha() or entrada == '':
+            print(f'\033[031mERRO: "{entrada}" é um preço inválido!\033[m')
+        else:
+            valido = True
+            return float(entrada)
+```
+Quando quiser utilizar esse módulo em algum arquivo, nós o importamos para o código do arquivo que vai utilizar o módulo.
+##  Estrutura:
+```
+diretorio_pai/
+│
+├── Programa Principal.py
+└── Moeda.py
+```
+Aqui, "Moeda.py" é o módulo que vamos importar em "Programa Principal.py", geralmente dessa forma: `import moeda`, ou `from moeda import funcao_especifica`.
+
+## Pacotes
+Pacotes são uma forma de estruturar módulos Python em diretórios, facilitando a organização de projetos maiores. Um pacote é um diretório que contém um arquivo especial `__init__.py` (pode estar vazio), além de outros módulos e subpacotes. São mais utilizados em projetos grandes.
+## Estrutura:
+```
+diretorio_pai/
+│
+├── Programa Principal.py
+│
+├── pacote_1/
+	└── __init__.py
+│
+└── pacote_2/
+	└── __init__.py
+```
+
+## Exemplo completo com Modularização e Pacotes:
+Essa é a estrutura desse exemplo:
+```
+diretorio_pai/
+│
+├── Programa Principal.py
+│
+├── dado/
+	└── __init__.py
+│
+└── moeda/
+	└── __init__.py
+```
+Aqui, `Programa Principal.py` vai importar os módulos `__init__.py` (Arquivos onde ficam as funções) dos pacotes `dado/` e `moeda/`.
+
+`__init__.py` de `dado/` possui esse código:
+```
+def leia_dinheiro(msg):
+    valido = False
+    while not valido:
+        # A entrada do usuário é primeiramente lida como uma string, para que possamos substituir todas as ',' que o usuário digitar, por '.', para que o Python entenda:
+        entrada = input(msg).strip().replace(',', '.')
+        # Se a entrada do usuário for alfanumérica (Ou seja, tem alguma letra) ou for uma string vazia, exiba uma mensagem de erro na cor vermelha:
+        if entrada.isalpha() or entrada == '':
+            print(f'\033[031mERRO: "{entrada}" é um preço inválido!\033[m')
+        # Caso contrário, se for realmente um número, então valido recebe True, e a função retorna a entrada, só que do tipo float agora:
+        else:
+            valido = True
+            return float(entrada)
+```
+Aqui, a função `leia_dinheiro(msg)` é como se fosse um `input`, só que o que ela tem de especial é que ela tem um certo nível de tratamento de erros.
+
+`__init__.py` de `moeda/` possui esse código:
+```
+def metade(preco=0, formato=False):
+    """
+    -> Retorna a metade do preço fornecido.
+    preco é o preço que o usuário fornecer, se ele não fornecer nenhum preço, então o padrão é 0.
+    formato é o formato que o preço vai ser mostrado. Por padrão ele é False, mas se for True, ele vai ser exibido de forma formatada, com a moeda e com vígulas ao invés de
+    pontos finais.
+    Retorna res de forma não formatada se formato não for True, mas caso for, retorna com a formatação."""
+
+    res = preco / 2
+    return res if not formato else moeda(res)
+
+
+def dobro(preco=0, formato=False):
+    """
+    -> Retorna o dobro do preço fornecido.
+    preco é o preço que o usuário fornecer, se ele não fornecer nenhum preço, então o padrão é 0.
+    formato é o formato que o preço vai ser mostrado. Por padrão ele é False, mas se for True, ele vai ser exibido de forma formatada, com a moeda e com vígulas ao invés de
+    pontos finais.
+    Retorna res de forma não formatada se formato não for True, mas caso for, retorna com a formatação."""
+    
+    res = preco * 2
+    return res if not formato else moeda(res)
+
+
+def aumentar(preco=0, taxa=0, formato=False):
+    """
+    -> Retorna o preço fornecido, só que com um aumento de taxa%.
+    preco é o preço que o usuário fornecer, se ele não fornecer nenhum preço, então o padrão é 0.
+    taxa é a porcentagem de aumento/desconto no preço.
+    formato é o formato que o preço vai ser mostrado. Por padrão ele é False, mas se for True, ele vai ser exibido de forma formatada, com a moeda e com vígulas ao invés de
+    pontos finais.
+    Retorna res de forma não formatada se formato não for True, mas caso for, retorna com a formatação."""
+    
+    res = preco + (preco * taxa / 100)
+    return res if not formato else moeda(res)
+
+
+def diminuir(preco=0, taxa=0, formato=False):
+    """
+    -> Retorna o preço fornecido, só que com um desconto de taxa%.
+    preco é o preço que o usuário fornecer, se ele não fornecer nenhum preço, então o padrão é 0.
+    taxa é a porcentagem de aumento/desconto no preço.
+    formato é o formato que o preço vai ser mostrado. Por padrão ele é False, mas se for True, ele vai ser exibido de forma formatada, com a moeda e com vígulas ao invés de
+    pontos finais.
+    Retorna res de forma não formatada se formato não for True, mas caso for, retorna com a formatação."""
+
+    res = preco - (preco * taxa / 100)
+    return res if not formato else moeda(res)
+
+
+def moeda(preco=0, moeda='R$'):
+    """
+    -> Mostra o preço de forma formatada, bonita.
+    preco é o preço que o usuário fornecer, se ele não fornecer nenhum preço, então o padrão é 0.
+    moeda é a moeda que vai ser mostrada antes do preço, você pode modificar ela se quiser, o padrão é R$, mas pode colocar USD$, etc."""
+    
+    return f'{moeda}{preco:<.2f}'.replace('.', ',')
+
+
+def resumo(preco=0, taxa_a=10, taxa_r=5):
+    """
+    -> Retorna a saída de todas as outras funções numa tabelinha.
+    preco é o preço fornecido pelo usuário. Por padrão, é 0.
+    taxa_a é a taxa de aumento fornecida pelo usuário. Por padrão, é 10.
+    taxa_r é a taxa de redução fornecida pelo usuário. Por padrão, é 5."""
+    
+    print('-'*40)
+    print('RESUMO DO VALOR'.center(40))
+    print('-'*40)
+    print(f'Preço analisado: \t{moeda(preco)}.')
+    print(f'DOBRO do preço: \t{dobro(preco, True)}.')
+    print(f'METADE do preço: \t{metade(preco, True)}.')
+    print(f'{taxa_a}% de AUMENTO: \t{aumentar(preco, taxa_a, True)}.')
+    print(f'{taxa_r}% de DESCONTO: \t{diminuir(preco, taxa_r, True)}.')
+    print('-'*40)
+```
+Esse módulo é onde as principais funções do código vão ser armazenadas, cada uma faz uma coisa com o preço, e no final é mostrada no `resumo()`.
+
+`Programa Principal.py`:
+```
+from utilidadesCeV import moeda, dado
+
+p = dado.leia_dinheiro('Digite o preço: R$')
+taxa_au = float(input('Quantos % de aumento? '))
+taxa_di = float(input('Quantos % de desconto? '))
+moeda.resumo(p, taxa_au, taxa_di)
+```
+`utilidadesCeV` é o diretório pai desse exemplo, eu importei as coisas dentro dos diretórios `moeda/` e `dado/`. p recebe a função `leia_dinheiro` de `dado/`, que vai verificar se a entrada do usuário é realmente correta; `taxa_au` é a taxa de aumento que vamos passar para a função `resumo()` dentro de `moeda/` no futuro, ela vai armazenar o `input()` de quanto o usuário quer aumentar o preço; e a mesma coisa para `taxa_di`, que é a taxa de diminuição do preço, que vai ser passada também para a função `resumo()`. Por fim, chamamos a função que está dentro de `moeda/`, que é a função `resumo()`, com os parâmetros: primeiro, o número que o usuário quer que aumente, e segundo, o número que o usuário quer que ele desconte.
+
+## Vantagens da modularização e pacotes
+- **Reutilização de código**: Módulos e pacotes podem ser reutilizados em diferentes partes do projeto ou em projetos diferentes.
+- **Organização**: Facilita a organização do código em partes menores e mais gerenciáveis.
+- **Manutenção**: Torna a manutenção do código mais fácil, pois cada módulo/pacote pode ser atualizado independentemente.
+- **Colaboração**: Permite que diferentes desenvolvedores trabalhem em diferentes módulos/pacotes simultaneamente.
+## Boas práticas
+- Dê nomes significativos aos módulos e pacotes.
+- Mantenha cada módulo focado em uma única responsabilidade.
+- Documente seus módulos e pacotes para facilitar o uso e manutenção.
+
+
+# **TRATAMENTO DE ERROS**
+# `try`, `except`, `else` e `finally`:
+`try` significa "Tente", é para o computador tentar fazer alguma coisa. Caso não funcione, então temos o `except`, que é caso isso que o computador não dê certo. Se o `try` der certo e você quiser que ele faça algo caso dê certo, porém isso depois do `except`, você usa o `else`. Quando quiser que ele faça algo independente do que aconteça, use o `finally`.
+
+**Exemplos de uso:**
+```
+try:
+    a = int(input('Numerador: '))
+    b = int(input('Denominador: '))
+    r = a / b
+except:
+    print('Infelizmente, tivemos um problema...')
+else:
+    print(f'O resultado é {r:.1f}')
+finally:
+    print('Volte sempre! Muito obrigado!')
+```
+
+Exemplo um pouco mais específico, nós podemos criar vários excepts. Agora, para quase todos os erros que o usuário poderia fazer, o software tem uma resposta:
+```
+try:
+    a = int(input('Numerador: '))
+    b = int(input('Denominador: '))
+    r = a / b
+except (ValueError, TypeError):
+    print('Tivemos um problema com os tipos de dados que você digitou.')
+except (ZeroDivisionError):
+    print('Não é possível dividir um número por zero!')
+except KeyboardInterrupt:
+    print('O usuário preferiu não informar os dados!')
+except Exception as erro:
+    print(f'O erro encontrado foi {erro.__cause__}')
+else:
+    print(f'O resultado é {r:.1f}')
+finally:
+    print('Volte sempre! Muito obrigado!')
+```
+Você também pode descrever para o usuário/desenvolvedor o tipo de erro que está ocorrendo. Mas sem estar naquele texto clássico de erro que o Python dá. Como por exemplo:
+```
+try:
+    a = int(input('Numerador: '))
+    b = int(input('Denominador: '))
+    r = a / b
+except Exception as erro:
+    print(f'Infelizmente, tivemos um problema... o erro é {erro.__class__s}')
+else:
+    print(f'O resultado é {r:.1f}')
+finally:
+    print('Volte sempre! Muito obrigado!')
+```
+
+
+# **MANIPULAÇÃO DE ARQUIVOS EM PYTHON**
+## Funções e Métodos
+1. **`open(file, mode)`**
+    - Abre um arquivo e retorna um objeto de arquivo.
+    - `file`: Nome do arquivo a ser aberto.
+    - `mode`: Modo em que o arquivo será aberto (detalhes abaixo).
+2. **`file.close()`**
+    - Fecha o arquivo. É importante fechar o arquivo após terminar de usá-lo para liberar os recursos do sistema.
+3. **`file.read(size=-1)`**
+    - Lê o conteúdo do arquivo. Se `size` for passado, lê até `size` bytes/caracteres.
+4. **`file.readline(size=-1)`**
+    - Lê uma linha do arquivo. Se `size` for passado, lê até `size` bytes/caracteres.
+5. **`file.readlines()`**
+    - Lê todas as linhas do arquivo e retorna uma lista de strings, cada uma representando uma linha.
+6. **`file.write(string)`**
+    - Escreve a string fornecida no arquivo.
+7. **`file.writelines(lines)`**
+    - Escreve uma lista de strings no arquivo. Não adiciona quebras de linha automaticamente.
+8. **`file.seek(offset, whence=0)`**
+    - Move o ponteiro de leitura/escrita para uma posição específica no arquivo.
+    - `offset`: Número de bytes a mover.
+    - `whence`: Ponto de referência (`0` para início, `1` para posição atual, `2` para fim do arquivo).
+9. **`file.tell()`**
+    - Retorna a posição atual do ponteiro de leitura/escrita no arquivo.
+10. **`file.flush()`**
+    - Esvazia o buffer de escrita, garantindo que todos os dados sejam gravados no arquivo.
+11. **`file.truncate(size=None)`**
+    - Reduz o tamanho do arquivo para o valor especificado por `size`. Se `size` não for especificado, o arquivo é truncado na posição atual do ponteiro.
+
+### Modos de Abertura (`mode`)
+1. **`'r'`**
+    - Abre o arquivo para leitura. O arquivo deve existir.
+2. **`'w'`**
+    - Abre o arquivo para escrita. Cria um novo arquivo se ele não existir ou trunca o arquivo se ele já existir.
+3. **`'x'`**
+    - Abre o arquivo para escrita exclusivamente. Cria um novo arquivo, mas falha se o arquivo já existir.
+4. **`'a'`**
+    - Abre o arquivo para adição (append). Os dados são adicionados ao fim do arquivo. Cria o arquivo se ele não existir.
+5. **`'b'`**
+    - Abre o arquivo em modo binário (por exemplo, `'rb'`, `'wb'`).
+6. **`'t'`**
+    - Abre o arquivo em modo texto (por exemplo, `'rt'`, `'wt'`). Este é o padrão se nenhum modo for especificado.
+7. **`'+'`**
+    - Abre o arquivo para atualização (leitura e escrita) (por exemplo, `'r+'`, `'w+'`).
+
+
+
 
 # **OUTRAS COISAS**
+
+
 # WALRUS OPERATOR
 **Sintaxe:** `:=`
 A principal vantagem do Walrus Operator é que ele permite escrever código mais conciso e legível, evitando a necessidade de linhas adicionais apenas para atribuição de valores.
