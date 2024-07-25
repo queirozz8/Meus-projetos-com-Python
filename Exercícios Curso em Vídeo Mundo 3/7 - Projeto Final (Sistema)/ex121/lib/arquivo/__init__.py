@@ -49,6 +49,13 @@ def ler_arquivo(nome):
         a.close()
         
 def cadastrar(arq, nome='<desconhecido>', idade=0):
+    """
+    -> Cadastra uma nova pessoa em dados.txt.
+    Primeiro, ele tenta abrir o arquivo em modo de append;
+    caso consiga, ele tenta escrever o nome e a idade que o usuário forneceu;
+    caso consiga, ele mostra que conseguiu fazer o novo registro da pessoa, e fecha o arquivo.
+    """
+    
     try:
         a = open(arq, 'at')
     except:
