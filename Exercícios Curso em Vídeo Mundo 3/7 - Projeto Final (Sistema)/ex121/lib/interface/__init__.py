@@ -16,6 +16,7 @@ def leia_int(msg):
             break
     return i
 
+
 def cabecalho(txt):
     """
     ->
@@ -27,8 +28,10 @@ def cabecalho(txt):
     print(f'{txt}'.center(42))
     linha()
 
+
 def linha(tam=42):
     print('='*tam)
+
 
 def menu(lista):
     """
