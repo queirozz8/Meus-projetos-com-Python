@@ -22,7 +22,10 @@ while True:
     elif resp == 2:
         # Opção de cadastrar uma nova pessoa:
         cabecalho('NOVO CADASTRO')
-        nome = input('Nome: ').lstrip().rstrip()
+        try:
+            nome = input('Nome: ').lstrip().rstrip()
+        except(KeyboardInterrupt):
+            print('\n\033[31mO usuário preferiu não informar o nome. Então o nome é <desconhecido>.\033[m')
         idade = leia_int('Idade: ')
         cadastrar(arq, nome, idade)
     elif resp == 3:
