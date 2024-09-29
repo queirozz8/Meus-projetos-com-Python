@@ -1,5 +1,3 @@
-# FEITO POR HENRIQUE JORGE DE QUEIROZ
-
 # **TIPOS PRIMITIVOS DO PYTHON**
 1) **str (String)** Palavras ou conjunto de caracteres
 2) **Int (Inteiro)** Números inteiros
@@ -23,12 +21,12 @@ Listas são mutáveis e mais versáteis, com mais funções e opções de modifi
 Uma Lista é categorizada pelo símbolo de Colchetes `[]`.
 ### Criando e Acessando Listas
 Para criar uma lista: `lista = [1, 2, 3, 4, 5]` Para acessar um item na posição 2: 
-```
+```python
 print(lista[2]) # Saída: 3
 ```
 ### Modificando Itens de Listas
 Para modificar o valor no índice 2: 
-```
+```python
 lista[2] = 10` `print(lista) # Saída: [1, 2, 10, 4, 5]
 ```
 
@@ -36,7 +34,7 @@ lista[2] = 10` `print(lista) # Saída: [1, 2, 10, 4, 5]
 
 Quando criamos uma lista dentro de outra lista, nós estamos criando Listas Aninhadas.
 Como usar elas?
-```
+```python
 lista_maior = []
 lista_maior.append([1, 2, 3])
 print(lista_maior)
@@ -44,7 +42,7 @@ print(lista_maior)
 ```
 Agora, `lista_maior` tem 2 colchetes, pois 1 par de colchetes é da lista maior, e o outro é da sub-lista que está dentro dela.
 Se fizessemos assim:
-```
+```python
 print('-'*80)
 print(f'{'ANALISADOR DE PESSOAS E PESOS':^80}')
 print(f'{'Digite o nome de uma pessoa, seu peso e eu farei as análises no final.':^80}')
@@ -142,7 +140,7 @@ print('FIM DO SOFTWARE!')
 Esse é um exemplo de software que criei. Na parte onde o software mostra só os nomes das pessoas mais pesadas e mais leves, `nome` passa por cada nome da lista `maiores/menores`.
 
 Outros exemplos:
-```
+```python
 pessoas = [['Pedro', 25], ['Maria', 19], ['João', 32]]
 print(pessoas[0][0]) # Saída: Pedro
 print(pessoas[1][1]) # Saída: 19 (Idade de Maria)
@@ -157,67 +155,67 @@ as sub-listas vão ser representadas por: `lista_maior[elemento_da_lista_maior (
 # PRINCIPAIS FUNÇÕES DAS LISTAS
 ### Adição e Inserção
 - `append()`: Adiciona um valor ao final da lista. 
-```
+```python
 lista.append(6)print(lista) # Saída: [1, 2, 10, 4, 5, 6]
 ```
 - `insert()`: Adiciona um valor em qualquer posição especificada da lista. O número que vem primeiro indica o índice, o que vem depois indica o elemento que será adicionado
-```
+```python
 lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 lista.insert(2, 3) 
 print(lista) # Saída: [1, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10]
 ```
 ### Remoção
 - `lista.pop(indice)`: Remove e retorna o elemento removido à uma variável. Nós indicamos o elemento que queremos remover pelo índice dele. Podemos remover somente 1 elemento por linha de código
-```
+```python
 lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 item = lista.pop() 
 print(item) # Saída: 10 
 print(lista) # Saída: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 - `del lista[indice]`: Remove o valor como se fosse o `pop()`, porém ele não retorna o valor removido. O tornando assim, menos flexível como o `pop()`
-```
+```python
 lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 del lista[2]
 print(lista)
 # Saída: [1, 2, 4, 5, 6, 7, 8, 9, 10]
 ```
 - `remove(valor)`: Remove a primeira ocorrência do elemento. A diferença dele para os outros é que ele remove algo pelo elemento indicado, não pelo índice.
-```
+```python
 lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 lista.remove(3) 
 print(lista) # Saída: [1, 2, 4, 5, 6, 7, 8, 9, 10]
 ```
 - `clear()`: Remove todos os itens da lista.
-```
+```python
 lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 lista.clear()
 print(lista) # Saída: []
 ```
 ### Consulta
 - `index(x[, start[, end]])`: Retorna o índice da primeira ocorrência do item 
-```
+```python
 lista = [1, 2, 10, 4, 5]
 print(lista.index(10)) # Saída: 2
 ```
 Caso queira pegar alguma ocorrência que seja depois da primeira, nós cortamos os índices:
-```
+```python
 lista = [1, 2, 10, 4, 5, 10]
 print(lista.index(10, 5)) # Saída: 5
 ```
 A saída seria 2, porém nós cortamos o range do `index`, assim, ele só pode buscar o elemento à partir do índice 3, o primeiro 10 estava no índice 2, então o Python busca o próximo elemento, que está no índice 5. Nós também podemos fazer isso para filtrar o final, desse jeito:
-```
+```python
 lista = [1, 2, 10, 4, 10, 10]
 print(lista.index(10, 3, 5)) # Saída: 4
 ```
 A saída foi 4 pois filtramos os índices, o Python começa procurando do índice 3 (que corta o primeiro 10), e termina no índice 5 (O último é desconsiderado, ele não conta o último 10 pois o índice que representa o final é sempre desconsiderado), então o único 10 encontrado é na posição 4.
 - `count(x)`: Retorna o número de vezes que o item `x` aparece na lista. 
-```
+```python
 lista = [1, 2, 3, 4, 3] 
 print(lista.count(3)) # Saída: 1
 ```
 ### Ordenação e Reversão
 - `lista.sort()`: Ordena a lista em ordem crescente ou alfabética.
-```
+```python
 lista = [8, 2, 5, 3, 6]
 print(lista.sort())
 # Saída: [2, 3, 5, 6, 8]
@@ -227,13 +225,13 @@ print(lista.sort())
 2. Você não consegue ordenar uma lista que tenha mais de 1 tipo, somente é possível ser feito isso se você ordena uma lista que tenha números `float` e `int` dentro dela, mas se for, por exemplo, uma lista com valores `bool`, `int` e `str` e tentar ordenar ela com o `sort()`, o Python retornará um erro (obviamente, pois um tipo não é maior do que o outro.)
 
 - `lista.sort(key=None, reverse=True)`: Ordena a lista em ordem decrescente ou alfabética (porém começando da letra "z" indo até "a")
-```
+```python
 lista = [3, 1, 4, 2]
 lista.sort()
 print(lista) # Saída: [1, 2, 3, 4]
 ```
 - `reverse()`: Inverte os itens da lista no lugar. 
-```
+```python
 lista = [1, 2, 3, 4]
 lista.reverse()
 print(lista) # Saída: [4, 3, 2, 1]
@@ -241,7 +239,7 @@ print(lista) # Saída: [4, 3, 2, 1]
 - `sorted(lista)`: Não modifica a lista original, em vez disso, cria uma nova lista e ordena a lista antiga (desordenada) na lista nova. Ele faz as mesmas coisas e tem os mesmos parâmetros opcionais que o `sort()`, só que agora, ele retorna o valor. Quando queremos usar o `sort()` em f-strings, usamos o `sorted()`, pois o `sort()` só pode ser utilizado de forma avulsa em uma linha exclusiva para ele, já o `sorted()`, não.
 ### Cópia e Extensão
 - `copy()`: Retorna uma cópia RASA da lista. 
-```
+```python
 lista = [1, 2, 3, 4]
 
 nova_lista = lista.copy()
@@ -249,7 +247,7 @@ print(nova_lista) # Saída: [1, 2, 3, 4]
 # nova_lista é uma lista conectada com lista. Se você modifica um elemento de uma, a outra também é modificada.
 ```
 - `[:]` (Também chamado de `slice`): Cria uma cópia SUPERFICIAL da lista.
-```
+```python
 a = [1, 2, 3, 4, 5]
 b = a[:]
 print(a)
@@ -259,7 +257,7 @@ print(b)
 A diferença do uso de `copy()` para o `[:]` é que o `copy()` cria uma cópia RASA da lista; enquanto o slice `[:]` faz uma cópia SUPERFICIAL. Basicamente no `copy()`, as duas listas estão conectadas, o que você modifica em uma lista, é modificada em outra também. Já no slice `[:]`, as listas não são conectadas, a lista original passa todos os elementos dela para outra lista, mas isso não remove os elementos da lista original, ou cria uma ligação de uma com a outra. Só pega os elementos e adiciona eles em outra lista. Outras coisas que diferem elas é que `copy()` é um pouco mais pesado, porém mais legível e explícito; o `[:]` é um pouco mais rápido.
 
 - `extend(iterable)`: Estende a lista adicionando todos os itens do `iterable`.
-```
+```python
 lista = [1, 2, 3]` 
 lista.extend([4, 5])
 print(lista) # Saída: [1, 2, 3, 4, 5]
@@ -271,7 +269,7 @@ Os Dicionários são usados para armazenar dados em pares chave-valor, onde cada
 - **Chaves** são as 'Categorias' de cada variável. Sintaxe: `dict.keys()`
 - **Valor** são os valores que ficam dentro das suas respectivas chaves. Sintaxe: `dict.values()`
 - **Itens** são o todo do dicionário, é o par Chave-Valor. Sintaxe: `dict.items()`
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
 ```
 Neste exemplo, `nome`, `idade` e `cidade` são as chaves, e `'João'`, `30` e `'São Paulo'` são os valores associados a cada chave.
@@ -279,7 +277,7 @@ Neste exemplo, `nome`, `idade` e `cidade` são as chaves, e `'João'`, `3
 
 **Acessando Valores**
 
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
 nome = meu_dicionario['nome']
 print(nome)  # imprime 'João'
@@ -288,7 +286,7 @@ Para acessar um valor em um dicionário, você usa a chave correspondente entre 
 
 
 **Adicionando Pares Chave-Valor**
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
 meu_dicionario['endereco'] = 'Rua ABC, 123'
 print(meu_dicionario)  # {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo', 'endereco': 'Rua ABC, 123'}
@@ -297,7 +295,7 @@ Você pode adicionar um par chave-valor a um dicionário usando a sintaxe de atr
 
 
 **Atualizando Valores**
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
 meu_dicionario['idade'] = 31
 print(meu_dicionario)  # {'nome': 'João', 'idade': 31, 'cidade': 'São Paulo'}
@@ -309,27 +307,27 @@ Você pode atualizar um valor em um dicionário usando a sintaxe de atribuição
 
 1. **`keys()`**: Retorna um objeto de visualização que exibe uma lista de todas as chaves no dicionário.
 Sintaxe:
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
 chaves = meu_dicionario.keys()
 print(chaves)  # dict_keys(['nome', 'idade', 'cidade'])
 ```
 2. **`values()`**: Retorna um objeto de visualização que exibe uma lista de todos os valores no dicionário.
 Sintaxe:
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
 valores = meu_dicionario.values()
 print(valores)  # dict_values(['João', 30, 'São Paulo'])
 ```
 3. **`items()`**: Retorna um objeto de visualização que exibe uma lista de todos os pares chave-valor no dicionário.
 Sintaxe:
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
 itens = meu_dicionario.items()
 print(itens)  # dict_items([('nome', 'João'), ('idade', 30), ('cidade', 'São Paulo')])
 ```
 Iterando sobre os `items()`:
-```
+```python
 meu_dict = {'nome': 'Henrique', 'Sonho': 'Ser programador'}
 for chaves, valores in meu_dict.items:
 	print(f'{chaves} = {valores}.')
@@ -337,14 +335,14 @@ for chaves, valores in meu_dict.items:
 Aqui, `chaves` são todas as chaves que o `items` vai passar com o `for loop`. A mesma coisa com `valores`, são todos os valores que `items` vai passar com o `for loop`.
 4. **`get()`**: Retorna o valor para uma chave dada se ela existir no dicionário. Caso contrário, ele retorna um valor padrão.
 Sintaxe:
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
 nome = meu_dicionario.get('nome')
 print(nome
 ```
 5. **`setdefault()`**: Define um valor para uma chave se ela ainda não existir no dicionário. Se a chave já existir, o valor não é alterado.
 Sintaxe:
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30}
 meu_dicionario.setdefault('cidade', 'São Paulo')
 print(meu_dicionario)  # {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
@@ -354,7 +352,7 @@ print(meu_dicionario)  # {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
 ```
 6. **`update()`**: Atualiza o dicionário com novos pares chave-valor. Se uma chave já existir, o valor é atualizado.
 Sintaxe:
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30}
 meu_dicionario.update({'cidade': 'São Paulo', 'pais': 'Brasil'})
 print(meu_dicionario)  # {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo', 'pais': 'Brasil'}
@@ -365,14 +363,14 @@ print(meu_dicionario)  # {'nome': 'Maria', 'idade': 30, 'cidade': 'São Paulo', 
 Note que `update()` pode receber outro dicionário como parâmetro, ou uma lista de pares chave-valor separados por vírgulas.
 7. **`pop()`**: Remove um par chave-valor do dicionário e retorna o valor.
 Sintaxe: 
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
 meu_dicionario.pop('idade')
 print(meu_dicionario)  # {'nome': 'João', 'cidade': 'São Paulo'}
 ```
 8. **`clear()`**: Remove todos os pares chave-valor do dicionário.
 Sintaxe:
-```
+```python
 meu_dicionario = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'}
 nome = meu_dicionario.get('nome')
 print(nome
@@ -384,7 +382,7 @@ print(nome
 Os índices sempre começam com 0 até o infinito, então se quiser indicar o primeiro elemento de uma variável composta, esse elemento fica no índice 0.
 Quando você faz um `for loop`, por exemplo, o último índice que o programador passou é onde o Python vai parar, isso é, ele não vai fazer nada com o último índice que o programador digitou, ele vai usar o último índice para parar o que ele estava fazendo.
 Outro exemplo é com Tuplas:
-```
+```python
 tupla = ("Elemento_1", "Elemento_2", "Elemento_3")
 print(tupla[0:2])
 # Saída:
@@ -392,7 +390,7 @@ print(tupla[0:2])
 ```
 Nesse exemplo, o Python não mostrou o Elemento_3 (Que é indicado pelo índice 2) pois o Python sempre PARA no último índice indicado pelo programador (Nesse caso, 2 foi o índice indicado, então o Python para nele).
 Outro exemplo, uma Tupla:
-```
+```python
 tupla = ("Elemento_1", "Elemento_2", "Elemento_3")
 print(tupla[1])
 # Saída: Elemento_2
@@ -408,7 +406,7 @@ Caso queira indicar o último elemento de uma tupla, lista ou dicionário, mas s
 
 # USANDO O `LEN`
 O `len` retorna o tamanho de uma variável composta, por exemplo:
-```
+```python
 lanche = ("Hambúrguer", "Pizza", "Suco", "Pudim")
 for comida in range(len(lanche)): # Ou range(0, len(lanche))
 	print(f"Vou comer {lanche[comida]} na posição {comida}")
@@ -428,13 +426,13 @@ Vou comer Pudim na posição 3'''
 
 1. `len()`: Retorna o comprimento de uma lista.
 2. `sum()`: Retorna a soma de todos os elementos em uma lista. Se uma lista tiver números negativos, ele subtrai os números negativos:
-```
+```python
 lista = [-5, -4, 3, -2, 6, 1, 2, -2]
 print(lista.sort())
 ```
 O que ele fez foi: Somou os números positivos: 12, e subtraiu pelos negativos: -1.
 3. `max()`: Retorna o maior elemento em uma lista. Se 2 valores são iguais, ele retorna o valor que tem índice menor. Tipo 5.0 e 5, se 5.0 vier antes de 5, então `max()` retorna 5.0, se for ao contrário, `max()` retorna 5. Você consegue comparar o valor de múltiplas variáveis usando o `max`. Tipo assim:
-```
+```python
 a = 10
 b = 20
 c = 15
@@ -444,7 +442,7 @@ maior = max(a, b, c)
 print(maior)  # Isso vai imprimir 20, que é o maior valor entre a, b e c
 ```
 4. `min()`: Retorna o menor elemento em uma lista. Se 2 valores são iguais, ele retorna o valor que tem índice menor. Tipo 5.0 e 5, se 5.0 vier antes de 5, então `min()` retorna 5.0, se for ao contrário, `min()` retorna 5. Você consegue comparar o valor de múltiplas variáveis usando o `min`. Tipo assim:
-```
+```python
 a = 10
 b = 20
 c = 15
@@ -455,7 +453,7 @@ print(menor)  # Isso vai imprimir 15, que é o menor valor entre a, b e c
 ```
 5. `map()`: Aplica uma função em todo elemento novo de uma lista que for adicionado.
 Sintaxe:
-```
+```python
 lista = [1, 2, 3, 4, 5]
 while True:
 	lista.append(int(input('Digite um número: '))
@@ -463,7 +461,7 @@ while True:
 	# Agora todos os valores da lista conforme eles vão sendo adicionados, vão todos virando strings.
 ```
 Exemplo de uso do `map()` e do `join()`:
-```
+```python
 lista_num = []
 
 while True:
@@ -489,13 +487,13 @@ while True:
 `+ '.'`: quando terminar tudo isso, mostre um ponto final (`.`) no fim da string.
 
 6. `join()`: É um separador de strings (Só funciona em strings). No caso de cima (do `map()`), `join()` junta todos os valores da lista (Que viraram strings) e separa eles por ', '. A saída, caso eu colocasse, por exemplo:  1 2 3 4 5. Saída: 1, 2, 3, 4, 5. `join()` NÃO MOSTRA O SEPARADOR NO FINAL DA LISTA. Isso é, ele não mostrou a vírgula no final, como podemos ver. Então por isso que escrevi o `+ '.'`, para sair assim: 1, 2, 3, 4, 5. Caso eu queria administrar o número de novo, já que eu transformei eles em strings, eu poderia só transformar eles de volta em números inteiros, ou então fazer cópias das listas originais, para mostrar elas na tela, como queria. Tipo assim:
-```
+```python
 num = [1, 2, 3, 4, 5]
 num_str = [str(x) for x in num]
 # Saída: ['1', '2', '3', '4', '5']
 ```
 Vale lembrar que o `join()` espera um iterável, isso é, uma tupla, lista, dicionário, conjunto, strings ou geradores, como o `map()` e `filter()`. Nesse caso, por exemplo:
-```
+```python
 num = [1, 2, 3, 4, 5]
 print(f'Número(s) oganizado(s) em ordem decrescente: {', '.join(map(str, num))}.')
 ```
@@ -508,7 +506,7 @@ print(f'Número(s) oganizado(s) em ordem decrescente: {', '.join(map(str, num))}
 O código funciona porque `map` é uma função que aplica uma função (neste caso, `str`) a cada elemento de um iterável (neste caso, `num`). O resultado é um iterável de strings, que pode ser passado para a função `join`.
 
 Mas se digitarmos assim:
-```
+```python
 num = [1, 2, 3, 4, 5]
 print(f'Número(s) oganizado(s) em ordem decrescente: {', '.join(str(num))}.')
 ```
@@ -525,7 +523,7 @@ Portanto, o primeiro código funciona porque `map` converte cada elemento do i
 Às vezes, precisamos transformar uma lista de números em uma lista de strings para o `join()` funcionar corretamente. Porém, quando você modifica a lista para uma lista de strings, talvez você precise fazer operações que só funcionam em tipos `int` no Python; e sua lista é uma lista de `str`.
 Existem 3 formas de se resolver isso em Python:
 1) Criando uma cópia da lista com o `copy()`:
-```
+```python
 num = [[], []]
 r = int(input('Quantos números deseja adicionar na sua lista? '))
 for c in range(r):
@@ -541,7 +539,7 @@ print(f'Os números ÍMPARES e de forma ORDENADA digitados foram: {', '.join(map
 ```
 Nesse código, nós temos que copiar cada sub-lista da lista maior, pois se digitarmos só `num_copia = num.copy()`,  `num_copia` não seria uma lista independente. Você mudaria os elementos dentro da lista `num_copia`, e os elementos da lista `num` também mudariam. Não queremos isso, então copiamos uma sub-lista por uma.
 2) Criando uma cópia da lista com o slice `[:]`:
-```
+```python
 num = [[], []]
 r = int(input('Quantos números deseja adicionar na sua lista? '))
 for c in range(r):
@@ -556,7 +554,7 @@ print(f'Os números PARES e de forma ORDENADA digitados foram: {', '.join(map(st
 ```
 A diferença do uso de `copy()` para o `[:]` é que o `copy()` cria uma cópia RASA da lista; enquanto o slice `[:]` faz uma cópia SUPERFICIAL. Basicamente no `copy()`, as duas listas estão conectadas, o que você modifica em uma lista, é modificada em outra também. Já no slice `[:]`, as listas não são conectadas, a lista original passa todos os elementos dela para outra lista, mas isso não remove os elementos da lista original, ou cria uma ligação de uma com a outra. Só pega os elementos e adiciona eles em outra lista. Outras coisas que diferem elas é que `copy()` é um pouco mais pesado, porém mais legível e explícito; o `[:]` é um pouco mais rápido.
 3) Mudar o tipo da variável novamente para o tipo que deseja fazer as manipulações:
-```
+```python
 num = [[], []]
 r = int(input('Quantos números deseja adicionar na sua lista? '))
 for c in range(r):
@@ -574,7 +572,7 @@ map(int, num[1])
 Mas eu prefiro das outras formas. consome menos linhas, e não precisa ficar fazendo gambiarras com tipagem.
 Caso uma lista tenha muitas sub-listas, você pode resolver esse problema de 2 formas:
 1) Importando a bilbioteca copy e usando o `copy.deepcopy(variavel)`:
-```
+```python
 import copy
 
 num = [[1, 2], [3, 4], [5, 6], [7, 8]]
@@ -589,7 +587,7 @@ print(num_copy) # [[1, 2, 9], [3, 4], [5, 6], [7, 8]]
 
 2) Usando `for loops`/Compreensões de Listas para copiar automaticamente todas as sub-listas
 1° forma, com `for loops`, caso quisesse criar realmente uma cópia independente e profunda:
-```
+```python
 num = [[1, 2], [3, 4], [5, 6], [7, 8]]
 num_copia = []
 for sublista in num:
@@ -602,14 +600,14 @@ Criamos `elemento` pois `sublista` só itera sobre as sublistas dentro da lista 
 
 
 2° forma, com os `for loops`
-```
+```python
 num = [[1, 2], [3, 4], [5, 6], [7, 8]]
 num_copia = []
 for sublista in num:
     num_copia.append(sublista[:])
 ```
 3° forma, com Compreensões de Listas em Python:
-```
+```python
 num = [[1, 2], [3, 4], [5, 6], [7, 8]]
 num_copia = [sublista.copy() for sublista in num]
 ```
@@ -633,7 +631,7 @@ num_copia = [sublista.copy() for sublista in num]
 
 # USANDO O `ENUMERATE`
 O `enumerate` numera todos os elementos de uma variável composta, por exemplo:
-```
+```python
 lanche = ("Hambúrguer", "Pizza", "Suco", "Pudim")
 for pos, comida in enumerate(lanche):
 	print(f"Vou comer {comida} na posição {pos}")
@@ -650,7 +648,7 @@ Vou comer Pudim na posição 3'''
 # OPERADOR * EM LISTAS E TUPLAS
 O operador `*` desempacota os elementos de uma sequência (lista, tupla, etc.) removendo os colchetes `[]` ou parênteses `()` que os envolvem.
 Quando você tem uma lista ou tupla e deseja exibir ou utilizar seus elementos individualmente, em vez de exibi-la como uma sequência única envolvida por colchetes ou parênteses, você pode usar o * para desempacotar essa sequência. ESSE OPERADOR É INVÁLIDO EM F-STRINGS
-```
+```python
 numeros = [1, 2, 3]
 print(numeros)  # Saída: [1, 2, 3]
 print(*numeros) # Saída: 1 2 3
@@ -664,7 +662,7 @@ No primeiro exemplo, `print(numeros)` exibe a lista `[1, 2, 3]` com os colchetes
 No segundo exemplo, acontece o mesmo com a tupla `('a', 'b', 'c')`. `print(letras)` exibe a tupla com parênteses, enquanto `print(*letras)` exibe seus elementos `a`, `b` e `c` separadamente, sem os parênteses.
 
 Outro exemplo, desta vez com uma tupla:
-```
+```python
 pessoa = ('João', 25, 'Programador')
 print(pessoa)  # Saída: ('João', 25, 'Programador')
 
@@ -676,7 +674,7 @@ Então, em resumo, o operador `*` desempacota uma sequência (lista, tupla, etc.
 O operador `*` "tira" os colchetes ou parênteses que envolvem a sequência, exibindo ou passando seus elementos de forma individual, o que geralmente é uma forma mais "polida" ou legível de trabalhar com esses elementos separadamente.
 
 # TUPLAS
-```
+```python
 # Descompactando uma tupla
 tupla = (1, 2, 3, 4, 5)
 primeiro, *meio, ultimo = tupla
@@ -686,7 +684,7 @@ print(ultimo)  # 5
 ```
 Nesse caso, `primeiro` vai receber o valor 1, que é o primeiro valor, `meio`, como tem um asterísco `*`, vai pegar todos os elementos do meio da estrutura de dados, criar o mesmo tipo de estrutura de dados (e colocar nessa variável) e adicionar os valores do meio da variável, e `ultimo` recebe o último elemento da estrutura de dados.
 # LISTAS
-```
+```python
 # Descompactando uma lista
 lista = [1, 2, 3, 4, 5]
 primeiro, *meio, ultimo = lista
@@ -701,21 +699,21 @@ A descompactação também pode ser usada com outras estruturas de dados, como s
 # LIST COMPREHENSIONS (COMPREENSÃO DE LISTAS)
 É uma forma mais compacta de se escrever operações de `for loops` com Listas. Onde você escreve tudo numa linha só.
 Por exemplo, com `for loops`:
-```
+```python
 squares = []
 for x in range(10):
     squares.append(x**2)
 ```
 com List Comprehensions:
-```
+```python
 squares = [x**2 for x in range(10)]
 ```
 Para ler a sintaxe, temos que imaginar o seguinte: `for x in range(10)` "para cada x de 0 até 10" `x**2` "x vai ser elevado ao quadrado". Ou seja, 0², 1², 2², 3², etc.
-```
+```python
 even_numbers = [x for x in range(20) if x % 2 == 0]
 ```
 para x de 0 até 20, retorne x se x % 2 == 0 (se for par). Então basicamente, "de todos os números que estão entre 0 e 20, analise o número atual (x), se ele % 2 == 0, então retorne esse número.". 
-```
+```python
 squares = [x ** 2 for x in range(10) if x % 2 == 0]
 ```
 para x de 0 até 10, retorne x² se x % 2 == 0.
@@ -741,7 +739,7 @@ ChatGPT disse:
 
 
 # ITERABILIDADE, O QUE É ISSO?
-```
+```python
 # Lista
 data_list = [1, 2, 3]
 a, b, c = data_list
@@ -765,7 +763,7 @@ Cada um desses objetos pode ser iterado em um loop `for` e pode ser descompactad
 
 ## Exemplo de Descompactação com Função
 Você também pode usar a descompactação em funções:
-```
+```python
 def my_function(a, b, c):
     print(a, b, c)
 
@@ -798,7 +796,7 @@ Em resumo, **ser iterável significa que um objeto pode ser percorrido elemento 
 
 # CONCATENANDO STRINGS
 Para concatenar 2 ou mais strings, usamos o sinal de `+` entre as strings:
-```
+```python
 primeiro_nome = "Henrique"
 sobrenome = "Jorge"
 print(f"{primeiro_nome} " + sobrenome)
@@ -840,7 +838,7 @@ Saída: `['henrique j', 'rge de queir', 'z']`
 
 1) Se você quer escrever um texto grande, mas quer pular linhas enquanto esse texto é exibido, mas não quer ter que ficar escrevendo cada print toda linha, faça isso:
 
-```
+```python
 print('''Alguma coisa, alguma coisa,
 alguma coisa, alguma coisa, alguma coisa, alguma coisa''')
 ```
@@ -885,7 +883,7 @@ f-string é tipo um `.format` só que melhor, pra usar ele você coloca a letra 
 # USANDO `RAW-STRING`
 `Raw-String` é um tipo de `string` que você cria caso queira escrever coisas que tenham `\`. O Python indentifica os `\` como caracteres de escape, caso queira desconsiderar isso do Python, criamos as `Raw-Strings`.
 Sintaxe:
-```
+```python
 caminho: str = r"\Users\Rick\Downloads\Pasta"
 print(caminho)
 # Saída: \Users\Rick\Downloads\Pasta
@@ -907,7 +905,7 @@ Fala na tela se a cidade começa com a palavra santo, pra isso ele coloca o nome
 # FATIANDO STRINGS
 **Sintaxe: `[<número>:]`
 Exemplo de uso:
-```
+```python
 a = "Olá, Mundo!"
 print(a [2:])
 # Saída: á, Mundo!
@@ -915,7 +913,7 @@ print(a [2:])
 Aqui, "2" é o índice da string, então em Olá, Mundo!, a letra que representa o índice 2 é o "á", então estamos pedindo para que o Python mostre na tela a variável "a" à partir do índice 2 (`[2]`) e termine no final da string (`:`)
 
 **Exemplo de uso mais avançado:**
-```
+```python
 escolha_usuario = input("Par ou Ímpar? (P/I): ").strip().lower()
 while not escolha_usuario or escolha_usuario[0] not in "pi":
 	print("Opção inválida, por favor, digite novamente")
@@ -931,7 +929,7 @@ Após os `:`, existem diversas opções de formatação que podemos colocar em n
 - `<`: Alinha à esquerda
 - `>`: Alinha à direita
 - `^`: Centraliza. Sintaxe: 
-```
+```python
 print("-"*30)
 print(f"{'LISTAGEM DE PREÇOS':^30}")
 print("-"*30)
@@ -948,20 +946,20 @@ Vale lembrar que todos esses sinais tem o `:` no início, mas vou adicionar para
 - `:#`: Força a exibição do prefixo para números (por exemplo, `0b` para binário, `0o` para octal, etc.)
 - `:,` ou `:_`: Adiciona separadores de milhar (por exemplo, `1,000,000` em vez de `1000000`. Ou `1_000_000` em vez de `1000000`. Existe a biblioteca `humanize` para isso também, ela retorna os números com `,`.
 - `b`, `c`, `d`, `o`, `x`, `X`, `e`, `E`, `f`, `F`, `g`, `G`, `n`, `s`: Especificam o tipo de formatação para números (por exemplo, `b` para binário, `f` para ponto flutuante, etc.)
-```
+```python
 print(f"{'Hello':<10}")  # Alinha à esquerda com largura de 10 caracteres
 print(f"{'Hello':>10}")  # Alinha à direita com largura de 10 caracteres
 print(f"{'3.14159':.2f}")  # Formata como um número de ponto flutuante com 2 casas decimais
 ```
 - Caso queira mostrar um número em notação científica, digitamos `e`:
-```
+```python
 numero_grande = 1_620_000_000
 print(f'{numero_grande}:.2e')
 # Saída:
 1.62e+09
 ```
 Você também pode escrever o seu número grande em notação científica, só que a variável precisa ser do tipo `float`:
-```
+```python
 numero_grande: float = 1.62e9
 print(f'{numero_grande}:.2e')
 # Saída:
@@ -971,7 +969,7 @@ print(f'{numero_grande}:.2e')
 
 # `=` EM F-STRINGS
 **Sintaxe:**
-```
+```python
 nome = 'Henrique'
 idade = 14
 print(f'{nome =}, {idade =}')  # Saída: nome = 'Henrique', idade = 14
@@ -982,7 +980,7 @@ A sintaxe `f'{idade =}'` é equivalente a `f'idade = {idade}'`. Ela imprimir�
 
 # `NOT <VARIÁVEL DE TIPO STR>`
 Quando fazemos a verificação em uma variável de tipo `str`, muitas vezes codamos algo tipo assim:
-```
+```python
 escolha_usuario = input("Par ou Ímpar? (P/I): ").strip().lower()
 while not escolha_usuario or escolha_usuario[0] not in "pi":
 	print("Opção inválida, por favor, digite novamente")
@@ -1036,7 +1034,7 @@ RStrip é a mesma coisa do strip, só que ao invés de apagar todos os espaços 
 # **ESTRUTURAS CONDICIONAIS:**
 # `if` (se)
 **Exemplo:**
-```
+```python
 n1 = 5
 n2 = 3
 if n1 > n2:
@@ -1044,7 +1042,7 @@ if n1 > n2:
 ```
 # `elif` (se não, se)
 Exemplo:
-```
+```python
 n1 = 5
 n2 = 3
 if n1 > n2:
@@ -1054,7 +1052,7 @@ elif n1 < n2:
 ```
 # `else` (Caso contrário)
 Exemplo:
-```
+```python
 n1 = 5
 n2 = n3
 if n1 > n2:
@@ -1069,7 +1067,7 @@ else:
 # `match/case`
 É uma forma diferente de se usar estruturas condicionais.
 **Sintaxe:**
-```
+```python
 match x:
     case 1:
         print("x é 1")
@@ -1080,7 +1078,7 @@ match x:
 ```
 `match` sempre está associado com uma variável. `case` é tipo um `if/elif`. `case _` é tipo um `else`.
 **Exemplo de uso:**
-```
+```python
 # Exemplo 1: Correspondência de valor
 x = 1
 match x:
@@ -1138,7 +1136,7 @@ Em resumo, `if`/`elif`/`else` é mais flexível e pode lidar com uma ampla var
 
 **Exemplos de quando usar cada um**:
 - Use `if`/`elif`/`else` quando você precisa de uma lógica de controle de fluxo mais complexa, como:
-```
+```python
 if x > 5:
     print("x é maior que 5")
 elif x == 5:
@@ -1148,7 +1146,7 @@ else:
 ```
 
 - Use `match`/`case` quando você precisa de uma correspondência de padrão simples e eficiente, como:
-```
+```python
 match x:
     case 1:
         print("x é 1")
@@ -1165,19 +1163,19 @@ O operador ternário em Python é uma forma concisa de fazer atribuições condi
 `valor = expressão_verdadeira if condição else expressão_falsa`
 ### Exemplo:
 Vamos supor que você queira atribuir um valor baseado em uma condição. Usando um operador ternário, você pode fazer isso em uma linha:
-```
+```python
 idade = 18
 status = "Maior de idade" if idade >= 18 else "Menor de idade"
 print(status)
 ```
 Nesse exemplo, `status` será `"Maior de idade"` se `idade` for maior ou igual a 18. Caso contrário, `status` será `"Menor de idade"`.
-```
+```python
 idade = 18
 status = "Maior de idade" if idade >= 18 else "Menor de idade"
 print(status)
 ```
 
-```
+```python
 squares = [x**2 for x in range(10) if x % 2 == 0]
 print(squares)
 ```
@@ -1197,19 +1195,19 @@ O Gustavo Guanabara, por exemplo, não gosta do Operador Ternário. Eu acho que 
 # **ESTRUTURAS DE REPETIÇÃO:**
 # `for loop` (Para)
 **Sintaxe:** 
-```
+```python
 for i in range(inicio, fim, passos):
 	faça alguma coisa
 ```
 ou:
-```
+```python
 lista = [Henrique, Angélica, Alvin]
 for nomes in lista:
 	faça alguma coisa
 ```
 Podemos usar o `for` não só com listas, mas com strings também, tuplas, etc.
 ou:
-```
+```python
 for i in range(3):
 	print("Teste")
 '''Saída:
@@ -1223,7 +1221,7 @@ O `3` digitado no `range` significa o `stop` do `for loop`, então ele vai parar
 **Papel de cada palavra-chave do Python no `for loop`:**
 Em um exemplo de `for i in range(1, 11):`, significa "para cada número dentro de 1 até 10":
 Em um exemplo de:
-```
+```python
 lista = [1, 2, 3, 4, 5]
 for valor in lista:
 ```
@@ -1240,7 +1238,7 @@ Exemplo 1:
 Então basicamente fica: "Para cada coisa (número) dentro de (números de 1 até 10) faça tal coisa"
 
 Exemplo 2:
-```
+```python
 notas_estudantes = ["A", "B", "F", "A-"]
 for notas in notas_estudantes:
 	print(notas)
@@ -1254,7 +1252,7 @@ Então basicamente fica: "Para cada coisa (`notas`) dentro de `notas_estudantes`
 
 O `range` é opcional, eu posso usar sem o `range`.
 Um exemplo sem o `range` seria:
-```
+```python
 notas_estudantes = ["F", "A+", "A-", "C"]
 for notas in notas_estudantes:
 	print(notas)
@@ -1267,13 +1265,13 @@ C'''
 Nesse exemplo, o Python não mostra 1, 2, 3 porque não tem range, no caso, `notas` significa "para cada nota dentro de todas as notas dos estudantes", então `notas` vai receber à cada loop, o próximo valor da lista. E o Python também não pula o último valor, ele mostra o último valor pois não tem o `range` dentro do `for`.
 
 Quando você está usando um o `for` junto com o `range`, o Python ignora o número que você disse para acabar, então por exemplo:
-```
+```python
 for i in range(1, 11):
 	print("Oi")
 # A saída vai ser 10 "oi"s, porque o Python ignora o último número.
 ```
 Vale dizer também que o laço for pode ser dividido em passos, então por exemplo:
-```
+```python
 for i in range (0, 11, 2):
 	print(i)
 ''' A saída vai ser:
@@ -1287,7 +1285,7 @@ for i in range (0, 11, 2):
 
 # `while loop` (Enquanto)
 Sintaxe:
-```
+```python
 exemplo = 1
 while exemplo <= 10:
 	print(exemplo)
@@ -1305,7 +1303,7 @@ while exemplo <= 10:
 ```
 # Como separar de x em x no `while loop`, como se fosse um `for`
 Se quiser fazer loops que pulem de tanto em tanto, igual um `for i in range(1, 10, 2)`, esse "2", para fazer em uma estrutura while, precisamos criar uma variável para indicar esse último número, pode ser "contador", ou algo do tipo; e dentro do while loop, incrementar o quanto você quer que ele pule, se for igual ao que eu escrevi no for, ficaria assim no while:
-```
+```python
 numero = int(input("Digite um número: "))
 contador = 2
 
@@ -1324,7 +1322,7 @@ Dentro da estrutura, incrementei o quanto eu queria que pulasse, quis que fosse 
 Se eu quisesse que fosse de 0 de 2 em 2 até 10, ao invés de começar por 2, que foi o que eu fiz, eu poderia mudar o valor da variável `contador` para 0
 # Como fazer contagens regressivas no `while loop`, como se fosse um `for`
 Se quiser fazer loops que tenham contagens regressivas, a mesma ideia, você cria uma variável representando a terceira configuração que fazemos no for loop, podemos chamar ela de `contador` ou algo do tipo.
-```
+```python
 numero = 0
 contador = 10
 while contador >= numero:
@@ -1345,7 +1343,7 @@ while contador >= numero:
 ```
 Percebe-se que o contador vai receber o início de trás para frente da nossa contagem, isso é, do maior número para o menor, não igual antes, que a variável contador receberia o menor número e ia até o maior número (que era a variável numero).  
 Um exemplo de código que podemos usar para demonstrar a utilização dessa técnica é um Software que faz o cálculo de fatorial de um número, suponhamos que esse número seja 5, para fazermos 5!, segue o Software:
-```
+```python
 numero_atual = 5
 fatorial = 1
 while numero_atual >= 1:
@@ -1371,7 +1369,7 @@ e o numero_atual vai descendo conforme o while loop vai passando por essa linha 
 # **FUNÇÕES**
 Funções são uma forma de automatizar rotinas em seu código, é muito útil.
 **Sintaxe:**
-```
+```python
 def soma_numeros(*num):
     print(num)
     while True:
@@ -1387,7 +1385,7 @@ soma_numeros()
 O que fica dentro dos parênteses da função são os parâmetros (Variáveis que ela vai usar) dela. Quando à chamamos, nós passamos o valor que esse parâmetro vai ter. No início do código, o Python pula a função e executa o programa principal, quando chamarmos a função, devemos passar o valor do parâmetro (Nesse código, foi nenhum, pois o parâmetro vai receber o seu valor dentro da própria função). Quando passamos os valores dos parâmetros, o primeiro valor representa o valor do primeiro parâmetro da função que foi criado quando ela foi criada também, o segundo valor é do segundo parâmetro, e assim por diante; a menos que você expecifique a ordem de cada valor em cada parâmetro, por exemplo:
 
 # FUNÇÕES COM VALORES DE PARÂMETROS ESPECIFICADOS
-```
+```python
 def div(a, b):
 	d = a / b
 	print(f'A divisão vale {d}.')
@@ -1397,7 +1395,7 @@ div(b=3, a=5)
 Nesse exemplo, eu especifiquei o valor que cada parâmetro vai receber, eu coloquei que `b=3` antes de a, que é o primeiro parâmetro, eu consegui fazer isso pois eu especifiquei o valor e a ordem de cada valor em cada parâmetro. Vale lembrar que se você especificou o valor de um parâmetro, precisa especificar de todos os outros.
 
 # FUNÇÕES COM PARÂMETROS OPCIONAIS
-```
+```python
 def somar(a=0, b=0, c=0):
     s = a + b + c
     print(f'A soma vale {s}.')
@@ -1408,7 +1406,7 @@ Aqui, eu não especifiquei o terceiro valor, porém não deu erro, pois o Python
 
 # FUNÇÕES COM MÚLTIPLOS PARÂMETROS (EMPACOTAMENTO DE PARÂMETROS)
 Caso for ter uma função com parâmetros indefinidos, você precisa fazer o empacotamento de parâmetros, se não, sua função não irá funcionar. Exemplos:
-```
+```python
 def contador(*num):
 	print(f'Recebi os valores {num}, e são ao todo {len(num)} números.')
 
@@ -1417,7 +1415,7 @@ contador(8, 0)
 contador(4, 4, 7, 6, 2)
 ```
 O desempacotamento que o Python faz nada mais é do que adicionar todos os valores passados na chamada da função em uma tupla. Caso quiser usar listas, é assim:
-```
+```python
 def dobra(lst):
 	pos = 0
 	while pos < len(lst):
@@ -1431,7 +1429,7 @@ print(valores)
 O que você faz é: não desempacotar. Você pega os valores passados e adiciona eles numa lista no programa principal, e depois você passa ele como parâmetro na sua função.
 
 # ESCOPO DE VARIÁVEIS
-```
+```python
 def teste():
 	x = 8 
 	print(f'Na função teste, n vale {n}')
@@ -1444,7 +1442,7 @@ teste()
 print('No programa principal, x vale {x}')
 ```
 Nesse exemplo, n é uma variável de ESCOPO GLOBAL, ela tem o mesmo valor em ambas as áreas, pois ela foi declarada no programa principal, não dentro de uma função. Porém x foi declarado dentro de uma função, então, esse software dará um erro, pois ele não reconhece o valor x, pois é uma variável de ESCOPO LOCAL, que só é identificada e só pode ser utilizada dentro da função onde ela foi criada.
-```
+```python
 def teste(b):
 	b += 4
 	c = 2
@@ -1459,7 +1457,7 @@ print(f'B fora vale {b}')
 print(f'C fora vale {c}')
 ```
 Nesse exemplo, a vai ter o mesmo valor (5) tanto localmente quanto globalmente; b e c não irão ser mostrados no programa principal pois são variáveis locais, e esse software dará um erro, ele conseguirá mostrar o valor de dentro, que será b = 9 e c = 2, porém fora, não.
-```
+```python
 def teste(b):
 	a = 8
 	b += 4
@@ -1473,7 +1471,7 @@ teste(a)
 print(f'A fora vale {a}')
 ```
 Nesse exemplo (Adicionei uma linha após a criação da função), eu estou criando uma outra variável a (Não é a mesma variável, uma tem o valor de 8, a outra tem o valor de 5), e são variáveis diferentes, o "a" criado dentro da função é o "a" local, que vai ser mostrado no "A dentro vale {a}", mas não será mostrado no "A fora vale {a}", pois em um, está se referindo ao "a" local, que vale 8, e o "a" global, que vale 5. As mudanças que acontecem em uma variável não modificam a outra.
-```
+```python
 def funcao():
 	n1 = 4
 	print(f'N1 dentro vale {n1}')
@@ -1486,7 +1484,7 @@ Nesse caso, n1 dentro é o n1 local, e n1 fora é o n1 global; consequentemente,
 
 ## `global <variavel>`
 Caso estiver em uma função e quiser modificar o valor de uma variável global dentro da função, você deve usar o `global`, que vai indicar para o Python de que aquela variável se trata de uma variável global. Exemplo:
-```
+```python
 def teste(b):
 	global a
 	a = 8
@@ -1504,7 +1502,7 @@ Nesse exemplo, uma variável local "a" não existe mais, e sim, modificamos o va
 
 # ESCOPO EM IMPORTAÇÕES DE BIBLIOTECAS
 Quando queremos importar uma função de uma biblioteca, as vezes ela não precisa ser importada no programa inteiro, as vezes ela vai ser utilizada só dentro de uma função, então fazemos a importação local, que economiza memória e processamento do computador:
-```
+```python
 def fatorial(n=1, show=False):
     from time import sleep
     """
@@ -1536,13 +1534,13 @@ Nesse exemplo, o `sleep()` foi importado para ser usado só dentro da função, 
 
 # RETORNANDO VALORES EM FUNÇÕES
 As funções podem não ter valor de retorno, ou podem ter, ou seja, vai retornar para uma outra função ou variável, mas se você chamar ela sozinha, ela não vai mostrar nada, caso quisesse que ela mostrasse alguma coisa, você usaria o `print()` dentro da função, ao invés do `return`, ou você chamaria a função dentro do `print()`, por exemplo: `print(funcao(a, b, c))`, aí sim ela mostraria os dados. Ou, por exemplo: 
-```
+```python
 def somar(a, b, c):
     return a + b + c
 
 soma = somar(1, 2, 3)
 ```
-Aqui, a função `somar()` retorna a soma, porém não faz  nada com ela, só retorna ela; cabe à nós decidir o que vamos fazer com esse retorno.
+Aqui, a função `somar()` retorna a soma, porém não faz nada com ela, só retorna ela; cabe à nós decidir o que vamos fazer com esse retorno.
 ```
 def somar(a=0, b=0, c=0):
 	return a + b + c
@@ -1553,7 +1551,7 @@ r3 = somar(4)
 print(f'Meus cálculos deram {r1}, {r2} e {r3}.')
 ```
 Exemplo mais completo:
-```
+```python
 def notas(*n, sit=False):
     """
     -> Função que informa o total de notas de um aluno, a maior e menor nota, a média, e se o usuário quiser, a situação também.
@@ -1593,7 +1591,7 @@ A função built-in do Python chamada `help()` te dá a documentação de quase 
 ## Docstrings em funções próprias
 Quando você mesmo cria uma função no seu código, você pode deixar essa mesma documentação que as outras funções tem, isso se chama docstring.
 **Sintaxe:**
-```
+```python
 def fatorial(n=1, show=False):
     from time import sleep
     """
@@ -1653,7 +1651,7 @@ Modularização é o processo de dividir um programa em partes menores e indepen
 ## Módulos 
 Um módulo em Python é simplesmente um arquivo contendo código Python. Para criar um módulo, basta criar um arquivo com extensão `.py`, quando criar um arquivo com a intenção de ser um módulo, você precisa criar funções dentro dele, para que ele possa ser importado e que essas funções possam ser utilizadas em outros arquivos.
 **Exemplo de módulo:**
-```
+```python
 def leia_dinheiro(msg):
     valido = False
     while not valido:
@@ -1705,7 +1703,7 @@ diretorio_pai/
 Aqui, `Programa Principal.py` vai importar os módulos `__init__.py` (Arquivos onde ficam as funções) dos pacotes `dado/` e `moeda/`.
 
 `__init__.py` de `dado/` possui esse código:
-```
+```python
 def leia_dinheiro(msg):
     valido = False
     while not valido:
@@ -1722,7 +1720,7 @@ def leia_dinheiro(msg):
 Aqui, a função `leia_dinheiro(msg)` é como se fosse um `input`, só que o que ela tem de especial é que ela tem um certo nível de tratamento de erros.
 
 `__init__.py` de `moeda/` possui esse código:
-```
+```python
 def metade(preco=0, formato=False):
     """
     -> Retorna a metade do preço fornecido.
@@ -1802,7 +1800,7 @@ def resumo(preco=0, taxa_a=10, taxa_r=5):
 Esse módulo é onde as principais funções do código vão ser armazenadas, cada uma faz uma coisa com o preço, e no final é mostrada no `resumo()`.
 
 `Programa Principal.py`:
-```
+```python
 from utilidadesCeV import moeda, dado
 
 p = dado.leia_dinheiro('Digite o preço: R$')
@@ -1825,10 +1823,10 @@ moeda.resumo(p, taxa_au, taxa_di)
 
 # **TRATAMENTO DE ERROS**
 # `try`, `except`, `else` e `finally`:
-`try` significa "Tente", é para o computador tentar fazer alguma coisa. Caso não funcione, então temos o `except`, que é caso isso que o computador não dê certo. Se o `try` der certo e você quiser que ele faça algo caso dê certo, porém isso depois do `except`, você usa o `else`. Quando quiser que ele faça algo independente do que aconteça, use o `finally`.
+`try` significa "Tente", é para o computador tentar fazer alguma coisa. Caso não funcione, então temos o `except`, que é: "caso isso que o computador fez não deu certo, faça isso:". Se o `try` der certo e você quiser que ele faça algo caso dê certo, porém isso depois do `except`, você usa o `else`. Quando quiser que ele faça algo independente do que aconteça, use o `finally`.
 
 **Exemplos de uso:**
-```
+```python
 try:
     a = int(input('Numerador: '))
     b = int(input('Denominador: '))
@@ -1842,7 +1840,7 @@ finally:
 ```
 
 Exemplo um pouco mais específico, nós podemos criar vários excepts. Agora, para quase todos os erros que o usuário poderia fazer, o software tem uma resposta:
-```
+```python
 try:
     a = int(input('Numerador: '))
     b = int(input('Denominador: '))
@@ -1861,7 +1859,7 @@ finally:
     print('Volte sempre! Muito obrigado!')
 ```
 Você também pode descrever para o usuário/desenvolvedor o tipo de erro que está ocorrendo. Mas sem estar naquele texto clássico de erro que o Python dá. Como por exemplo:
-```
+```python
 try:
     a = int(input('Numerador: '))
     b = int(input('Denominador: '))
@@ -1930,7 +1928,7 @@ finally:
 **Sintaxe:** `:=`
 A principal vantagem do Walrus Operator é que ele permite escrever código mais conciso e legível, evitando a necessidade de linhas adicionais apenas para atribuição de valores.
 **Exemplo sem o Walrus Operator:**
-```
+```python
 # Calculando o comprimento de uma lista
 lista = [1, 2, 3, 4, 5]
 comprimento = len(lista)
@@ -1942,7 +1940,7 @@ else:
 ```
 
 **Com o Walrus Operator:**
-```
+```python
 # Calculando o comprimento de uma lista
 lista = [1, 2, 3, 4, 5]
 if (comprimento := len(lista)) > 3:
@@ -1957,7 +1955,7 @@ O Walrus Operator pode ser usado em uma ampla variedade de situações, como loo
 # ANOTAÇÕES DE TIPO (TYPE HINTS)
 
 # Variáveis simples:
-```
+```python
 nome: str = "Alice"
 idade: int = 30
 altura: float = 1.75
@@ -1965,19 +1963,19 @@ is_estudante: bool = True
 ```
 
 # Listas:
-```
+```python
 numeros: list[int] = [1, 2, 3, 4, 5]
 nomes: list[str] = ["Alice", "Bob", "Charlie"]
 ```
 
 # Dicionários:
-```
+```python
 pessoa: dict[str, str] = {"nome": "Alice", "cidade": "São Paulo"}
 contagem: dict[str, int] = {"maçãs": 3, "bananas": 2}
 ```
 
 # Tuplas:
-```
+```python
 coordenadas: tuple[float, float] = (10.5, 20.3) 
 info_pessoa: tuple[str, int, bool] = ("Alice", 30, True)
 ```
@@ -1986,7 +1984,7 @@ info_pessoa: tuple[str, int, bool] = ("Alice", 30, True)
 `frutas: set[str] = {"maçã", "banana", "laranja"}`
 
 # Funções:
-```
+```python
 def saudacao(nome: str) -> str:
     return f"Olá, {nome}!"
 
@@ -1995,7 +1993,7 @@ def soma(a: int, b: int) -> int:
 ```
 
 # Classes:
-```
+```python
 class Pessoa:
     def __init__(self, nome: str, idade: int):
         self.nome: str = nome
@@ -2006,28 +2004,28 @@ class Pessoa:
 ```
 
 # Union types (quando uma variável pode ter mais de um tipo):
-```
+```python
 from typing import Union
 
 resultado: Union[int, str] = 42  # pode ser int ou str
 ```
 
 # Optional (para variáveis que podem ser None):
-```
+```python
 from typing import Optional
 
 valor: Optional[int] = None  # pode ser int ou None
 ```
 
 # Any (para tipos dinâmicos):
-```
+```python
 from typing import Any
 
 valor_dinamico: Any = "qualquer coisa"
 ```
 
 # Callable (para funções):
-```
+```python
 from typing import Callable
 
 def executar_operacao(func: Callable[[int, int], int], a: int, b: int) -> int:
@@ -2035,7 +2033,7 @@ def executar_operacao(func: Callable[[int, int], int], a: int, b: int) -> int:
 ```
 
 # TypedDict (para dicionários com chaves específicas):
-```
+```python
 from typing import TypedDict
 
 class PessoaDict(TypedDict):
@@ -2053,14 +2051,14 @@ pessoa: PessoaDict = {"nome": "Alice", "idade": 30}
 variavel: tipo = valor
 ```
 **Outro exemplo:** 
-```
+```python
 def soma(a: int, b: int) -> int:
     return a + b
 ```
 Neste exemplo, `a: int` e `b: int` são anotações de tipo para os parâmetros `a` e `b`, indicando que eles devem ser inteiros. A anotação `-> int` depois da definição da função indica que a função deve retornar um inteiro.
 No entanto, é importante notar que as anotações de tipo em Python são apenas para fins de documentação e não são verificadas em tempo de execução pelo interpretador Python.
 **Outro exemplo:**
-```
+```python
 nome: str = "João"
 idade: int = 25
 preço: float = 19.99
@@ -2069,12 +2067,12 @@ ativos: bool = True
 ## Anotações de Tipo em Funções
 
 Adicionar anotações de tipo a funções envolve especificar os tipos dos parâmetros e do valor de retorno. A sintaxe é:
-```
+```python
 def nome_da_função(parametro1: tipo1, parametro2: tipo2) -> tipo_de_retorno:
     ...
 ```
 **Exemplos de anotações de tipo em Funções:**
-```
+```python
 def soma(a: int, b: int) -> int:
     return a + b
 
@@ -2086,7 +2084,7 @@ def calcular_area(raio: float) -> float:
 ```
 ## Anotações de Tipo em Classes
 Você também pode usar anotações de tipo dentro de classes. Por exemplo:
-```
+```python
 from typing import List, Optional
 
 class Pessoa:
@@ -2105,7 +2103,7 @@ class Pessoa:
 `:` Indica que a formatação seguirá algumas instruções adicionais.
 `{.2f}` Especifica a precisão da formatação para números de ponto flutuante. Neste caso, o `2` indica que você quer duas casas decimais após o ponto decimal, e o `f` indica que é um número de ponto flutuante (float).
 a expressão `{:.2f}` está formatando o valor da variável 'raiz' com duas casas decimais após o ponto decimal. Em `.format` fica mais fácil, mas em `f-string` pode parecer mais difícil, aqui está um exemplo:
-```
+```python
 n1 = float(input("Digite um número: "))
 n2 = float(input("Digite outro número: "))
 print(f"A soma desses 2 números é {n1 + n2:.2f})
@@ -2129,7 +2127,7 @@ print(f"A soma desses 2 números é {n1 + n2:.2f})
 # COMO CALCULAR RAÍZ QUADRADA EM PYTHON
 1) Você importa a biblioteca math, ou só a funcionalidade de raiz quadrada da biblioteca math, desse jeito:
 
-```
+```python
 from math import sqrt
 n = float(input('Digite um número: ')) 
 raiz = sqrt[ou qualquer outra funcionalidade que eu quiser de uma biblioteca] (n)
@@ -2137,14 +2135,14 @@ print ('A raiz quadrada desse número é: {:.2f}'.format(raiz)
 
 ```
 OU
-```
+```python
 import math
 num = int(input('Digite um número: '))
 raiz = math.sqrt(num)
 print ('A raiz de {} é igual a {:.2f}'.format(num, raiz))
 ```
 2) Ou você pega o seu número e faz a exponenciação dele por 0.5, ou seja. Ex:
-```
+```python
 n = float(input('Digite um número: '))
 print('A raiz quadrada desse número é {:.2f}'.format (n **(1/2)
 ```
@@ -2167,7 +2165,7 @@ Se é unidade de milhar, pega esse número e faz a divisão inteira dele por 100
 `m = num // 1000 % 10`
 e assim por diante...
 Escreve na tela cada resultado da fórmula
-```
+```python
 print('Unidade: {}'.format(u))
 print('Dezena: {}'.format(d))
 print('Centena: {}'.format(c))
@@ -2255,14 +2253,14 @@ Se você quer importar uma ou mais funcionalidades de uma biblioteca, mas não t
 
 # BIBLIOTECA RANDOM (ALEATÓRIO)
 `choice`: Escolhe UM elemento da lista de forma aleatória: 
-```
+```python
 import random
 options = ['pedra', 'papel', 'tesoura']
 print(choice(options))
 # A saída pode ser, por exemplo: pedra
 ```
 `choices`: Pode escolher MÚLTIPLOS elementos da lista de forma aleatória:
-```
+```python
 from random import choices
 options = ['pedra', 'papel', 'tesoura']
 print(choices(options, k = 2))
@@ -2271,7 +2269,7 @@ print(choices(options, k = 2))
 O `k=valor` define quantos elementos da lista o `choices()` vai retornar. Se não houver esse `k=valor`, o `choices()` retorna 1 valor só, dentro de uma lista. Caso eu não quisesse ter que ficar contando todos os elementos da estrutura de dados, ou eu talvez modifique a estrutura de dados no futuro, eu posso colocar `k=len(people)`, é uma forma mais inteligente de se fazer isso.
 
 Existe o `weight=valor` também, que define a probabilidade do `choices()` escolher aquele elemento na estrutura de dados.
-```
+```python
 from random import choice, choices
 people = ['Bob', 'Tom', 'James', 'Sandra']
 print(f'choice() = {choice (people)}')
@@ -2280,7 +2278,7 @@ print(f'choices() = {choices(people, k=5, weights=weights)}')
 ```
 Nesse exemplo, Bob tem a probabilidade de 15%, Tom tem 20%, James tem 35% e Sandra tem 30%.
 Eu poderia fazer desse jeito aqui, também:
-```
+```python
 from random import choice, choices
 people = ['Bob', 'Tom', 'James', 'Sandra']
 print(f'choice() = {choice (people)}')
@@ -2290,26 +2288,26 @@ O resultado é o mesmo, só que no primeiro exemplo eu estou atribuindo essa lis
 `weight` só pode receber números positivos, pode receber números `float`, e a soma de todos os números digitados tem que ser igual à 1 (ou à 100), pois estamos trabalhando com porcentagem, por CENTO (100/1)
 
 `randint()`: Escolhe um número aleatório entre 2 polos. Por exemplo:
-```
+```python
 import random
 print(random.randint(1, 10))
 # A saída pode ser um número de 1 até 10
 ```
 `random()`: Retorna um número ponto flutuante aleatório no intervalo `[0.0, 1.0]`.
-```
+```python
 import random
 print(random.random())
 # A saída pode ser, por exemplo: 0.5930548549876546, 1.0, 0.1231231231238564, etc.
 ```
 `randrange()`: Retorna um elemento selecionado aleatoriamente a partir de um intervalo. Se parece com o `for loop` com o `range()`
-```
+```python
 import random
 print(random.randrange(1, 10, 2))
 # A saída pode ser, por exemplo: 3
 ```
 No `randrange()`, o último valor passado é desconsiderado, diferente do `randint()`, onde o último valor é incluído no intervalo de números que ele pode retornar. Além disso, podemos dizer de quanto em quanto nós queremos esse intervalo, se for algo como `print(random.randrange(0, 10, 2))`, o `randrange()` pode retornar um número que seja entre 0 e 9 (Pois o último valor é desconsiderado), só que no intervalo de 2 em 2, ou seja, ele pode retornar 0, 2, 4, 6, 8.
 Nós também podemos, igual faríamos num `for loop`, dizer só o último número do intervalo, por exemplo:
-```
+```python
 from random import randrange
 print(randrange(5))
 # A saída pode ser um número de 0 até 4
@@ -2325,14 +2323,14 @@ print(randrange(2, 5))
 ```
 
 `shuffle()`: Embaralha uma estrutura de dados.
-```
+```python
 import random
 deck = ['A', 'K', 'Q', 'J', '10']
 random.shuffle(deck)
 print(deck)
 ```
 Outro exemplo:
-```
+```python
 from random import shuffle
 lista = ['Alvin', 'Luna', 'Rick']
 print(shuffle(lista))
@@ -2340,7 +2338,7 @@ print(shuffle(lista))
 ```
 
 `sample`: Escolhe x elementos de uma população (Lista, tupla, etc), exibe eles na tela sem os outros elementos que não foram selecionados. Os elementos nunca são repetidos
-```
+```python
 import random
 
 # Definindo uma lista de números
@@ -2354,7 +2352,7 @@ print("Lista original:", numbers)
 
 ```
 `uniform()`: Mostra um número float entre 2 números
-```
+```python
 import random
 
 # Gerando um número float aleatório entre 1.0 e 10.0
@@ -2366,7 +2364,7 @@ print(random_number)
 
 # BIBLIOTECA DATETIME
 Para exibir a data/hora atual, usamos o `%`:
-```
+```python
 from datetime import datetime
 now: datetime = datetime.now()
 print(f"{now:%d.%m.%y}")
@@ -2414,7 +2412,7 @@ Usando um projeto como exemplo
 1) Site para baixar vídeos do YouTube e converter eles para mp3: https://y2meta.app/pt15
 2) Site para baixar vídeos do TikTok e converter eles para mp3: https://ssstik.io/en
 3) importando a biblioteca pygame, que é voltada para jogos mas você consegue usar ela para tocar músicas também
-```
+```python
 # Iniciando:
 import pygame
 pygame.init()
@@ -2435,7 +2433,7 @@ A biblioteca JSON (JavaScript Object Notation) do Python é uma biblioteca padr�
 
 **Funções de codificação**
 - `json.dumps()`: converte um objeto Python em uma string JSON.
-```
+```python
 import json
 
 data = {'nome': 'João', 'idade': 30}
@@ -2444,7 +2442,7 @@ print(json_data)  # saída: '{"nome": "Jo\u00e3o", "idade": 30}'
 ```
 
 - `json.dump()`: converte um objeto Python em uma string JSON e escreve em um arquivo.
-```
+```python
 import json
 
 data = {'nome': 'João', 'idade': 30}
@@ -2455,7 +2453,7 @@ with open('data.json', 'w') as f:
 
 **Funções de decodificação**
 - `json.loads()`: converte uma string JSON em um objeto Python.
-```
+```python
 import json
 
 json_data = '{"nome": "Jo\u00e3o", "idade": 30}'
@@ -2464,7 +2462,7 @@ print(data)  # saída: {'nome': 'João', 'idade': 30}
 ```
 
 - `json.load()`: lê um arquivo JSON e converte em um objeto Python.
-```
+```python
 import json
 
 with open('data.json', 'r') as f:
@@ -2475,7 +2473,7 @@ print(data)  # saída: {'nome': 'João', 'idade': 30}
 
 **Outras funções**
 - `json.JSONEncoder`: uma classe que pode ser usada para personalizar a codificação de objetos Python em JSON.
-```
+```python
 import json
 
 class Pessoa:
@@ -2495,7 +2493,7 @@ print(json_data)  # saída: '{"nome": "Jo\u00e3o", "idade": 30}'
 ```
 
 - `json.JSONDecoder`: uma classe que pode ser usada para personalizar a decodificação de JSON em objetos Python.
-```
+```python
 import json
 
 class PessoaDecoder(json.JSONDecoder):
@@ -2549,7 +2547,7 @@ Faz uma pausa só naquela hora que você falar para pausar no seu código
 # `itemgetter()`
 `itemgetter()` é uma função da biblioteca `operator` do Python. Ela pega um ou mais itens numa estrutura de dados. O número inteiro que é passado dentro dos parênteses indica o índice do elemento que você quiser pegar.
 **Exemplos de uso e sintaxe:**
-```
+```python
 from operator import itemgetter
 
 # Cria uma função que pega o item no índice 1
@@ -2560,7 +2558,7 @@ lista = [10, 20, 30]
 resultado = pegar_segundo(lista)  # resultado será 20
 ```
 
-```
+```python
 from operator import itemgetter
 
 pessoas = [('João', 25), ('Maria', 30), ('Pedro', 20)]
@@ -2570,7 +2568,7 @@ print(pessoas_ordenadas)
 ```
 `key=itemgetter(1)` basicamente é: `sorted()` está perguntando "Você quer que eu ordene o quê?" e `key` fala que quer ordenar os itens baseado no `itemgetter(1)`, então `sorted()` entende que ele deve ordenar os itens baseado no segundo elemento da tupla, que é sua idade.
 Outro exemplo com o `sorted()` e `itemgetter()`:
-```
+```python
 from random import randint
 from time import sleep
 from operator import itemgetter
@@ -2594,13 +2592,13 @@ for i, v in enumerate(ranking):
     sleep(1)
 ```
 Aqui é a mesma coisa, `sorted()` pergunta "Quer que eu ordene esse dicionário de que forma?" `key=itemgetter(1)` mostra que ele quer que os pares Chave-Valor sejam ordenados pelo valor (Se fosse 0, seria ordenado pelas chaves), isso é, pelo número que cada jogador tirou, do maior para o menor, por conta do `reverse=True`
- ```
+ ```python
 pegar_primeiro_e_terceiro = itemgetter(0, 2)
 lista = [10, 20, 30, 40]
 resultado = pegar_primeiro_e_terceiro(lista)  # resultado será (10, 30)
 ```
 
-```
+```python
 pessoa = {'nome': 'Ana', 'idade': 28, 'cidade': 'São Paulo'}
 pegar_nome_e_idade = itemgetter('nome', 'idade')
 resultado = pegar_nome_e_idade(pessoa)  # resultado será ('Ana', 28)
@@ -2609,13 +2607,13 @@ resultado = pegar_nome_e_idade(pessoa)  # resultado será ('Ana', 28)
 ## `getitem()` com outras funções:
 
 1) Com `map()`:
-```
+```python
 lista_de_tuplas = [(1, 'a'), (2, 'b'), (3, 'c')]
 apenas_numeros = list(map(itemgetter(0), lista_de_tuplas))
 # Resultado: [1, 2, 3]
 ```
 2) Com `max()` e `min()`:
-```
+```python
 from operator import itemgetter
 
 pessoas = [{'nome': 'ChatGPT', 'idade': 2}, {'nome': 'Claude', 'idade': 1}]
@@ -2637,7 +2635,7 @@ print(f'Pessoa mais nova: {pessoa_mais_nova["nome"]}, {pessoa_mais_nova["idade"]
 aqui, `pessoa_mais_velha` e `pessoa_mais_nova` são duas variáveis que vão receber o item do dicionário `pessoas`, quem vai atribuir o item vai ser `max` e `min`, quem vai decidir quem vai ir pra cada variável vai ser o `key=itemgetter('idade')`, basicamente o que isso faz no `max()` é:  "pegue o maior elemento, baseado na chave 'idade'. Quem tiver a maior idade, atribua à essa variável". E a mesma coisa para `min()`, só que para a pessoa que tiver a menor idade.
 
 3) Com Strings:
-```
+```python
 pegar_primeira_letra = itemgetter(0)
 palavra = "Python"
 primeira_letra = pegar_primeira_letra(palavra)  # Retorna 'P'
