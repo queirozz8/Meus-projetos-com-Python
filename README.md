@@ -8,4 +8,4 @@ Mundo 1 é focado em Fundamentos, o 2 é focado em Estruturas Condicionais e Est
 
 - "Bloco de Notas de Python" é um bloco de notas criado por mim para me ajudar com meus estudos em Python. Só um detalhe: se você quiser ler o documento, procure não ler em qualquer bloco de notas, vai ficar um pouco estranho, pois esse documento é escrito em Markdown, então existem elementos que formatação de texto que não vão ser interpretados caso o arquivo .md seja aberto num bloco de notas padrão. Eu recomendo você utilizar o Obsidian (Software que eu escrevi esse bloco de notas) ou o Notion, pois esse problema não acontece.
 
-**Espero que goste dos projetos! Tem muito mais por vir!**
+<h1>Mais coisas estão por vir! Obrigado por ler!</h1>
