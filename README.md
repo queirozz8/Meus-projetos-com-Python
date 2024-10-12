@@ -1,4 +1,4 @@
-# Esses são meus softwares desenvolvidos em Python. 
+<h1>Meus softwares desenvolvidos em Python. <img src="https://skillicons.dev/icons?i=py" height="60" alt="python logo"></h1>
 - "Meus projetos" são meus projetos pessoais criados; são meus projetos principais.
 
 - "Exercícios Curso em Vídeo", "Exercícios Curso em Vídeo Mundo 2" e "Exercícios Curso em Vídeo Mundo 3" são cursos do Curso Em Vídeo. Todos os exercícios que ele passava estão aí, alguns com coisas à mais do que as que ele pediu. O
